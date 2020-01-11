@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>新博客迁移中 | Pokemonlei的博客</title>
+  <title>python闭包 | Pokemonlei的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###新的博客搞完了，用了入宅作《灼眼的夏娜》作为主题。电脑端右键或手机长按可以呼出GalMenu这段时间脑子有点抽风，给自己找个新的目标。">
+  <meta name="description" content="前言其实闭包是一个很简单的概念，不只是在python中有，所有把函数做为一等公民的语言均有闭包的概念。不过像Java这样以class为一等公民的语言中也可以使用闭包，只是它得用类或接口来实现。 虽然概念简单，但用处强大，然而这个概念却经常忘记，本着好记性不如烂笔头的想法，在这里大体概括一下闭包的基本概念，加强记忆。 什么是闭包？维基上的解释是：在计算机科学中，闭包（英语：Closure），又称词法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新博客迁移中">
-<meta property="og:url" content="http://yoursite.com/2020/01/08/%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%AD/index.html">
+<meta property="og:title" content="python闭包">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/python%E9%97%AD%E5%8C%85/index.html">
 <meta property="og:site_name" content="Pokemonlei的博客">
-<meta property="og:description" content="###新的博客搞完了，用了入宅作《灼眼的夏娜》作为主题。电脑端右键或手机长按可以呼出GalMenu这段时间脑子有点抽风，给自己找个新的目标。">
+<meta property="og:description" content="前言其实闭包是一个很简单的概念，不只是在python中有，所有把函数做为一等公民的语言均有闭包的概念。不过像Java这样以class为一等公民的语言中也可以使用闭包，只是它得用类或接口来实现。 虽然概念简单，但用处强大，然而这个概念却经常忘记，本着好记性不如烂笔头的想法，在这里大体概括一下闭包的基本概念，加强记忆。 什么是闭包？维基上的解释是：在计算机科学中，闭包（英语：Closure），又称词法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-07T16:27:29.000Z">
-<meta property="article:modified_time" content="2020-01-09T05:23:46.250Z">
+<meta property="article:published_time" content="2020-01-10T14:02:32.000Z">
+<meta property="article:modified_time" content="2020-01-11T05:26:14.513Z">
 <meta property="article:author" content="pokemonlei">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Pokemonlei的博客" type="application/atom+xml">
@@ -72,12 +73,12 @@
   </div>
 </div>
 
-        <section id="main"><article id="post-新博客迁移中" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-python闭包" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/08/%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%AD/" class="article-date">
-  <time class="post-time" datetime="2020-01-07T16:27:29.000Z" itemprop="datePublished">
+    <a href="/2020/01/10/python%E9%97%AD%E5%8C%85/" class="article-date">
+  <time class="post-time" datetime="2020-01-10T14:02:32.000Z" itemprop="datePublished">
     <span class="post-month">1月</span><br/>
-    <span class="post-day">08</span>
+    <span class="post-day">10</span>
   </time>
 </a>
    
@@ -89,12 +90,16 @@
         
   
     <h1 class="article-title" itemprop="name">
-      新博客迁移中
+      python闭包
     </h1>
   
 
         <div>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
           
               
 
@@ -104,29 +109,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###新的博客搞完了，用了入宅作《灼眼的夏娜》作为主题。电脑端右键或手机长按可以呼出GalMenu<br>这段时间脑子有点抽风，给自己找个新的目标。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实闭包是一个很简单的概念，不只是在python中有，所有把函数做为一等公民的语言均有闭包的概念。不过像Java这样以class为一等公民的语言中也可以使用闭包，只是它得用类或接口来实现。</p>
+<p>虽然概念简单，但用处强大，然而这个概念却经常忘记，本着好记性不如烂笔头的想法，在这里大体概括一下闭包的基本概念，加强记忆。</p>
+<h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>维基上的解释是：在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。所以，有另一种说法认为闭包是由函数和与其相关的引用环境组合而成的实体。闭包在运行时可以有多个实例，不同的引用环境和相同的函数组合可以产生不同的实例。</p>
+<p>简而言之：就是函数里嵌套一个内部函数，内部函数用到了外边函数中的变量，此时内部函数和用到的外部变量组成了一块空间，这块整体空间就叫闭包。而由于在python中，函数是第一类对象可以当作返回值返回，所以这个闭包也可以当作变量传递</p>
+<p>上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(myname)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_func</span><span class="params">(hername)</span>:</span></span><br><span class="line">        print(myname, <span class="string">' and '</span>, hername)</span><br><span class="line">    <span class="keyword">return</span> inner_func</span><br><span class="line"></span><br><span class="line">withwho = func(<span class="string">'pokemonlei'</span>)</span><br><span class="line">withwho(<span class="string">'qq'</span>)  <span class="comment"># &gt;&gt;&gt; pokemonlei and qq</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包有什么用？"><a href="#闭包有什么用？" class="headerlink" title="闭包有什么用？"></a>闭包有什么用？</h2><ul>
+<li>返回一个函数然后延迟执行</li>
+<li>封装一个私有变量</li>
+<li>用来实现python的装饰器等</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/08/%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%AD/" data-id="ck543fvq20000484sac0laai3" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/10/python%E9%97%AD%E5%8C%85/" data-id="ck595cl4m0000zo4s6b397dxc" class="article-share-link">分享</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2020/01/08/Scaleform%E4%B8%AD%E7%9A%84IME%E9%80%82%E9%85%8Dwin10/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          Scaleform中的IME适配win10
+          爬虫基础
         
       </div>
     </a>
   
+  
+    <a href="/2020/01/08/Scaleform%E4%B8%AD%E7%9A%84IME%E9%80%82%E9%85%8Dwin10/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Scaleform中的IME适配win10</div>
+    </a>
   
 </nav>
 
