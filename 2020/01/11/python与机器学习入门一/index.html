@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python与机器学习入门一 | Pokemonlei的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么要写本文机器学习涉及到很多数学相关基础知识，概率论，高数算法等，而直接去看这些课本或书籍，简直就是晦涩难懂，哪怕是西瓜书这种通俗易懂的书籍，对于数学不好的人来讲也有点像天书。为了让小白可以较轻松的掌握一些机器学习相关知识，还是要从案例出发，通过案例来学习用到的数学知识，熟悉各种算法的原理，顺便将用到的库和框架进行简单介绍，而且可以结合场景解决实际问题，提高初学者幸福感。不过在此还是要列举一些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python与机器学习入门一">
+<meta property="og:url" content="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/index.html">
+<meta property="og:site_name" content="Pokemonlei的博客">
+<meta property="og:description" content="为什么要写本文机器学习涉及到很多数学相关基础知识，概率论，高数算法等，而直接去看这些课本或书籍，简直就是晦涩难懂，哪怕是西瓜书这种通俗易懂的书籍，对于数学不好的人来讲也有点像天书。为了让小白可以较轻松的掌握一些机器学习相关知识，还是要从案例出发，通过案例来学习用到的数学知识，熟悉各种算法的原理，顺便将用到的库和框架进行简单介绍，而且可以结合场景解决实际问题，提高初学者幸福感。不过在此还是要列举一些">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E5%BD%92%E4%B8%80%E5%8C%96%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E6%A0%87%E5%87%86%E5%8C%96%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/%E9%99%8D%E7%BB%B4%E6%8A%95%E5%BD%B1.jpg">
+<meta property="article:published_time" content="2020-01-11T09:35:46.000Z">
+<meta property="article:modified_time" content="2020-01-11T10:05:41.186Z">
+<meta property="article:author" content="pokemonlei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="特征工程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E5%BD%92%E4%B8%80%E5%8C%96%E5%85%AC%E5%BC%8F.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Pokemonlei的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-python与机器学习入门一" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/" class="article-date">
+  <time class="post-time" datetime="2020-01-11T09:35:46.000Z" itemprop="datePublished">
+    <span class="post-month">1月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python与机器学习入门一
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="为什么要写本文"><a href="#为什么要写本文" class="headerlink" title="为什么要写本文"></a>为什么要写本文</h1><p>机器学习涉及到很多数学相关基础知识，概率论，高数算法等，而直接去看这些课本或书籍，简直就是晦涩难懂，哪怕是西瓜书这种通俗易懂的书籍，对于数学不好的人来讲也有点像天书。为了让小白可以较轻松的掌握一些机器学习相关知识，还是要从案例出发，通过案例来学习用到的数学知识，熟悉各种算法的原理，顺便将用到的库和框架进行简单介绍，而且可以结合场景解决实际问题，提高初学者幸福感。<br>不过在此还是要列举一些书籍可供参考：</p>
+<ul>
+<li>概率论和高数，直接大学课本就好</li>
+<li>《机器学习》：俗称西瓜书，学习机器学习的经典书籍</li>
+<li>《Python数据分析与挖掘实战》：从数据挖掘的应用出发，以电力、航空、医疗、互联网、生产制造以及公共服务等行业真实案例为主线，深入浅出介绍Python数据挖掘建模过程，实践性极强。 </li>
+<li>《TensorFlow技术解析与实战》：包揽TensorFlow1.1的新特性 人脸识别 语音识别 图像和语音相结合等热点一应俱全</li>
+</ul>
+<h1 id="机器学习是什么"><a href="#机器学习是什么" class="headerlink" title="机器学习是什么"></a>机器学习是什么</h1><blockquote>
+<p>机器学习是人工智能的一个分支。机器学习算法是一类从<strong>数据</strong>中自动分析获得<strong>规律</strong>，并利用规律对未知数据进行<strong>预测</strong>的算法。专门研究计算机怎样模拟或实现人类的学习行为，以获取新的知识或技能，重新组织已有的知识结构使之不断改善自身的性能。 它是人工智能的核心，是使计算机具有智能的根本途径，其应用遍及人工智能的各个领域，它主要使用归纳、综合而不是演绎。因为学习算法中涉及了大量的统计学理论，机器学习与推断统计学联系尤为密切，也被称为统计学习理论。</p>
+</blockquote>
+<p>机器学习应用在哪些方面？</p>
+<blockquote>
+<p>维基百科：机器学习已广泛应用于数据挖掘、计算机视觉、自然语言处理、生物特征识别、搜索引擎、医学诊断、检测信用卡欺诈、证券市场分析、DNA序列测序、语音和手写识别、战略游戏和机器人等领域。<br>新闻等应用上的推荐类功能,人脸识别相关功能：直播时的美颜、加装饰等等；<br>这里有一个集合，最具价值的50个机器学习应用[2017年]：<a href="https://bigquant.com/community/t/topic/6909" target="_blank" rel="noopener">https://bigquant.com/community/t/topic/6909</a></p>
+</blockquote>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>python深度学习中，读取数据一般是通过pandas读取文件，之所以不读取数据库，是因为数据库读取速度会成为性能瓶颈。</p>
+<p>可用数据集：</p>
+<ul>
+<li>Kaggle：1、大数据竞赛平台，真实数据，数据量巨大</li>
+<li>UCI：1，覆盖科学、生活、经济等领域</li>
+<li>scikit-learn：数据量小，方便学习</li>
+</ul>
+<p>常用数据集结构：特征值+目标值<br>注：有些数据可以没有目标值<br>数据中对于特征的处理：</p>
+<ul>
+<li>pandas：一个数据读取非常方便以及基本的处理格式的工具</li>
+<li>对于<strong>特征的处理</strong>提供了强大的接口</li>
+</ul>
+<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>什么是特征工程（目的）</p>
+<blockquote>
+<p>一句话：特征工程是将<strong>原始数据转换为更好的代表预测模型的潜在问题的特征</strong>的过程，从而提高了对未知数据的预测准确性。<br> “数据决定了机器学习的上限，而算法只是尽可能逼近这个上限”，这里的数据指的就是经过特征工程得到的数据。特征工程指的是把原始数据转变为模型的训练数据的过程，它的目的就是获取更好的训练数据特征，使得机器学习模型逼近这个上限。特征工程能使得模型的性能得到提升，有时甚至在简单的模型上也能取得不错的效果。特征工程在机器学习中占有非常重要的作用，一般认为括特征构建、特征提取、特征选择三个部分。特征构建比较麻烦，需要一定的经验。 特征提取与特征选择都是为了从原始特征中找出最有效的特征。它们之间的区别是特征提取强调通过特征转换的方式得到一组具有明显物理或统计意义的特征；而特征选择是从特征集合中挑选一组具有明显物理或统计意义的特征子集。两者都能帮助减少特征的维度、数据冗余，特征提取有时能发现更有意义的特征属性，特征选择的过程经常能表示出每个特征的重要性对于模型构建的重要性。<br>特征工程的目的是筛选出更好的特征，获取更好的训练数据.</p>
+</blockquote>
+<p>特征工程流程：</p>
+<ul>
+<li><ol>
+<li>数据采集 / 清洗 / 采样<ul>
+<li>1.1:数据采集：数据采集前需要明确采集哪些数据，一般的思路为：哪些数据对最后的结果预测有帮助？数据我们能够采集到吗？线上实时计算的时候获取是否快捷？ </li>
+<li>1.2:数据清洗： 数据清洗也是很重要的一步，机器学习算法大多数时候就是一个加工机器，至于最后的产品如何，取决于原材料的好坏。数据清洗就是要去除脏数据，比如某些商品的刷单数据。 </li>
+<li>1.3:数据采样：采集、清洗过数据以后，正负样本是不均衡的，要进行数据采样。采样的方法有随机采样和分层抽样。但是随机采样会有隐患，因为可能某次随机采样得到的数据很不均匀，更多的是根据特征采用分层抽样。　　</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>2.特征处理<ul>
+<li>2.1:数值型<ul>
+<li>幅度调整/归一化：python中会有一些函数比如preprocessing.MinMaxScaler()将幅度调整到 [0,1] 区间。</li>
+<li>统计值：包括max, min, mean, std等。python中用pandas库序列化数据后，可以得到数据的统计值。 </li>
+</ul>
+</li>
+<li>2.2:类别型,类别型一般是文本信息，比如颜色是红色、黄色还是蓝色，我们存储数据的时候就需要先处理数据<ul>
+<li>one-hot编码，编码后得到哑变量。统计这个特征上有多少类，就设置几维的向量，pd.get_dummies()可以进行one-hot编码。</li>
+<li>Hash编码成词向量</li>
+<li>Histogram映射：把每一列的特征拿出来，根据target内容做统计，把target中的每个内容对应的百分比填到对应的向量的位置。优点是把两个特征联系起来。 </li>
+</ul>
+</li>
+<li>2.3:时间型<ul>
+<li>连续值</li>
+<li>离散值</li>
+</ul>
+</li>
+<li>2.4:文本型<ul>
+<li>词袋：文本数据预处理后，去掉停用词，剩下的词组成的list，在词库中的映射稀疏向量。Python中用CountVectorizer处理词袋． </li>
+<li>把词袋中的词扩充到n-gram：n-gram代表n个词的组合。</li>
+</ul>
+</li>
+<li>2.5:统计型<ul>
+<li>加减平均,商品价格高于平均价格多少，用户在某个品类下消费超过平均用户多少，用户连续登录天数超过平均多少…</li>
+<li>分位线,商品属于售出商品价格的多少分位线处</li>
+<li>次序型</li>
+<li>比例类</li>
+</ul>
+</li>
+<li>2.6:组合特征<ul>
+<li>拼接型</li>
+<li>模型特征组合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3.特征选择:特征选择，就是从多个特征中，挑选出一些对结果预测最有用的特征。特征选择和降维有什么区别呢？前者只踢掉原本特征里和结果预测关系不大的， 后者做特征的计算组合构成新特征。<br>  3.1:过滤型,评估单个特征和结果值之间的相关程度， 排序留下Top相关的特征部分。<br>  3.2:包裹型,把特征选择看做一个特征子集搜索问题， 筛选各种特征子集， 用模型评估效果。 典型算法：“递归特征删除算法”。<br>  3.3:嵌入型,根据模型来分析特征的重要性，最常见的方式为用正则化方式来做特征选择。</li>
+</ul>
+<h3 id="scikit-learn工具"><a href="#scikit-learn工具" class="headerlink" title="scikit-learn工具"></a>scikit-learn工具</h3><ul>
+<li>Python语言的机器学习工具基于Numpy和Scipy</li>
+<li>提供了大量用于数据挖掘和分析的工具，包括数据预处理、交叉验证、算法与可视化算法等一系列接口。</li>
+<li>文档完善，容易上手</li>
+</ul>
+<h3 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a>特征抽取</h3><p>API：sklearn.feature_extraction</p>
+<p>字典特征数据抽取：把字典中一些<strong>类别</strong>数据，转换为特征值，如One-hot编码形势。</p>
+<ul>
+<li>DictVectorizer</li>
+</ul>
+<p>文本特征抽取：对文本数据进行特征值化<br>文本抽取默认不会对中文进行分词，而是按照空格逗号等进行分。所以在fit_transform之前要进行分词。</p>
+<ul>
+<li>CountVectorizer:简单的频率统计</li>
+<li>TfidfVectorizer：tf-idf算法<ul>
+<li>在将文本分词并向量化后，我们可以得到词汇表中每个词在各个文本中形成的词向量，但是这时候的词向量里，有一些类似”to”,”my”,”is”的词，出现的频率可能会高于文章的中心词汇，如果我们的向量化特征仅仅用词频表示就无法反应这一点。因此我们需要进一步的预处理来反应文本的这个特征，而这个预处理就是TF-IDF。</li>
+<li>TF-IDF是Term Frequency -  Inverse Document Frequency的缩写，即“词频-逆文本频率”。它由两部分组成，TF和IDF。<ul>
+<li>TF也就是词频，我们做的向量化也就是做了文本中各个词的出现频率统计。<blockquote>
+<p>词频（TF） = 某个词在文章中的出现次数<br>词频（TF） = 某个词在文章中的出现次数 / 文章总词数。这里是因为文章有长短之分，为了便于不同文章的比较,做”词频”标准化.</p>
+</blockquote>
+</li>
+<li>IDF，即“逆文本频率”，IDF反应了一个词在所有文本中出现的频率，如果一个词在很多的文本中出现，那么它的IDF值应该低，比如上文中的“to”。而反过来如果一个词在比较少的文本中出现，那么它的IDF值应该高。比如一些专业的名词<blockquote>
+<p>逆文档频率（IDF） = log（语料库的文档总数/包含该词的文档总数+1）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>TF-IDF = 词频（TF) * 逆文档频率（IDF）,TF-IDF与一个词在文档中的出现次数成正比，与该词在整个语言中的出现次数成反比。</li>
+</ul>
+</li>
+</ul>
+<p>特征抽取简单demo及API如下：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_extraction import DictVectorizer</span><br><span class="line">from sklearn.feature_extraction.text import CountVectorizer</span><br><span class="line"></span><br><span class="line">def dictvec():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    字典数据抽取</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    # 实例化</span><br><span class="line">    dict &#x3D; DictVectorizer(sparse&#x3D;False)  # sparse指定fit_transform的结果是否转换为sparse矩阵,False的话则不是sparse矩阵而是数组形势</span><br><span class="line">    # 调用fit_transform</span><br><span class="line">    data &#x3D; dict.fit_transform(</span><br><span class="line">        [&#123;&#39;city&#39;: &#39;北京&#39;, &#39;temperature&#39;: 100&#125;, &#123;&#39;city&#39;: &#39;上海&#39;, &#39;temperature&#39;: 60&#125;, &#123;&#39;city&#39;: &#39;深圳&#39;, &#39;temperature&#39;: 30&#125;])     #参数是列表</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    sparse &#x3D; False情况下,这也叫 One-hot编码：</span><br><span class="line">    [[  0.   1.   0. 100.]</span><br><span class="line">    [  1.   0.   0.  60.]</span><br><span class="line">    [  0.   0.   1.  30.]]</span><br><span class="line">    sparse默认为true情况下：</span><br><span class="line">    (0, 1)	1.0</span><br><span class="line">    (0, 3)	100.0</span><br><span class="line">    (1, 0)	1.0</span><br><span class="line">    (1, 3)	60.0</span><br><span class="line">    (2, 2)	1.0</span><br><span class="line">    (2, 3)	30.0</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    print(dict.get_feature_names())  # 返回类别名称，如这里：[&#39;city&#x3D;上海&#39;,&#39;city&#x3D;北京&#39;,&#39;city&#x3D;深圳&#39;,&#39;temperature&#39;]</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def countvec():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    对文本进行特征值化</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    cv &#x3D; CountVectorizer()  #这里没有sparse参数，后续如果要转换为数组，则要用fit_transform产生的sparse矩阵调用toarray()函数</span><br><span class="line">    data &#x3D; cv.fit_transform([&quot;To the world \\u9752\\u9752 may be just one person&quot;,&quot; To me \\u9752\\u9752 may be the world&quot;])     # 参数是列表</span><br><span class="line"></span><br><span class="line">    print(cv.get_feature_names())</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    统计所有词，单个的英文字母不会统计，比如‘i’，结果为：</span><br><span class="line">    [&#39;be&#39;, &#39;just&#39;, &#39;may&#39;, &#39;me&#39;, &#39;one&#39;, &#39;person&#39;, &#39;the&#39;, &#39;to&#39;, &#39;u9752&#39;, &#39;world&#39;]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    print(data.toarray())</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    对应词出现次数</span><br><span class="line">    [[1 1 1 0 1 1 1 1 2 1]</span><br><span class="line">    [1 0 1 1 0 0 1 1 2 1]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    # dictvec()</span><br><span class="line">    countvec()</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="特征预处理"><a href="#特征预处理" class="headerlink" title="特征预处理"></a>特征预处理</h3><p>通过特定的统计方法讲数据转换为算法要求的数据。</p>
+<blockquote>
+<p>sklearn.preprocessing</p>
+</blockquote>
+<ul>
+<li>归一化，防止某个数据对结果影响太大 sklearn.preprocessing.MinMaxScaler<ul>
+<li>通过将原始数据进行变换，把原始数据映射到[0,1]之间</li>
+<li>原理：作用于每一列，max为一列的最大值，min为一列的最小值<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E5%BD%92%E4%B8%80%E5%8C%96%E5%85%AC%E5%BC%8F.jpg" class="" title="sklearn归一化公式"> </li>
+<li>缺点：异常点对此影响较大，这种情况下要使用标准化来解决</li>
+</ul>
+</li>
+<li>标准化，异常值影响较小 sklearn.preprocessing.StandardScaler<ul>
+<li>通过对原始数据进行变换，把数据变换到<strong>均值为0，标准差为1</strong>的范围内</li>
+<li>在已有样本足够多的情况下比较稳定，适合现代嘈杂的大数据场景</li>
+<li>原理：<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E6%A0%87%E5%87%86%E5%8C%96%E5%85%AC%E5%BC%8F.jpg" class="" title="sklearn标准化公式"></li>
+</ul>
+</li>
+</ul>
+<p>归一化与标准化示例如下：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import MinMaxScaler,StandardScaler</span><br><span class="line"></span><br><span class="line">def mm():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    归一化处理</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    mm &#x3D; MinMaxScaler(feature_range&#x3D;(0,1))  #参数可以指定归一化后的范围，默认为[0,1]</span><br><span class="line">    data &#x3D; mm.fit_transform([[10,2,5,40],[20,4,5,8],[30,6,5,5]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    归一化是按照列来归一的</span><br><span class="line">    [[0.         0.         0.         1.        ]</span><br><span class="line">    [0.5        0.5        0.         0.08571429]</span><br><span class="line">    [1.         1.         0.         0.        ]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def stand():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    标准化缩放</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    std &#x3D; StandardScaler()</span><br><span class="line">    data &#x3D; std.fit_transform([[1,-1,3],[2,4,2],[4,6,-1]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    转换后的值，每一列均值为0，标准差为1</span><br><span class="line">    [[-1.06904497 -1.35873244  0.98058068]</span><br><span class="line">    [-0.26726124  0.33968311  0.39223227]</span><br><span class="line">    [ 1.33630621  1.01904933 -1.37281295]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    #mm()</span><br><span class="line">    stand()</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据降维"><a href="#数据降维" class="headerlink" title="数据降维"></a>数据降维</h3><h4 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h4><p>特征选择原因：如果训练数据包含许多<strong>冗余</strong>或<strong>无关</strong>特征，因而移除这些特征并不会导致丢失信息</p>
+<ul>
+<li>数据冗余：部分特征相关度高，容易消耗计算机性能</li>
+<li>缩短训练时间</li>
+<li>改善通用性、降低过拟合</li>
+</ul>
+<p>特征选择是什么？</p>
+<blockquote>
+<p>特征选择就是单纯的从提取到的所有特征中选择部分特征作为训练集特征，特征在选择前和选择后可以改变值、也可以不改变值，但是选择后的特征维数肯定比选择前小，因为只是选择了其中一部分特征。</p>
+</blockquote>
+<p>主要方法：</p>
+<ul>
+<li>Filter(过滤式):<ul>
+<li>VarianceThreshold(方差过滤):由于方差为0的时候，一列的数据是一样的，所以是对结果没用的数据，由此推论，当方差小于某个值的时候，这个特征是不具有参考性的，可以剔除。<ul>
+<li>sklearn.feature_selection.VarianceThreshold</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Embedded(嵌入式):正则化、决策树</li>
+<li>Wrapper(包裹式) </li>
+<li>神经网络</li>
+</ul>
+<h4 id="主成分分析（PCA，principal-Component-Analysis）"><a href="#主成分分析（PCA，principal-Component-Analysis）" class="headerlink" title="主成分分析（PCA，principal Component Analysis）"></a>主成分分析（PCA，principal Component Analysis）</h4><p>背景：</p>
+<blockquote>
+<p>在许多领域的研究与应用中，通常需要对含有多个变量的数据进行观测，收集大量数据后进行分析寻找规律。多变量大数据集无疑会为研究和应用提供丰富的信息，但是也在一定程度上增加了数据采集的工作量。更重要的是在很多情形下，许多变量之间可能存在相关性，从而增加了问题分析的复杂性。如果分别对每个指标进行分析，分析往往是孤立的，不能完全利用数据中的信息，因此盲目减少特征会损失很多有用的信息，从而产生错误的结论。因此需要找到一种合理的方法，在减少需要分析的特征同时，尽量减少信息的损失，以达到对所收集数据进行全面分析的目的。由于各变量之间存在一定的相关关系，因此可以考虑将关系紧密的变量变成尽可能少的新变量，使这些新变量是两两不相关的，那么就可以用较少的综合指标分别代表存在于各个变量中的各类信息。主成分分析与因子分析就属于这类降维算法。<br>说白了就是特征太多情况下，如果很多特征之间是有联系的，这时直接通过特征选择等方式来剔除掉某些特征，会导致失去一些有用信息。所以需要一种方法，在减少特征数量的同时，尽可能少的减少信息的损失。</p>
+</blockquote>
+<p>PCA是什么？</p>
+<blockquote>
+<p>是一种使用最广泛的数据压缩算法。在PCA中，数据从原来的坐标系转换到新的坐标系，由数据本身决定。转换坐标系时，以方差最大的方向作为坐标轴方向，因为数据的最大方差给出了数据的最重要的信息。第一个新坐标轴选择的是原始数据中方差最大的方法，第二个新坐标轴选择的是与第一个新坐标轴正交且方差次大的方向。重复该过程，重复次数为原始数据的特征维数。<br>通过这种方式获得的新的坐标系，我们发现，大部分方差都包含在前面几个坐标轴中，后面的坐标轴所含的方差几乎为0,于是，我们可以忽略余下的坐标轴，只保留前面的方差较大的坐标轴。事实上，这样也就相当于只保留包含绝大部分方差的维度特征，而忽略包含方差几乎为0的特征维度，也就实现了对数据特征的降维处理。<br>PCA里，特征数量会减少，但数据也会改变。一般特征数量达到上百才会用</p>
+</blockquote>
+<p>作用：</p>
+<blockquote>
+<p>可以削减回归分析或者聚类分析中特征的数量</p>
+</blockquote>
+<p>原理：<br>一张结果图：</p>
+<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/%E9%99%8D%E7%BB%B4%E6%8A%95%E5%BD%B1.jpg" class="" title="降维投影">
+<blockquote>
+<p>详细过程参考这里的‘3.5PCA算法两种实现方法’：<a href="https://blog.csdn.net/program_developer/article/details/80632779" target="_blank" rel="noopener">https://blog.csdn.net/program_developer/article/details/80632779</a></p>
+</blockquote>
+<p>数据降维的两个方法demo：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_selection import VarianceThreshold</span><br><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">def var():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    特征选择-删除低方差的特征</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    var &#x3D; VarianceThreshold(threshold&#x3D;0.0)  # threshold指定方差阈值</span><br><span class="line">    data &#x3D; var.fit_transform([[0,2,0,3],[0,1,4,3],[0,1,1,3]])  #数据的第一列和最后一列方差为0</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    过滤掉了第一列和最后一列</span><br><span class="line">    [[2 0]</span><br><span class="line">    [1 4]</span><br><span class="line">    [1 1]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def pca():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    主成分分析进行特征降维</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    pca &#x3D; PCA(n_components&#x3D;0.9)   # n_components可以选择保留的数据信息比例，一般为90%~95%</span><br><span class="line">    data &#x3D; pca.fit_transform([[2,4,6,8],[5,4,8,6],[1,5,6,3]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    [[-1.32007718  2.16837282]</span><br><span class="line">    [-1.95237119 -1.90596201]</span><br><span class="line">    [ 3.27244837 -0.26241081]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    pca()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><blockquote>
+<p>算法是核心，数据和计算是基础。</p>
+</blockquote>
+<p>机器学习算法判别依据：数据类型</p>
+<ul>
+<li>离散型数据：由记录不同类别个体的数目所得到的数据，又称计数数据，所有这些数据全部都是整数，而且不能再细分，也不能进一步提高他们的精确度。<strong>区间内不可分</strong></li>
+<li>连续型数据：变量可以在某个范围内取任一数，即变量的取值可以是连续的，如长度、时间、质量等，这类数值通常含有小数部分。<strong>区间内可分</strong></li>
+</ul>
+<p>机器学习算法分类：</p>
+<ul>
+<li>监督学习（预测）：有<strong>特征值和目标值</strong>，有标准答案<ul>
+<li>分类：对应数据类型为<strong>离散型</strong><ul>
+<li>k-近邻算法</li>
+<li>贝叶斯分类</li>
+<li>决策树与随机森林</li>
+<li>逻辑回归</li>
+<li>神经网络</li>
+</ul>
+</li>
+<li>回归：对应数据类型为<strong>连续型</strong><ul>
+<li>线性回归</li>
+<li>岭回归</li>
+</ul>
+</li>
+<li>标注<ul>
+<li>隐马尔科夫模型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无监督学习：<strong>只有特征值</strong><ul>
+<li>聚类<ul>
+<li>k-means</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="机器学习开发流程"><a href="#机器学习开发流程" class="headerlink" title="机器学习开发流程"></a>机器学习开发流程</h3><ul>
+<li>获取数据<blockquote>
+<p>包括获取原始数据以及从原始数据中经过特征工程从原始数据中提取训练、测试数据</p>
+</blockquote>
+</li>
+<li>特征工程<blockquote>
+<p>包括从原始数据中特征构建、特征提取、特征选择。特征工程做的好能发挥原始数据的最大效力，往往能够使得算法的效果和性能得到显著的提升，有时能使简单的模型的效果比复杂的模型效果好。数据挖掘的大部分时间就花在特征工程上面，是机器学习非常基础而又必备的步骤。数据预处理、数据清洗、筛选显著特征、摒弃非显著特征等等都非常重要。</p>
+</blockquote>
+</li>
+<li>训练模型、诊断、调优<blockquote>
+<p>诊断中至关重要的是判断过拟合、欠拟合，常见的方法是绘制学习曲线，交叉验证。通过增加训练的数据量、降低模型复杂度来降低过拟合的风险，提高特征的数量和质量、增加模型复杂来防止欠拟合。诊断后的模型需要进行进一步调优，调优后的新模型需要重新诊断</p>
+</blockquote>
+</li>
+<li>模型验证、误差分析<blockquote>
+<p>主要是分析出误差来源与数据、特征、算法。</p>
+</blockquote>
+</li>
+<li>模型融合<blockquote>
+<p>提升算法的准确度主要方法是模型的前端（特征工程、清洗、预处理、采样）和后端的模型融合</p>
+</blockquote>
+</li>
+<li>上线运行<blockquote>
+<p>通过提供API等形式来上线</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="sklearn数据集"><a href="#sklearn数据集" class="headerlink" title="sklearn数据集"></a>sklearn数据集</h1><h4 id="1-数据集划分"><a href="#1-数据集划分" class="headerlink" title="1.数据集划分"></a>1.数据集划分</h4><p>机器学习一般的数据集会划分为两个部分：</p>
+<ul>
+<li>训练数据：用户训练、构建模型</li>
+<li>测试数据：在模型检验时使用，用于评估模型是否有效</li>
+</ul>
+<h4 id="2-sklearn数据集API介绍"><a href="#2-sklearn数据集API介绍" class="headerlink" title="2.sklearn数据集API介绍"></a>2.sklearn数据集API介绍</h4><ul>
+<li>sklearn.model_selection.train_test_split</li>
+<li>sklearn.datasets<ul>
+<li>datasets.load_*();    获取小规模数据集，数据包含在datasets里</li>
+<li>datasets.fetch_*(data_home=None);  获取大规模数据集，需要从网络上下载，第一个参数是data_home表示数据集下载的目录，默认 ‘~/scikit_learn_data/‘</li>
+</ul>
+<ul>
+<li>load*和fetch*返回的数据类型都是datasets.base.Bunch(<strong>字典格式</strong>)<ul>
+<li>data:特征数据数组，是[n_samples * m_features]的二维<strong>numpy.ndarry数组</strong></li>
+<li>target:标签数组，是n_samples的<strong>一维numpy.ndarray数组</strong></li>
+<li>DESCR:数据描述</li>
+<li>feature_names:特征名，<strong>新闻数据、手写数字、回归数据集没有</strong></li>
+<li>target_names:标签名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-sklearn分类数据集，对应分类算法"><a href="#3-sklearn分类数据集，对应分类算法" class="headerlink" title="3.sklearn分类数据集，对应分类算法"></a>3.sklearn分类数据集，对应分类算法</h4><blockquote>
+<p>此处以内置数据集 load_iris和20newsgroups 为例</p>
+</blockquote>
+<p>1.load_iris()获取内置普通分类用的数据集<br>2.获取用于分类测试的大数据集，sklearn.datasets.fetch_20newgroups(),数据集收集了大约20,000左右的新闻组文档，均匀分为20个不同主题的新闻组集合。</p>
+<blockquote>
+<p>datasets.clear</p>
+</blockquote>
+<p>数据集进行分割：<br>sklearn.model_selection.train_test_split(<em>arrays,*</em>options)</p>
+<ul>
+<li>x:数据集的特征值</li>
+<li>y:数据集的标签值</li>
+<li>test_size:测试集大小，一般为float</li>
+<li>random_state:随机数种子</li>
+<li>return:训练集特征值，测试集特征值，训练标签，测试标签</li>
+</ul>
+<p>下面为两个数据集的获取代码，目前仅为数据采集，至于特征提取、模型训练等后续再写</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from sklearn.datasets import load_iris, fetch_20newsgroups</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">内置的数据集，加载并返回鸢尾花数据集</span><br><span class="line">类别：3</span><br><span class="line">特征：4</span><br><span class="line">样本数量：150</span><br><span class="line">每个类别数量：50</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">li &#x3D; load_iris()</span><br><span class="line"></span><br><span class="line">print(li.data)  # 获取特征数据数组</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">[[5.1 3.5 1.4 0.2]</span><br><span class="line"> [4.9 3.  1.4 0.2]</span><br><span class="line"> [4.7 3.2 1.3 0.2]</span><br><span class="line"> ......</span><br><span class="line"> [5.9 3.  5.1 1.8]]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(li.target)  # 获取目标值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">目标值是离散型，0，1，2</span><br><span class="line">[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line"> 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span><br><span class="line"> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2]</span><br><span class="line">.. _iris_dataset:</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">    # print(li.DESCR)     #打印出一些描述信息</span><br><span class="line"></span><br><span class="line">train_feature, test_feature, train_target, test_target &#x3D; train_test_split(li.data, li.target,</span><br><span class="line">                                                                          test_size&#x3D;0.25)  # 参数：特征值，目标值，测试集大小</span><br><span class="line">    # 返回值依次为：训练集的特征值、测试集特征值、训练集目标值、测试集目标值</span><br><span class="line"></span><br><span class="line">print(&quot;训练集特征值和目标值：&quot;, train_feature, train_target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">训练集特征值和目标值： [[6.4 3.2 5.3 2.3]</span><br><span class="line"> [4.6 3.6 1.  0.2]</span><br><span class="line"> [5.5 2.5 4.  1.3]</span><br><span class="line"> ......</span><br><span class="line"> [5.7 2.8 4.1 1.3]</span><br><span class="line"> [5.5 2.4 3.7 1. ]]</span><br><span class="line"> [2 0 1 1 2 2 0 1 1 0 2 2 2 0 1 1 2 2 1 1 1 0 0 2 1 2 1 0 1 1 0 0 1 0 0 0 2</span><br><span class="line"> 2 0 0 1 1 1 1 1 0 1 2 0 0 0 2 1 0 0 1 1 0 1 1 1 0 0 2 0 1 2 2 2 0 2 0 2 2</span><br><span class="line"> 0 1 2 0 1 0 2 2 2 0 2 0 1 0 1 0 1 0 2 1 1 1 0 1 1 1 2 2 2 0 0 2 2 2 0 2 1</span><br><span class="line"> 1]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(&quot;测试集特征值和目标值：&quot;, test_feature, test_target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">测试集特征值和目标值： [[6.3 2.9 5.6 1.8]</span><br><span class="line"> [6.3 2.5 4.9 1.5]</span><br><span class="line"> [7.3 2.9 6.3 1.8]</span><br><span class="line"> ......</span><br><span class="line"> [4.4 2.9 1.4 0.2]</span><br><span class="line"> [5.1 3.4 1.5 0.2]]</span><br><span class="line"> [2 1 2 2 2 1 2 0 2 2 2 0 0 2 0 0 1 1 1 1 2 2 0 2 2 1 1 2 2 0 0 1 1 0 0 2 0 0]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">也是一个内置的数据集，不过是是大数据集，会从网络下载</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">news &#x3D; fetch_20newsgroups(data_home&#x3D;r&quot;G:\pyMechineLearn&quot;, subset&#x3D;&#39;all&#39;)</span><br><span class="line">print(news.data)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">貌似是一个list类型，每一个元素是str类型，也就是一篇文章。</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(news.target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">不同的数对应不同的文章类型</span><br><span class="line">[10  3 17 ...  3  1  7]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-sklearn回归数据集，对应回归算法"><a href="#4-sklearn回归数据集，对应回归算法" class="headerlink" title="4.sklearn回归数据集，对应回归算法"></a>4.sklearn回归数据集，对应回归算法</h4><blockquote>
+<p>此处以内置数据集 波士顿房价数据集为例<br>sklearn.datasets.load_boston()</p>
+</blockquote>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from sklearn.datasets import load_boston</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">波士顿房价数据</span><br><span class="line">目标类别：5-50</span><br><span class="line">特征：13</span><br><span class="line">样本数量：506</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">lb &#x3D; load_boston()</span><br><span class="line"></span><br><span class="line">print(lb.data)  #获取特征值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">特征值就是收集的属性，房子的一些大小等信息</span><br><span class="line">[[6.3200e-03 1.8000e+01 2.3100e+00 ... 1.5300e+01 3.9690e+02 4.9800e+00]</span><br><span class="line"> [2.7310e-02 0.0000e+00 7.0700e+00 ... 1.7800e+01 3.9690e+02 9.1400e+00]</span><br><span class="line"> [2.7290e-02 0.0000e+00 7.0700e+00 ... 1.7800e+01 3.9283e+02 4.0300e+00]</span><br><span class="line"> ...</span><br><span class="line"> [6.0760e-02 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9690e+02 5.6400e+00]</span><br><span class="line"> [1.0959e-01 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9345e+02 6.4800e+00]</span><br><span class="line"> [4.7410e-02 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9690e+02 7.8800e+00]]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(lb.target)    #获取目标值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">[24.  21.6 34.7 33.4 36.2 28.7 22.9 27.1 16.5 18.9 15.  18.9 21.7 20.4</span><br><span class="line"> 18.2 19.9 23.1 17.5 20.2 18.2 13.6 19.6 15.2 14.5 15.6 13.9 16.6 14.8</span><br><span class="line">.......</span><br><span class="line">  8.1 13.6 20.1 21.8 24.5 23.1 19.7 18.3 21.2 17.5 16.8 22.4 20.6 23.9</span><br><span class="line"> 22.  11.9]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(lb.DESCR) #描述信息</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">\*\*Data Set Characteristics:\*\* </span><br><span class="line">:Number of Instances: 506</span><br><span class="line">:Attribute Information (in order):</span><br><span class="line">        - CRIM     per capita crime rate by town</span><br><span class="line">        - ZN       proportion of residential land zoned for lots over 25,000 sq.ft.</span><br><span class="line">        - INDUS    proportion of non-retail business acres per town</span><br><span class="line">        .........</span><br><span class="line">        - MEDV     Median value of owner-occupied homes in $1000&#39;s</span><br><span class="line">&#39;&#39;&#39;</span><br></pre></td></tr></table></figure>
+
+<h1 id="转换器（Transformer）与估计器（estimator）"><a href="#转换器（Transformer）与估计器（estimator）" class="headerlink" title="转换器（Transformer）与估计器（estimator）"></a>转换器（Transformer）与估计器（estimator）</h1><p>特征工程中，实例化出来的可调用fit_transform API的对象（如 DictVectorizer等）就是一个Transformer</p>
+<ul>
+<li>fit_transform():输入数据直接转换</li>
+<li>fit()+transform():fit是单纯的输入数据，然后进行一些预先处理，如计算平均值，方差等。transform是进行数据的转换</li>
+</ul>
+<p>在sklearn中，估计器（estimator）是一个重要的角色，是一类实现了算法的API，这玩意不是知道接口是啥就可以，而是传入的算法参数- -。。</p>
+<ul>
+<li>用于分类的估计器：<ul>
+<li>sklearn.neighbors k-近邻算法</li>
+<li>sklearn.naive_bayes 贝叶斯</li>
+<li>sklearn.linear_model.logisticRegression 逻辑回归</li>
+<li>sklearn.tree 决策树与随机森林</li>
+</ul>
+</li>
+<li>用于分类的估计器：<ul>
+<li>sklearn.linear_model.linearRegression 线性回归</li>
+<li>sklearn.linear_model.Ridge 岭回归</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/" data-id="ck59f6yji0006f04s9aiqhxrn" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" rel="tag">特征工程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">python数据分析基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Pokemonlei的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/candychenlei" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://blog.csdn.net/candy_xiaolei" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2019 - 2020 pokemonlei<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">喵帕斯</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">凑数</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

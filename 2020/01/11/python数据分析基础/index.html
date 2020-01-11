@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python数据分析基础 | Pokemonlei的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言 Python VS R 语言(原文：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;CAsVeEJlgru85NUHcUKv6A)：  什么是R语言？R语言，一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。 Python与R语言共同特点 Python和R在数据分析和数据挖掘方面都有比较专业和全面的模块，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python数据分析基础">
+<meta property="og:url" content="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Pokemonlei的博客">
+<meta property="og:description" content="前言 Python VS R 语言(原文：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;CAsVeEJlgru85NUHcUKv6A)：  什么是R语言？R语言，一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。 Python与R语言共同特点 Python和R在数据分析和数据挖掘方面都有比较专业和全面的模块，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6.jpg">
+<meta property="article:published_time" content="2020-01-11T09:25:24.000Z">
+<meta property="article:modified_time" content="2020-01-11T09:34:44.898Z">
+<meta property="article:author" content="pokemonlei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Pokemonlei的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-python数据分析基础" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="post-time" datetime="2020-01-11T09:25:24.000Z" itemprop="datePublished">
+    <span class="post-month">1月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python数据分析基础
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>Python VS R 语言(原文：<a href="https://mp.weixin.qq.com/s/CAsVeEJlgru85NUHcUKv6A)：" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/CAsVeEJlgru85NUHcUKv6A)：</a><blockquote>
+<ul>
+<li>什么是R语言？<br>R语言，一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。</li>
+<li>Python与R语言共同特点</li>
+<li>Python和R在数据分析和数据挖掘方面都有比较专业和全面的模块，很多常用的功能，比如矩阵运算、向量运算等都有比较高级的用法</li>
+<li>Python和R两门语言有多平台适应性，linux、window都可以使用，并且代码可移植性强</li>
+<li>Python和R比较贴近MATLAB以及minitab等常用的数学工具</li>
+<li>Python与R语言区别</li>
+<li>数据结构方面，由于是从科学计算的角度出发，R中的数据结构非常的简单，主要包括向量(一维)、多维数组(二维时为矩阵)、列表(非结构化数据)、数据框(结构化数据)。而 Python 则包含更丰富的数据结构来实现数据更精准的访问和内存控制，多维数组(可读写、有序)、元组(只读、有序)、集合(唯一、无序)、字典(Key-Value)等等。</li>
+<li>Python与R相比速度要快。Python可以直接处理上G的数据;R不行，R分析数据时需要先通过数据库把大数据转化为小数据(通过groupby)才能交给R做分析，因此R不可能直接分析行为详单，只能分析统计结果。</li>
+<li>Python是一套比较平衡的语言，各方面都可以，无论是对其他语言的调用，和数据源的连接、读取，对系统的操作，还是正则表达和文字处理，Python都有着明显优势。 而R是在统计方面比较突出。</li>
+<li>总结<br>总的来说，Python 的 pandas 借鉴了R的dataframes，R 中的 rvest 则参考了 Python的BeautifulSoup，两种语言在一定程度上存在互补性，通常，我们认为 Python 比 R 在计算机编程、网络爬虫上更有优势，而 R 在统计分析上是一种更高效的独立数据分析工具。所以说，同时学会Python和R这两把刷子才是数据科学的王道。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>python其实是可以直接<strong>调用R语言的函数</strong>的，只需要安装rpy2模块即可。</p>
+<h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><p>提到数据分析，就不得不考虑到数据分析后的展示，Matplotlib是一个Python 2D绘图库，它可以在各种平台上以各种硬拷贝格式和交互式环境生成出具有出版品质的图形。<br>至于matplotlib的安装，可以通过 Anaconda来安装，相关操作不多赘述。</p>
+<h4 id="折线图示例"><a href="#折线图示例" class="headerlink" title="折线图示例"></a>折线图示例</h4><img src="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg" class="" title="折线图">
+<p>相关api在代码中都有注释<br>代码如下：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"># coding&#x3D;utf-8</span><br><span class="line"># 折线图</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">import matplotlib</span><br><span class="line"></span><br><span class="line"># 注：matplotlib默认时不支持中文的，可通过rc修改</span><br><span class="line">font &#x3D; &#123;&#39;family&#39;: &#39;SimHei&#39;,</span><br><span class="line">        &#39;weight&#39;: &#39;bold&#39;,</span><br><span class="line">        &#39;size&#39;: &#39;16&#39;&#125;</span><br><span class="line">matplotlib.rc(&#39;font&#39;, **font)</span><br><span class="line"></span><br><span class="line">x &#x3D; range(2, 26, 2)</span><br><span class="line">y &#x3D; [15, 13, 12, 11, 15, 3, 20, 22, 14.5, 6.3, 21.2, 10]</span><br><span class="line"># 要在一个图形上绘制多个曲线，可直接设置另一个列表然后通过plot来绘制</span><br><span class="line">another_y &#x3D; [10, 10, 22, 15, 13, 5, 6, 8, 11.5, 20, 21.2, 20]</span><br><span class="line"></span><br><span class="line"># 设置图片大小</span><br><span class="line"># plt.figure(figsize&#x3D;(20, 8), dpi&#x3D;80)</span><br><span class="line"></span><br><span class="line"># 绘图，label为折线名字，需要在后面添加legend方法才能显示在图形上，还可设置线条颜色和style等</span><br><span class="line">plt.plot(x, y, label&#x3D;&quot;第一条&quot;)</span><br><span class="line"># 绘制另一条曲线</span><br><span class="line">plt.plot(x, another_y, label&#x3D;&quot;第二条&quot;)</span><br><span class="line"></span><br><span class="line"># 绘制x轴的刻度,根据列表参数的值展示刻度</span><br><span class="line"># plt.xticks(x)</span><br><span class="line"># plt.xticks(range(2,25))</span><br><span class="line"># x轴刻度显示字符串, 需要构造一个和xticks第一个参数一一对应的字符串列表，这也可以解决xy轴刻度对不准问题，自定义在哪里显示刻度和显示什么</span><br><span class="line">_xstring_labels &#x3D; [&quot;string&#123;&#125;&quot;.format(i) for i in x]</span><br><span class="line">plt.xticks(x, _xstring_labels, rotation&#x3D;90)  # rotation可以让x刻度旋转一定角度</span><br><span class="line"></span><br><span class="line"># 展示y轴刻度</span><br><span class="line">plt.yticks(range(min(y), max(y)))</span><br><span class="line"></span><br><span class="line"># 添加图形和坐标轴的描述信息</span><br><span class="line">plt.xlabel(&quot;x轴信息&quot;)</span><br><span class="line">plt.ylabel(&quot;y轴信息&quot;)</span><br><span class="line">plt.title(&quot;图形名字&quot;)</span><br><span class="line"></span><br><span class="line"># 绘制网格,参数alpha可以设置透明度</span><br><span class="line">plt.grid()</span><br><span class="line"></span><br><span class="line"># 添加图例，loc参数可设置图例位置</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line"># 展示图形</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 保存图形,后缀为svg可以保存为矢量图</span><br><span class="line"># plt.savefig(&quot;.&#x2F;testone.png&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他图形示例"><a href="#其他图形示例" class="headerlink" title="其他图形示例"></a>其他图形示例</h4><p>绘制其他图形的api和折线图几乎相同，程序参考上面就可以，下面列举一下api以供参考<br>其中 x,y为x和y轴的列表</p>
+<ul>
+<li>散点图<ul>
+<li>plt.scatter(x,y)</li>
+</ul>
+</li>
+<li>条形图<ul>
+<li>plt.bar(x,y,width=’0.3’) #width为设置线条的粗细</li>
+<li>plt.hbar(x,y,height=’0.3’)   #绘制横向的条形图,height为横向线条的粗细</li>
+<li>通过设置 xticks可以实现数字和字符串的相对应</li>
+</ul>
+</li>
+<li>直方图<ul>
+<li>plt.hist(a,num_bins,normed = True)  #a为数据列表，num_bins为数据分为多少组，normed用来设置是否是频率直方图。<ul>
+<li>组数 = 极差/组距 = (max(a) - min(a))/自己设置的组距，注：最大值-最小值的结果一定要能被组距整除，不然图像会出现偏差</li>
+</ul>
+</li>
+<li>当组距不均匀时，plt.hist(a,[min(a)+i*组距 for i in range(组数)])，也就是可以传入一个列表，长度为组数，值为分组的依据</li>
+<li>小技巧，设置x轴刻度：plt.xticks(range(min(a),man(a)+d,d)) ,因为range是去[),所以最后不加d的话会导致最后一个刻度丢失</li>
+</ul>
+</li>
+<li>more<ul>
+<li>matplotlib官网中有很多例子，网址：<a href="https://matplotlib.org/gallery/index.html" target="_blank" rel="noopener">https://matplotlib.org/gallery/index.html</a> ，需要的时候可根据问题自行查找。</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他的一些绘制工具"><a href="#其他的一些绘制工具" class="headerlink" title="其他的一些绘制工具"></a>其他的一些绘制工具</h2><ul>
+<li>百度的一个前端框架echarts：<a href="https://www.echartsjs.com/index.html" target="_blank" rel="noopener">https://www.echartsjs.com/index.html</a> ，讲道理确实很炫酷。可动态交互</li>
+<li>python的图形库plotly：<a href="https://plot.ly/python/" target="_blank" rel="noopener">https://plot.ly/python/</a> ， 可以在线生成交互式、高质量的图形。可动态交互</li>
+<li>Seaborn，基于matplotlib的Python数据可视化库：<a href="http://seaborn.pydata.org/" target="_blank" rel="noopener">http://seaborn.pydata.org/</a> 。 静态</li>
+</ul>
+<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>什么是Numpy</p>
+<blockquote>
+<p>NumPy系统是Python的一种开源的数值计算扩展，是python科学计算的基础包。这种工具可用来存储和处理大型矩阵，具有快速高效的多维数组对象ndarray，比Python自身的嵌套列表（nested list structure)结构要高效的多。NumPy（Numeric Python）提供了许多高级的数值编程工具，如：矩阵数据类型、矢量处理，以及精密的运算库。专为进行严格的数字处理而产生。可以用来处理线性代数运算、傅里叶变换以及随机数生成等。</p>
+</blockquote>
+<p>下面列出了一些列numpy常用的API可供参考：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"># coding &#x3D; utf-8</span><br><span class="line">import numpy</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line"># numpy 创建数组</span><br><span class="line">t1 &#x3D; numpy.array([1, 2, 3])  # [1,2,3]</span><br><span class="line">t2 &#x3D; numpy.array(range(1, 6))  # [1,2,3,4,5]</span><br><span class="line">t3 &#x3D; numpy.arange(4, 10, 2)  # [4,6,8]</span><br><span class="line"></span><br><span class="line">print(t3.dtype)  # int32 与平台有关，还可能是int64,float32等</span><br><span class="line">t4 &#x3D; numpy.arange(4, 10, 2, dtype&#x3D;&quot;int64&quot;)  # 可以手动指定数值类型</span><br><span class="line"># 调整数据类型</span><br><span class="line">t5 &#x3D; t4.astype(&quot;float32&quot;)</span><br><span class="line">print(t5.dtype)</span><br><span class="line"></span><br><span class="line">t6 &#x3D; random.random()</span><br><span class="line">t6 &#x3D; numpy.round(t6, 2)  # round保留两位小数</span><br><span class="line">print(t6)</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">numpy读取本地CSV文件</span><br><span class="line">api：numpy.loadtxt(fname, dtype&#x3D;, comments&#x3D;&#39;#&#39;, delimiter&#x3D;None, converters&#x3D;None, skiprows&#x3D;0, usecols&#x3D;None, unpack&#x3D;False, ndmin&#x3D;0)</span><br><span class="line">fname :文件或字符串</span><br><span class="line">dtype : 数据类型</span><br><span class="line">comments :用于指示注释开头的字符，默认值为 : &#39;#&#39;.</span><br><span class="line">delimiter :用于分隔值的字符，缺省值为任何空白字符，如空格 ，制表符  </span><br><span class="line">converters : dict字典 ，用来定义将对应的列转换为浮点数的函数。列入：0列是日期字符串：&quot;converters&#x3D;&#123;0:datestr2num&#125;&quot;.convertes 同时也能够为丢失的数据设置缺省值：&quot;convertes&#x3D;&#123;3:lambda s:float(s.strip() or 0)&#125;&quot;</span><br><span class="line">skiprows:跳过开头的行数</span><br><span class="line">usecols : 确定那几列被读取</span><br><span class="line">unpack :是否进行转置</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"># n1 &#x3D; numpy.loadtxt(&quot;test.csv&quot;,delimiter&#x3D;&quot;,&quot;,dtype&#x3D;&quot;int&quot;) # t1&#x3D; [ [0行0列 0行1列 0行2列] [1行0列 1行1列 1行2列] [2行0列 2行1列 2行2列] ]</span><br><span class="line"></span><br><span class="line">n2 &#x3D; numpy.array([</span><br><span class="line">    [1, 2, 3, 4],</span><br><span class="line">    [5, 6, 7, 8],</span><br><span class="line">    [9, 10, 11, 12],</span><br><span class="line">])</span><br><span class="line"># 索引和切片</span><br><span class="line"># print(n2[行,列]) ‘：’表所有</span><br><span class="line"># 取一行</span><br><span class="line">print(n2[1])  # [5 6 7 8]</span><br><span class="line"># 取连续多行</span><br><span class="line">print(n2[1:])  # [[5 6 7 8] [9 10 11 12]]</span><br><span class="line"># 取不连续多行</span><br><span class="line">print(n2[[0, 2]])  # [ [1 2 3 4] [9 10 11 12]]</span><br><span class="line"></span><br><span class="line"># 取列</span><br><span class="line">print(n2[:, 0])  # [1 5 9]</span><br><span class="line"># 连续多列</span><br><span class="line">print(n2[:, 2:])  # [ [3 4] [7 8 ] [11 12]]</span><br><span class="line"># 不连续的列</span><br><span class="line">print(n2[:, [0, 2]])  # [ [1 3][5 7][9 11] ]</span><br><span class="line"></span><br><span class="line"># 取单行单列和多行多列</span><br><span class="line">print(n2[[0, 1], [1, 2]])  # 注意，这里是 [2 7]</span><br><span class="line">print(n2[1, 2])  # [7]</span><br><span class="line">print(n2[0:2, 0:3])  # [[1 2 3][5 6 7]] ，这里的多行多列，‘:’的区间是[)</span><br><span class="line"></span><br><span class="line"># 数据拼接</span><br><span class="line">n3 &#x3D; numpy.array([</span><br><span class="line">    [1, 2, 3, 4],</span><br><span class="line">    [5, 6, 7, 8]</span><br><span class="line">])</span><br><span class="line">n4 &#x3D; numpy.array([</span><br><span class="line">    [9, 10, 11, 12],</span><br><span class="line">    [11, 12, 13, 14]</span><br><span class="line">])</span><br><span class="line"># 横向和竖向拼接</span><br><span class="line">numpy.vstack((n3, n4))  # [[1 2 3 4] [5 6 7 8] [9 10 11 12] [...]]</span><br><span class="line">numpy.hstack((n3, n4))  # [ [1 2 3 4 9 10 11 12] [5 6 7 8 11 12 13 14]]</span><br><span class="line"># numpy数组可以支持 a b &#x3D; b a语法来换行或者换列，如</span><br><span class="line">n2[[1, 2], :] &#x3D; n2[[2, 1], :]  # 行交换</span><br><span class="line">n2[:, [0, 1]] &#x3D; n2[:, [1, 0]]  # 列交换</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><p>为什么需要pandas？</p>
+<blockquote>
+<p>numpy能够帮我们处理数值型数据，但这样还不足以满足需求，有时候还需要处理字符串、时间序列等。不过pandas的数值处理模块也是基于numpy的。</p>
+</blockquote>
+<p>什么是pandas？</p>
+<blockquote>
+<p>pandas 是是python的一个数据分析包、基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。Pandas 纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。pandas提供了大量能使我们快速便捷地处理数据的函数和方法。对于金融行业的用户，pandas提供了大量适用于金融数据的高性能时间序列功能和工具。</p>
+</blockquote>
+<p>pandas的数据结构：</p>
+<ul>
+<li>Series：带标签(索引)的一维数组，与Numpy中的一维array类似。二者与Python基本的数据结构List也很相近，其区别是：List中的元素可以是不同的数据类型，而Array和Series中则只允许存储相同的数据类型，这样可以更有效的使用内存，提高运算效率。</li>
+<li>Time- Series：以时间为索引的Series。</li>
+<li>DataFrame：二维的表格型数据结构。很多功能与R中的data.frame类似。可以将DataFrame理解为Series的容器。</li>
+<li>Panel ：三维的数组，可以理解为DataFrame的容器。</li>
+</ul>
+<p>pandas的相关用法如下：</p>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"># coding &#x3D; &#39;utf-8&#39;</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># Series相关</span><br><span class="line"></span><br><span class="line">t1 &#x3D; pd.Series([1, 2, 33, 44, 5])</span><br><span class="line">t2 &#x3D; pd.Series([1, 2, 3, 4, 5], index&#x3D;list(&quot;abcde&quot;))  # 此时 1的索引为a,2的索引为b,以此类推</span><br><span class="line">print(t2.dtype)  # int64</span><br><span class="line">temp_list &#x3D; &#123;&quot;name&quot;: &quot;q&quot;, &quot;age&quot;: 26, &quot;tel&quot;: &quot;10086&quot;&#125;</span><br><span class="line">t3 &#x3D; pd.Series(temp_list)  # 此时索引为字典的键，值为字典对应键的值</span><br><span class="line"># tip:对一个series重新指定索引后，如果能够对应上，就取其值，如果不能，则为Nan</span><br><span class="line">print(t3.dtype)  # object</span><br><span class="line"></span><br><span class="line"># Series的切片和索引</span><br><span class="line">print(t3[:2])  # 取前3行</span><br><span class="line">print(t3[[&quot;name&quot;, &quot;age&quot;]])  # 取name和age</span><br><span class="line">print(t1[t1 &gt; 2])  # 取值大于2的</span><br><span class="line">print(t3.index)  # 获取索引列表，类型为Index，可以使用list(t3.index) 强制转换为列表</span><br><span class="line">print(t3.values)  # 获取值的列表,类型为numpy.ndarry，其实就是一个数组</span><br><span class="line"># tips：ndarry中很多方法在pandas中都可以用。但pandas中的where是不同的,可以用来查找符合条件的数值，而不符合的显示为指定的值，不指定则为Nan</span><br><span class="line">print(&#39;*&#39; * 20)</span><br><span class="line"></span><br><span class="line"># DataFrame相关</span><br><span class="line"></span><br><span class="line">p1 &#x3D; pd.DataFrame(np.arange(12).reshape(3, 4))</span><br><span class="line">print(p1)</span><br><span class="line"># 带索引的创建,指定行索引和列索引</span><br><span class="line">p2 &#x3D; pd.DataFrame(np.arange(12).reshape(3, 4), index&#x3D;list(&quot;abc&quot;), columns&#x3D;list(&quot;WXYZ&quot;))</span><br><span class="line">print(p2)</span><br><span class="line"># 传入字典创建,键为列名,每一行为具体的值，值可以对应一个列表，列表内有多少数据就有多少行。也可以传入一个内容是字典的列表，有几个字典就有几行。没有的数据为NaN</span><br><span class="line">d1 &#x3D; &#123;&quot;name&quot;: [&quot;q1&quot;, &quot;q2&quot;], &quot;age&quot;: [25, 26], &quot;tel&quot;: [10086, 10010]&#125;</span><br><span class="line">p3 &#x3D; pd.DataFrame(d1)</span><br><span class="line">print(p3)</span><br><span class="line">d2 &#x3D; [&#123;&quot;name&quot;: &quot;q1&quot;, &quot;age&quot;: 25, &quot;tel&quot;: 10010&#125;, &#123;&quot;name&quot;: &quot;q2&quot;, &quot;tel&quot;: 10000&#125;, &#123;&quot;name&quot;: &quot;q3&quot;, &quot;age&quot;: 22, &quot;tel&quot;: 10086&#125;]</span><br><span class="line">p4 &#x3D; pd.DataFrame(d2)</span><br><span class="line">print(p4)</span><br><span class="line"># 前几行，tail为尾几行。info可以查看DataFrame的内存情况，多少行多少列占用多少内存等</span><br><span class="line">p4.head(1)</span><br><span class="line"></span><br><span class="line"># DataFrame取行取列，方括号内写数组，表示取行，写字符串，表示取列的索引</span><br><span class="line">p5 &#x3D; pd.DataFrame(np.arange(100).reshape(10, 10), index&#x3D;[&quot;r1&quot;, &quot;r2&quot;, &quot;r3&quot;, &quot;r4&quot;, &quot;r5&quot;, &quot;r6&quot;, &quot;r7&quot;, &quot;r8&quot;, &quot;r9&quot;, &quot;r10&quot;],</span><br><span class="line">                  columns&#x3D;[&quot;c1&quot;, &quot;c2&quot;, &quot;c3&quot;, &quot;c4&quot;, &quot;c5&quot;, &quot;c6&quot;, &quot;c7&quot;, &quot;c8&quot;, &quot;c9&quot;, &quot;c10&quot;])</span><br><span class="line"># 取前5行</span><br><span class="line">print(p5[:5])</span><br><span class="line"># 取固定列</span><br><span class="line">print(p5[&quot;c2&quot;])</span><br><span class="line"># 通过pandas优化过的选择方式：</span><br><span class="line"># loc通过标签索引行数据，loc中冒号两边的数据取的方式是闭合区间[]，而不是[)</span><br><span class="line"># iloc通过位置获取行数据</span><br><span class="line">print(p5.loc[&quot;r4&quot;, &quot;c5&quot;])  # 取r4行r5列</span><br><span class="line">print(p5.loc[&quot;r4&quot;])  # 取r4行</span><br><span class="line">print(p5.loc[[&quot;r1&quot;, &quot;r3&quot;]])  # 取多行多列语法 如r1行和r3行</span><br><span class="line">print(p5.iloc[:, 2])  # 取第2列,索引从0开始</span><br><span class="line">print(p5.iloc[5:, 3:])  #取第6行以后和第3列以后的数据</span><br><span class="line">print(p5[p5[&quot;c7&quot;]&gt;70])  #取c7列大于70的所有行</span><br><span class="line"></span><br><span class="line">#缺失数据NaN的处理</span><br><span class="line">p6 &#x3D; pd.DataFrame(np.array([0,1,np.NaN,3,4,5,6,7,8,np.NaN,10,11]).reshape(3, 4), index&#x3D;list(&quot;abc&quot;), columns&#x3D;list(&quot;WXYZ&quot;))</span><br><span class="line">print(p6)</span><br><span class="line">print(pd.notnull(p6))   #p6中，不为NaN的值显示为true，为NaN的值显示为false</span><br><span class="line">print(p6[pd.notnull(p6[&quot;X&quot;])])  #选取p6的X列中的值不为NaN的所有行</span><br><span class="line">print(p6.dropna(axis&#x3D;0,how&#x3D;&quot;any&quot;))    #删除DataFrame中值为NaN的axis，axis&#x3D;0为行，1为列。how的值为“any”表示这个轴只要有NaN就删，值为“all”表示所有值都为NaN才删</span><br><span class="line">#填充NaN为指定数据</span><br><span class="line">print(p6.fillna(0))     # 将NaN填充为0</span><br><span class="line"># 不过为了数据完整性，一般不会填充为0或者随便填一个数值，而是会填充为均值,Pandas计算均值的时候不会算上NaN值</span><br><span class="line">print(p6.mean())    #此时mean算的均值是每一列的均值</span><br><span class="line">print(p6.fillna(p6.mean()))</span><br><span class="line">print(p6[&quot;X&quot;].fillna(p6[&quot;X&quot;].mean()))   #只填充某一列的NaN值，如果要改变原数据,可以前面添加 p6[&quot;X&quot;] &#x3D;</span><br><span class="line"></span><br><span class="line"># pandas读取外部数据</span><br><span class="line"># csv文件</span><br><span class="line"># result &#x3D; pd.read_csv(&quot;.&#x2F;test.csv&quot;)</span><br><span class="line"># 读取sql，传入sql语句和connection</span><br><span class="line"># pd.read_sql(sql_sentence,connection)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="写到这里"><a href="#写到这里" class="headerlink" title="写到这里"></a>写到这里</h1><p>先上一张python数据分析的知识框架</p>
+<img src="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6.jpg" class="" title="数据库结果">
+<p>其中有一些还没有写到，也不打算继续挖坑了，暂且记录在下面：</p>
+<ul>
+<li>Scipy<ul>
+<li>Scipy是一组专门解决科学计算中各种标准问题域的包的集合。</li>
+</ul>
+</li>
+<li>statsmodels<ul>
+<li><a href="https://github.com/statsmodels/statsmodels" target="_blank" rel="noopener">https://github.com/statsmodels/statsmodels</a></li>
+</ul>
+</li>
+<li>scikit-learn<ul>
+<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">http://scikit-learn.org/stable/</a></li>
+</ul>
+</li>
+</ul>
+<p>这段时间大概了解了一下python数据分析的知识框架，写的不是很详细，这里有一篇更详细的文章写得不错先mark一下：<a href="https://www.cnblogs.com/nxld/p/6058998.html" target="_blank" rel="noopener">https://www.cnblogs.com/nxld/p/6058998.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" data-id="ck59f6yj70000f04sgw4faiup" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          python与机器学习入门一
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">scrapy爬取腾讯招聘岗位到mongoDB中</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Pokemonlei的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/candychenlei" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://blog.csdn.net/candy_xiaolei" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2019 - 2020 pokemonlei<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">喵帕斯</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">凑数</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
