@@ -45,8 +45,8 @@
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
       <a href="/archives"><div><strong>12</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -108,7 +108,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>w姑娘：<br>你听我说。<br>我原以为相遇一定是书诗成画，歌文谱曲。要闹市马蹄下救人，荒山破庙中避雨。是英雄救美，道一声得罪。是火堆取暖，听一夜风雨。要游园忽闻佳人笑，转头又见桃花开。是万朵桃花都失色，是十里春风总不如。是你一颦一笑一回眸，要我灯火阑珊千百度。是可作诗歌可谱曲，要这样诗情画意。</p>
+        <p>姑娘：<br>你听我说。<br>我原以为相遇一定是书诗成画，歌文谱曲。要闹市马蹄下救人，荒山破庙中避雨。是英雄救美，道一声得罪。是火堆取暖，听一夜风雨。要游园忽闻佳人笑，转头又见桃花开。是万朵桃花都失色，是十里春风总不如。是你一颦一笑一回眸，要我灯火阑珊千百度。是可作诗歌可谱曲，要这样诗情画意。</p>
 <p>后来我以为相遇一定是这辈子必定会推开的一扇门。门后面是万里明媚，百草欣荣。是小哑巴拿着波板糖，四目交接，眼波流转。见到就知道，相逢如重逢。推开这扇门，用尽一身的力气和一生的运气。知道门的那边有你，就什么都不在再保留，拼尽全力。是这样毫无顾忌。</p>
 <p>再后来我以为相遇一定是一场无限期有目的的旅行。要披星戴月，披荆斩棘。要历经岁月的沧桑和尘世的烦扰，要忍受沉默的世界和空荡的长街。要坐错车下错站，要哭过长夜要难以入眠。是翻过篱笆高墙，站在你面前。是迎着风雪，站在你面前。是假装有缘，站在你面前。是无数次巧合，才骗得一个驻足。要这样真实。</p>
 <p>我原先以为是我在茫茫寻找，是听着风来自地铁和人海。是过尽千帆，整理千次发型。虽然等待的时间无比慢无比长，但知道你会来，便等得。就是这个道理。</p>
@@ -176,6 +176,10 @@
 
         <div>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+  </div>
+
           
               
 
@@ -185,13 +189,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>UE4的GM系统是基于UCheatManager开发的</p>
+</blockquote>
+<h1 id="1-处理GM的流程图"><a href="#1-处理GM的流程图" class="headerlink" title="1.处理GM的流程图"></a>1.处理GM的流程图</h1><img src="/2020/01/16/UE4GM%E7%B3%BB%E7%BB%9F/%E5%AE%A2%E6%88%B7%E7%AB%AFGM%E6%B5%81%E7%A8%8B.jpg" class="" title="客户端GM流程">
+
+<p>上图是客户端的处理流程，DS服务器上的处理流程大致类似，只不过玩家在DS上是一个NetConnection，所以PlayerController中保存的UPlayer的派生不是ULocalPlayer，而是UNetConnection。</p>
+<h1 id="2-启用GM"><a href="#2-启用GM" class="headerlink" title="2. 启用GM"></a>2. 启用GM</h1><p>默认情况下，GM只会在(GetNetMode() == NM_Standalone || GIsEditor)情况下才会启用，也就是说只要不是单机也不是编辑器下运行，默认是不会启动的，需要在PlayerController里手动调用EnableCheats()，此时只要构建类型不是SHIPPING和TEST，就会启用GM。当然也可以根据需要直接调用AddCheats(true)不论何时都启用。</p>
+<h1 id="3-如何添加自己的GM指令"><a href="#3-如何添加自己的GM指令" class="headerlink" title="3.如何添加自己的GM指令"></a>3.如何添加自己的GM指令</h1><p>添加自己的指令也比较简单，通过继承UCheatManager来实现自己的派生类即可，自己的GM类里实现具体的GM指令，方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UFUNCTION(exec,BlueprintCallable,Category&#x3D;&quot;Cheat Manager&quot;)</span><br><span class="line">void MyGMName(arglist);</span><br></pre></td></tr></table></figure>
+<p>其中UFUNCTION中的exec是必须的。</p>
+<p>写完自己的GM类后，需要设置PlayerController中的CheatClass为自己的GM类，之后直接在控制台输入 MyGMName args  即可调用到自己的GM实现。</p>
+<h1 id="4-一个可在客户端远程调用DS执行GM的方案"><a href="#4-一个可在客户端远程调用DS执行GM的方案" class="headerlink" title="4.一个可在客户端远程调用DS执行GM的方案"></a>4.一个可在客户端远程调用DS执行GM的方案</h1><p>由于有一些GM，比如添加物品，要在DS服务器上调用然后同步结果到客户端，而我们又不能直接在服务器上输入只能在客户端中输入，那就需要一种方式将输入的GM传给服务器。</p>
+<p>这里用到的就是两个：UFUNCTION(exec) 和 UFUNCTION(Reliable, Server, WithValidation, BlueprintCallable) 函数，比如<br>UFUNCTION(exec)<br>void ServerGM(const FString&amp; cmd);</p>
+<p>UFUNCTION(Reliable, Server, WithValidation, BlueprintCallable)<br>virtual void ServerGM_RPC(const FString&amp; cmd);</p>
+<p>其中ServerGM用来供客户端执行，在函数内通过ServerGM_RPC将客户端想要执行的GM命令和参数同步给服务器来执行。</p>
+<p>实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">void AMyPlayerController::ServerGM(const FString&amp; cmd)</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;下面是从引擎源码的UPlayer::ConsoleCommand中抄过来的一段代码，大概作用是使用 | 分隔符处理多段的GM指令</span><br><span class="line">	const int32 CmdLen &#x3D; cmd.Len();</span><br><span class="line">	TCHAR* CommandBuffer &#x3D; (TCHAR*)FMemory::Malloc((CmdLen + 1) * sizeof(TCHAR));</span><br><span class="line">	TCHAR* Line &#x3D; (TCHAR*)FMemory::Malloc((CmdLen + 1) * sizeof(TCHAR));</span><br><span class="line"></span><br><span class="line">	const TCHAR* Command &#x3D; CommandBuffer;</span><br><span class="line">	FCString::Strcpy(CommandBuffer, (CmdLen + 1), *cmd.Left(CmdLen));</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 使用&#39;|&#39;分隔符处理多段GM指令</span><br><span class="line">	while (FParse::Line(&amp;Command, Line, CmdLen + 1))</span><br><span class="line">	&#123;</span><br><span class="line">		ServerGM_RPC(FString(Line));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	FMemory::Free(CommandBuffer);</span><br><span class="line">	CommandBuffer &#x3D; nullptr;</span><br><span class="line"></span><br><span class="line">	FMemory::Free(Line);</span><br><span class="line">	Line &#x3D; nullptr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AMyPlayerController::ServerGM_RPC_Implementation(const FString&amp; cmd)</span><br><span class="line">&#123;</span><br><span class="line">	ConsoleCommand(cmd, true);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>此时如果3中的MyGMName需要在服务器上运行，那客户端执行：ServerGM MyGMName args  即可。<br>整个流程大概是：</p>
+<ol>
+<li>先按文章开头的照流程图在客户端中执行GM，流程图最后一步UPlayer::Exec会在PlayerController上执行ProcessConsoleExec()，从而调用PlayerController的ServerGM函数，并把MyGMName args当做字符串参数传进去。</li>
+<li>ServerGM里一顿操作后，通过RPC，在服务器上调用ServerGM_RPC并将字符串MyGMName args 作为参数</li>
+<li>ServerGM_RPC直接调用ConsoleCommand，即直接走到了流程图中的这一步<img src="/2020/01/16/UE4GM%E7%B3%BB%E7%BB%9F/ConsoleCommand%E6%AD%A5%E9%AA%A4.jpg" class="" title="ConsoleCommand步骤"></li>
+<li>之后就是按照流程图中，调用UPlayer派生类UNetConnection的Exec，然后走到我们自己的CheatManager，调用MyGMName</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2020/01/16/UE4GM%E7%B3%BB%E7%BB%9F/" data-id="ck5gnpy0e0000ls4scnh489t0" class="article-share-link">分享</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UE4/" rel="tag">UE4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a></li></ul>
+
     </footer>
   </div>
   
@@ -1502,8 +1533,8 @@
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
       <a href="/archives"><div><strong>12</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
 
 
