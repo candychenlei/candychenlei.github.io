@@ -31,6 +31,7 @@
 
   
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
@@ -40,13 +41,13 @@
         <div class="widget-wrap mobile-header">
   <h3 class="widget-title"></h3>
   <div class="widget">
-    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>11</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -71,129 +72,6 @@
 </div>
 
         <section id="main">
-  
-    <article id="post-scrapy爬取腾讯招聘岗位到mongoDB中" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/" class="article-date">
-  <time class="post-time" datetime="2020-01-11T05:42:20.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/">scrapy爬取腾讯招聘岗位到mongoDB中</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近正值一年一度的春招时刻，看到一堆学弟学妹忙着准备简历和面试，默默地打开了腾讯的招聘网站，<a href="https://hr.tencent.com/position.php" target="_blank" rel="noopener">https://hr.tencent.com/position.php</a> ，打算爬取一下所有的岗位信息，工作地点，类型，以及日期。</p>
-<p>借此来复习一下Scrapy这个框架的基本使用，爬取的数据则是存储在本地的MongoDB数据库中。<br>Scrapy的架构图如下：</p>
-<img src="/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/Scrapy.jpg" class="" title="Scrapy架构">
-
-<p>Scrapy主要包括了以下组件：</p>
-<ul>
-<li>引擎(Scrapy)<ul>
-<li>用来处理整个系统的数据流, 触发事务(框架核心)</li>
-</ul>
-</li>
-<li>调度器(Scheduler)<ul>
-<li>用来接受引擎发过来的请求, 压入队列中, 并在引擎再次请求的时候返回. 可以想像成一个URL（抓取网页的网址或者说是链接）的优先队列, 由它来决定下一个要抓取的网址是什么, 同时去除重复的网址</li>
-</ul>
-</li>
-<li>下载器(Downloader)<ul>
-<li>用于下载网页内容, 并将网页内容返回给spider(Scrapy下载器是建立在twisted这个高效的异步模型上的)</li>
-</ul>
-</li>
-<li>爬虫(Spiders)<ul>
-<li>爬虫是主要干活的, 用于从特定的网页中提取自己需要的信息, 即所谓的实体(Item)。用户也可以从中提取出链接,让Scrapy继续抓取下一个页面</li>
-</ul>
-</li>
-<li>项目管道(Pipeline)<ul>
-<li>负责处理爬虫从网页中抽取的实体，主要的功能是持久化实体、验证实体的有效性、清除不需要的信息。当页面被爬虫解析后，将被发送到项目管道，并经过几个特定的次序处理数据。</li>
-</ul>
-</li>
-<li>下载器中间件(Downloader Middlewares)<ul>
-<li>位于Scrapy引擎和下载器之间的框架，主要是处理Scrapy引擎与下载器之间的请求及响应。</li>
-</ul>
-</li>
-<li>爬虫中间件(Spider Middlewares)<ul>
-<li>介于Scrapy引擎和爬虫之间的框架，主要工作是处理蜘蛛的响应输入和请求输出。</li>
-</ul>
-</li>
-<li>调度中间件(Scheduler Middewares)<ul>
-<li>介于Scrapy引擎和调度之间的中间件，从Scrapy引擎发送到调度的请求和响应。</li>
-</ul>
-</li>
-</ul>
-<p>Scrapy运行流程大概如下：</p>
-<ul>
-<li>引擎从调度器中取出一个链接(URL)用于接下来的抓取</li>
-<li>引擎把URL封装成一个请求(Request)传给下载器</li>
-<li>下载器把资源下载下来，并封装成应答包(Response)</li>
-<li>爬虫解析Response</li>
-<li>解析出实体（Item）,则交给实体管道进行进一步的处理</li>
-<li>解析出的是链接（URL）,则把URL交给调度器等待抓取</li>
-</ul>
-<h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><p>假设已经安装好mongodb数据库和scrapy。<br>windows下，cd到对应的文件夹目录</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject myspiders</span><br><span class="line">#cd到 myspiders 文件夹下</span><br><span class="line">scrapy genspider myspider tencent.com</span><br></pre></td></tr></table></figure>
-
-<p>这之后在项目的spiders文件夹下，会生成一个 myspider.py 的文件，修改里面的 start_urls为我们的起始地址 <a href="https://hr.tencent.com/position.php" target="_blank" rel="noopener">https://hr.tencent.com/position.php</a><br>settings.py文件中，去掉 ITEM_PIPELINES 的注释，以使pipelines.py文件可以使用<br>settings.py中添加一行log等级，过滤一下多余log，LOG_LEVEL = “WARNING”<br>settings.py中的USER_AGENT取消注释，并改为自己浏览器的useragent</p>
-<blockquote>
-<p>Request参数参考：scrapy.http.Request(url[, callback, method=’GET’, headers, body, cookies, meta, encoding=’utf-8’, priority=0, dont_filter=False, errback])</p>
-</blockquote>
-<p>myspider.py代码如下：</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyspiderSpider(scrapy.Spider):</span><br><span class="line">    name &#x3D; &#39;myspider&#39;</span><br><span class="line">    allowed_domains &#x3D; [&#39;tencent.com&#39;]</span><br><span class="line">    start_urls &#x3D; [&#39;https:&#x2F;&#x2F;hr.tencent.com&#x2F;position.php&#39;]</span><br><span class="line"></span><br><span class="line">    def parse(self, response):</span><br><span class="line">        tr_list &#x3D; response.xpath(&quot;&#x2F;&#x2F;table[@class&#x3D;&#39;tablelist&#39;]&#x2F;tr&quot;)[1:-1]</span><br><span class="line">        for tr in tr_list:</span><br><span class="line">            item&#x3D;&#123;&#125;</span><br><span class="line">            item[&quot;title&quot;] &#x3D; tr.xpath(&quot;.&#x2F;td[1]&#x2F;a&#x2F;text()&quot;).extract_first()</span><br><span class="line">            item[&quot;type&quot;] &#x3D; tr.xpath(&quot;.&#x2F;td[2]&#x2F;text()&quot;).extract_first()</span><br><span class="line">            item[&quot;position&quot;] &#x3D; tr.xpath(&quot;.&#x2F;td[4]&#x2F;text()&quot;).extract_first()</span><br><span class="line">            item[&quot;date&quot;] &#x3D; tr.xpath(&quot;.&#x2F;td[5]&#x2F;text()&quot;).extract_first()</span><br><span class="line">            yield item</span><br><span class="line"></span><br><span class="line">        #找下一页地址</span><br><span class="line">        next_url &#x3D; response.xpath(&quot;&#x2F;&#x2F;a[@id&#x3D;&#39;next&#39;]&#x2F;@href&quot;).extract_first()</span><br><span class="line">        if next_url !&#x3D; &quot;javascript:;&quot;:</span><br><span class="line">            next_url &#x3D; &quot;http:&#x2F;&#x2F;hr.tencent.com&#x2F;&quot;+next_url</span><br><span class="line">            yield scrapy.Request(</span><br><span class="line">                next_url,</span><br><span class="line">                callback&#x3D;self.parse</span><br><span class="line">            )</span><br></pre></td></tr></table></figure>
-
-<p>pipelines.py如下：</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"># Define your item pipelines here</span><br><span class="line">#</span><br><span class="line"># Don&#39;t forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="line"># See: https:&#x2F;&#x2F;doc.scrapy.org&#x2F;en&#x2F;latest&#x2F;topics&#x2F;item-pipeline.html</span><br><span class="line"></span><br><span class="line">from pymongo import MongoClient</span><br><span class="line"></span><br><span class="line">client &#x3D; MongoClient(host&#x3D;&quot;127.0.0.1&quot;,port&#x3D;27017)</span><br><span class="line">collection &#x3D; client[&quot;tencent&quot;][&quot;job&quot;]</span><br><span class="line"></span><br><span class="line">class MyspidersPipeline(object):</span><br><span class="line">    def process_item(self, item, spider):</span><br><span class="line">        print(item)</span><br><span class="line">        collection.insert(item)</span><br><span class="line">        return item</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>写完之后返回命令行，运行</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl myspider</span><br></pre></td></tr></table></figure>
-
-<p>程序结果，MongoDB数据库中的结果如下：</p>
-<img src="/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/jobresult.jpg" class="" title="数据库结果">
-
-
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>scrapy这个框架极其强大，它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，这里只是用到了最基本的几个用法。之后有机会借用其他例子来更深入理解。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/11/scrapy%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E5%B2%97%E4%BD%8D%E5%88%B0mongoDB%E4%B8%AD/" data-id="ck5977ndx0001u04s9t1ofxi2" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrapy/" rel="tag">Scrapy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
   
     <article id="post-多线程爬虫" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -239,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/11/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB/" data-id="ck5977ndu0000u04s2luw2qp7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/11/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB/" data-id="ck9sdq085000g70vb13e20wak" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
@@ -430,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" data-id="ck595a5y10000g04sai8h19ss" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" data-id="ck9sdq08k001v70vb0tzgg2ck" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
@@ -496,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/10/python%E9%97%AD%E5%8C%85/" data-id="ck595cl4m0000zo4s6b397dxc" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/10/python%E9%97%AD%E5%8C%85/" data-id="ck9sdq081000870vbhza76saz" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
@@ -573,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/08/Scaleform%E4%B8%AD%E7%9A%84IME%E9%80%82%E9%85%8Dwin10/" data-id="ck54ungg700005k4scci3gqpy" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/08/Scaleform%E4%B8%AD%E7%9A%84IME%E9%80%82%E9%85%8Dwin10/" data-id="ck9sdq07q000070vb526i7kyi" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CryEngine/" rel="tag">CryEngine</a></li></ul>
@@ -624,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/08/%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%AD/" data-id="ck543fvq20000484sac0laai3" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2020/01/08/%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%AD/" data-id="ck9sdq08i001r70vb21smffpd" class="article-share-link">分享</a>
       
       
     </footer>
@@ -676,20 +554,20 @@
     <div class="widget-wrap">
   <h3 class="widget-title"></h3>
   <div class="widget">
-    <img class="avatar" src="https://avatars0.githubusercontent.com/u/13980642?s=460&amp;v=4">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>11</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>6</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
     </div>
 
 
 
     <div class="social-link">
       
-        <a class="hvr-bounce-in" href="https://github.com/candychenlei" target="_blank" title="Github">
+        <a class="hvr-bounce-in" href="http://github.com/ShanaMaid" target="_blank" title="Github">
           Github
         </a>
       
@@ -698,7 +576,7 @@
     <div class="friend-link">
       <h2>友情链接</h2>
       
-        <a class="hvr-bounce-in" href="https://blog.csdn.net/candy_xiaolei" target="_blank" title="ShanaMaid">
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
           ShanaMaid
         </a>
       
@@ -759,9 +637,9 @@ new WOW().init();
           
             <a href="/archives" title="" class="menuItem">归档</a>
           
-            <a href="/xxxxxxxxx" title="" class="menuItem">喵帕斯</a>
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
           
-            <a href="/xxxxxxx" title="" class="menuItem">凑数</a>
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
           
         </div>
         
