@@ -45,9 +45,9 @@
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
       <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -72,6 +72,211 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-关卡设计流程-空洞骑士笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="post-time" datetime="2021-06-12T13:54:00.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/">关卡设计流程-空洞骑士笔记</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>用你目前所拥有的常识来理解问题，如果你目前的常识不支持你理解，则说明你缺少一个前置知识</p>
+</blockquote>
+<p>  文章参考视频：<a href="https://www.bilibili.com/video/BV11J411Q7Zp/?spm_id_from=333.788.videocard.0" title="[external] [title]" target="">B站《空洞骑士》的关卡设计</a></p>
+<h1 id="1-任务设计流程"><a href="#1-任务设计流程" class="headerlink" title="1.任务设计流程"></a>1.任务设计流程</h1><p>  什么是任务？一件事，包含了几个要素：玩家要做什么事情、是谁让玩家去做这件事情、做完之后有什么奖励。</p>
+<p>  什么是任务流程？多个任务由于前因后果连在一起的时候，就产生了任务流程这个概念。大多数情况下，单个任务不能将一整个事件完成，所以任务流程就显得很关键。任务流程应该组合一个又一个小型的任务来诱导玩家去完成一个事件。如果上来我们就把所有内容都塞到一个任务中，那么他看起来就像是一个攻略，先去干嘛再去干嘛然后干嘛，显得很没意思。</p>
+<p>  什么是事件？事件就是一个完整的有前因后果的剧情内容，通常来说，完成了一个事件就等于完成了一个任务流程，游戏就是由大大小小的事件构成的，有的事件和主线相关很重要，有的则是用于丰富游戏剧情的辅助支线。事件和任务流程的关系？任务流程是组织玩家以一个角色的身份如何参与到这个事件的记事本。通常来说，事件就是一个单纯的故事或者剧情，然而任务流程却可以千变万化。如有一个简单的事件：某村子居民由于某些原因需要n个药草，这就是一个事件，那接下来就是为其设计任务流程，可以让玩家去某地采集，也可以让玩家去购买或直接给金币等等，任务流程会慢慢揭示讲述这个事件的进度，却不一定和事件本身有联系。</p>
+<p>  <strong>如果我们将事件看作是一个剧本，那么任务流程就是这个剧本当中，玩家的戏份</strong></p>
+<h2 id="1-1-任务流程的结构图"><a href="#1-1-任务流程的结构图" class="headerlink" title="1.1 任务流程的结构图"></a>1.1 任务流程的结构图</h2><p>  以《空洞骑士》来看，最初在遗忘十字路口击败第一个boss的过程：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E7%9A%84%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3.jpg" class="" title="遗忘的十字路口"><br>  如果我们不击败Boss1，会发现哪里都去不了，右边的水晶峡谷需要荒芜俯冲才能去，左侧的翠绿之径需要击败第一个Boss，拿到第一个远程技能才能打败看守翠绿之径的第二个Boss。所以如果玩家不去打第一个Boss，那么探索路径差不多是这样的：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2.jpg" class="" title="十字路口第一次探索"><br>  所以看起来遗忘十字路通向很多地方，但是最初的时候它却是锁死的。我们用方块表示锁，用菱形表示该锁的钥匙。所以假设没有第一个Boss，那么游戏的设计就是这样的，根本没有通关的方法。<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%97%A0%E9%92%A5%E5%8C%99.png" class="" title="有锁无钥匙"><br>  只要打败第一个Boss，就可以获得打败Boss2的方法，相当于拿到了前往翠绿之径的钥匙。此时设计图变为：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%9C%89%E9%92%A5%E5%8C%99.jpg" class="" title="有锁有钥匙"></p>
+<p>  从遗忘十字路前往翠绿之径需要钥匙1，于是遗忘十字路中必须给出获取钥匙1的方法，无论要求是什么，可能是击败一个Boss，也有可能是别的什么。在开头的视频中，提到了这种构图的思路：<br>   <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B%E6%9E%84%E5%9B%BE%E6%80%9D%E8%B7%AF.jpg" class="" title="空洞骑士任务流程构图思路"><br>  看第一条从上往下的线，Start是开始游戏，那么要到达End，需要同时通过锁A和B，再看第二条线，要拿到钥匙B，则先要通过另外一个锁A，最后第三条线，我们可以在某处找到钥匙A，这样我们可以回到第二条线解开锁A拿到钥匙B，最后同时拿着钥匙A和B去通关。视频中用这种构图来描绘了空洞骑士的任务流程。当然，我们会实现规定一些标记，在空洞骑士中主要是三类，Boss战，钥匙，锁：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E6%9E%84%E5%9B%BE%E6%A0%87%E8%AE%B0.jpg" class="" title="空洞骑士构图标记"><br>  那空洞骑士整体的通关流程大概是如下图：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B.jpg" class="" title="空洞骑士任务流程"><br>  按照上面的解释，这个图就很容易看懂了，可以注意下有时候锁可以不是硬锁，如当拥有了钥匙2之后，我们可以返回遗忘十字路来解开锁来到真菌之地，但是也可以不拿钥匙2直接通过翠绿之径前往，如果通过翠绿之径前往，但是钥匙2的作用不仅仅是为了让你来到真菌之地，它还是获取钥匙3的前置条件。<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%92%A5%E5%8C%992%E6%98%AF%E9%92%A5%E5%8C%993%E7%9A%84%E5%89%8D%E7%BD%AE.jpg" class="" title="钥匙2是钥匙3的前置"></p>
+<h2 id="1-2-任务流程的引导性"><a href="#1-2-任务流程的引导性" class="headerlink" title="1.2 任务流程的引导性"></a>1.2 任务流程的引导性</h2><p>  如果玩家按照错误的流程进行游戏，那可能产生意想不到的bug，如做完第二个任务才去做第一个任务，也会让主线故事的叙事变的错乱崩溃，玩家还有可能无所适从不知道下一步要去哪里。此类游戏以及RPG游戏一般都会以各种npc对话、任务、剧情等方式引导玩家下一步要去哪里做什么，并通过硬性阻挡保证玩家按照正确的流程进入设计好的区域和剧情。此类很常见不赘述，后续有时间可以写一下“塞尔达传说”中大世界的引导性方案</p>
+<h1 id="2-地图设计"><a href="#2-地图设计" class="headerlink" title="2.地图设计"></a>2.地图设计</h1><ul>
+<li><p>绘制简单的草图可以让我们开始进入到制作游戏关卡的状态。在这个阶段，一切都是可以被修改的。草图涵盖的东西可以是关卡，可以是界面UI，也可以是很多其他的东西，它们的作用除了帮助我们自己分析和打磨原型，更主要的作用是用于记录日志和向其他人说清楚策划想法。</p>
+</li>
+<li><p>要明确差不多要做一个多大的地图，具体有哪些主要的元素构成。然后再将其分割成单独的区域，有了区域之后我们再将整个区域给分为一批关卡设计的组合。从蔚蓝开发者的演讲当中，我们可以看到这个模块化的思想，从Game到Area，再从Area到Levels。每个关卡都在讲述一个非常简单的故事。</p>
+<img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%A8%A1%E5%9D%97%E5%8C%96.jpg" class="" title="空洞骑士任务流程"></li>
+<li><p>要善于借鉴，且应当善于分析别的作品当中的地图设计的优点，尝试将这种优秀的设计融入到自己的地图设计中。</p>
+</li>
+<li><p>最好可以明确地图的需求或预期体验，围绕地图是为了满足什么或想要达到什么样的预期体验而设计，会事半功倍。</p>
+<h2 id="2-1-引导性在地图设计和任务流程中的体现"><a href="#2-1-引导性在地图设计和任务流程中的体现" class="headerlink" title="2.1 引导性在地图设计和任务流程中的体现"></a>2.1 引导性在地图设计和任务流程中的体现</h2><p> 游戏中，引导性这个概念可以融入不同的元素中。</p>
+</li>
+<li><p>常见的RPG类游戏是融入到任务中，会有npc告诉我们要去哪里做什么事情，这类游戏地图在局部做稍微的改动不会有太大影响，如换个boss位置和城镇区域替换。</p>
+</li>
+<li><p>而空洞骑士这种则是融入到了地图中，他们将所有能够对玩家产生引导性的元素都集中到了地图中，这就要求地图的设计精益求精一环扣一环。</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E5%9C%B0%E5%9B%BE%E5%85%A8%E8%B2%8C.jpg" class="" title="空洞骑士地图全貌">
+<p> 如果我们有一个任务体系来引导玩家前进。在地图设计上就可以稍微松散一点。不需要什么精巧的设计，也不用像空洞骑士一样像齿轮一样组合在一起。如果没有，我们则需要更加细致的去应对地图的设计。但是相对的，在任务的设计上就要更加细致。也就是无论如何，我们的任务流程设计必须是有的。</p>
+<h2 id="2-2-地图设计的层次重点：以蔚蓝和空洞骑士为例"><a href="#2-2-地图设计的层次重点：以蔚蓝和空洞骑士为例" class="headerlink" title="2.2 地图设计的层次重点：以蔚蓝和空洞骑士为例"></a>2.2 地图设计的层次重点：以蔚蓝和空洞骑士为例</h2><p> 同样都是对地图设计比较细致，那么蔚蓝和空洞骑士的区别又在哪呢？我们发现蔚蓝的开发者几乎在每一块落脚处的设计都精益求精，而空洞骑士似乎没有如此严苛。在蔚蓝的开发者的GDC访谈中，提到的关于Game，Area，以及Level的三个等级。蔚蓝的开发者则倾向于把重点放在Level上，而空洞骑士的开发者则倾向于把重点放在Area上。这就是两者在地图设计上的核心区别。简单分析下原因：</p>
+<p> 首先蔚蓝是一个平台跳跃游戏，玩家的核心体验是流畅的操作感和精准的控制感。这种线性的设计需求让蔚蓝的开发者把所有的重心都放在了单个的小型的关卡的设计上。在绝大部分的蔚蓝的小型关卡中，玩家的核心目标想方设法的从A点移动到B点。在主线中（即玩家不以收集草莓为目标），玩家几乎不怎么会遇到岔路口，即使遇到，这些岔路也不会将玩家带离太远的距离。<br> 在GDC的采访视频中可以看到，蔚蓝的开发者会先将一个个小型的关卡设计完毕。之后通过一个编辑器将它们组合在一起。但是我想空洞骑士的开发者则会相反，比起单个的小型关卡是如何呈现的，他们首先应该确定的是区域之间的联系。将区域划分好之后开始逐步的设计小型的关卡。</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%8B%BC%E6%8E%A5.jpg" class="" title="蔚蓝关卡拼接">
+<p> 蔚蓝中的游戏体验是线性的，虽然空洞骑士也在营造一种玩家是在探索线性关卡的假象，但是事实上玩家可以随心所欲的探索，只是关卡的设计的精巧让玩家感觉自己似乎是按照一个既定的路线在探索。但很多时候可能都是误打误撞正好打了一个可以打的Boss，拿到了对应的道具而已。这种设计正是开发者所期待的，他们希望玩家感受到的就是自己在探索一个开放的世界。<br> 总的来说：在模块化的过程中，必然会开始设计大地图，区域，以及区域中的小关卡设计。认识到这个概念，可以结合具体的案例来探讨一下应该把重心放在什么位置。</p>
+<h2 id="2-2-单向阀门"><a href="#2-2-单向阀门" class="headerlink" title="2.2 单向阀门"></a>2.2 单向阀门</h2><p> 所谓单向阀门，就是只能从一侧打开的门，但是打开后就是个双向通道。这个概念在游戏中的应用场景很多<br> 依然以空洞骑士中的遗忘十字路口击败第一个Boss的地图探索过程举例：</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%9A%84%E5%8D%95%E5%90%91%E9%98%80%E9%97%A8.jpg" class="" title="遗忘十字路口的单向阀门">
+<p> 当玩家从达特茅斯下来之后，如果直接去打第一个Boss，必然会绕一个大的圈子。这种设计不是巧合而是有意为之。假设这个单向阀门是封死的，尝试再去游玩一下，会发现，打败了第一个Boss之后，如果想回到达特茅斯，还是要按照原路返回，绕一个大圈子。但是反过来，如果没有这个单向阀门，几乎不需要任何的探索，玩家似乎就可以直接触摸到Boss。有了这个单向阀门，玩家需要通过一个既定的路线的冒险，探索，才能接触到Boss，而不是在家门口就遇见Boss，这样开发者在有限的地图当中，构建了一个路线较长的探索，但是玩家探索结束之后，又不用再原路返回，只要打开了这个单向阀门，以后就可以自由往返了，削弱了重复探索的疲劳感。</p>
+<p> 当然游戏中的单向阀门不一定是这么具象的表现，比如勇者斗恶龙里的传送技能，只能传送到去过的镇子，说白了，这样的一个传送装置，当游戏一开始的时候，是哪里也去不了的。也就是去到第二个镇子的时候，玩家还是需要一步步走过去，之后就可以通过传送装置来传送。之后在两个城镇之间往返就不再需要徒步旅行了。这样的设计使得玩家不用再反复的去探索已经走过的地方（这样既花时间，也没有什么意义）。还有各种传送站点等等。</p>
+<p> 我们前面提到过一个概念就是往返，如果一个游戏需要在两个点之间往返，就需要设计这样的地图，那么怎样在往返的时候消除重复探索的疲劳感呢？上面的设计可以总结为以下三种：</p>
+</li>
+<li><p>空洞骑士风格，终点即起点（但必须在终点处改变地图，此处的改变地图具体指打开那个单向阀门）</p>
+</li>
+<li><p>勇者斗恶龙风格，终点提供了可以传送回起点的装置，之后就可以来回传了</p>
+</li>
+<li><p>给定一条更简单的从终点返回起点的路线（当然这条路线必须有效的防止玩家把这条路线也当成从起点到终点的路线）</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/" data-id="ckpwl2gc50003f81r628q7379" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/" rel="tag">关卡设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag">游戏设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-游戏设计信条（二）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/09/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%9D%A1%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time class="post-time" datetime="2020-08-09T13:34:42.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">09</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/09/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%9D%A1%EF%BC%88%E4%BA%8C%EF%BC%89/">游戏设计信条（二）</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>事件必须激发某种情感才有意义</p>
+</li>
+<li><p>游戏设计师必须能够感知转瞬即逝的情绪，比如气恼、欢乐、厌恶、紧张、刺激等，因为这些情感才是游戏存在的真正意义。</p>
+</li>
+<li><p>那些教导玩家进行创造、社交活动、以及战斗的游戏总是最受欢迎，因为他们所展示的技巧有助于人类繁衍，从本能上就会让人想要学习掌握</p>
+</li>
+<li><p>基本的情感触发器包含如下几个：</p>
+<ul>
+<li>学习引发的情感</li>
+<li>角色弧线引发的情感</li>
+<li>挑战引发的情感</li>
+<li>社交引发的情感</li>
+<li>财富引发的情感</li>
+<li>音乐引发的情感</li>
+<li>场景特效引发的情感</li>
+<li>由美而引发的情感</li>
+<li>环境引发的情感</li>
+<li>新技术引发的情感</li>
+<li>原始威胁引发的情感</li>
+<li>性暗示引发的情感</li>
+</ul>
+</li>
+<li><p>学习引发的情感：</p>
+<ul>
+<li>一种知识越是复杂和难以掌握，学会它的成就感就越大。所以对于游戏设计师来说，挑战在于需要创造出具有很多层不明显特性，有待玩家发掘的游戏系统。要设计出一个有深度的游戏，需要层层揭示信息，并且每一层都构建于前一层的基础之上。如MOBA，段位越高所掌握的信息和技巧就会越多越难</li>
+<li>领悟：当玩家得到某些新的信息时，如果他突然明白了原有的一些信息的含义，那么他就是有所领悟。领悟是由于获得了一个新信息而引发的其他知识之间的连锁反应。当我们补全了逻辑链上缺少的最后一个部分而使得逻辑条理清晰时，领悟现象就会出现。在经历了一长串的信息构建之后，所有这些信息各归其位，产生了明确的含义，这就是最棒的领悟方式。</li>
+</ul>
+</li>
+<li><p>我们从他人身上感受到的情感会在自己身上反映出来。角色弧线满足了一种特别的求知欲：我们热衷于了解自己的同类，我们对他人的内心挣扎尤其感兴趣，因为只有在冲突过程中，人的内在价值和能力才会展现出来。他们面对的冲突越强烈，我们对他们真实本性的了解就越深入。我们对一个英雄选择脱脂牛奶还是全脂牛奶不感兴趣，可是当他必须在妻子和自己的性命之间做出选择的时候，我们会好奇这个英雄会何去何从。</p>
+</li>
+<li><p>挑战引发的情感，当我们努力迎接挑战的时候，会进入到一种快乐的、精神高度集中的状态，当通过这些测试时我们会感觉自己充满力量无所不能，即使失败了，只要玩家感觉到有可能成功，他们也会再尝试一次并试图做得更好。</p>
+</li>
+<li><p>社交引发的情感：</p>
+<ul>
+<li>社交引发的情感不止局限于游戏内，游戏外也可以，比如：家人之间找一个能够长时间交谈的机会，父子之间一对一交谈时间久了难免别扭，而当他们一起参与一项不需要思考的游戏时，这种障碍就迎刃而解了。所以游戏简单不用动脑子不一定是缺陷，可能就是游戏本身特性。如果游戏过于复杂反而会影响参与者之间的交流。</li>
+<li>游戏内的社交，多数游戏都会使用明确的事件来引发玩家之间交互，如击败某玩家，一起合作创造了某个东西或者一起完成了某个挑战。但每一种社交事件都要有效的改变对人来来说有价值的事情的状态，如陌生人变成朋友，地位从低到高等。</li>
+</ul>
+</li>
+<li><p>音乐引发的情感：音乐是一种强大并且灵活的可以产生情感的工具。由于音乐可以轻易地融入其他体验之中，许多媒体都会大量使用音乐。与大多数情感触发器相比音乐是及其微妙的，因为我们在听到音乐时并不会刻意的去关注它，但是即使主观意识没有关注音乐，我们的潜意识仍然会将音乐源源不断的转换成对应的情感。听一下游戏的原生音乐，你就可以重现很多游戏中的感觉。音效可以制造情感，如：</p>
+<ul>
+<li>金属发出的刺耳声音会让人觉得不舒服</li>
+<li>心跳声可以制造悬念</li>
+<li>下雨声会让人感觉沉静</li>
+<li>挤压流体状的东西会让人感到恶心</li>
+</ul>
+</li>
+<li><p>美并不是一个事物所具有的某种特征，而是事物对我们的影响。即便只是看到美的事物也会让人感觉身心愉悦。</p>
+</li>
+<li><p>沉浸是最强大的游戏体验之一，沉浸指的是玩家自己的思维和他在游戏中的角色融为了一体，于是发生在游戏角色身上的事件对玩家来说也意义重大，就好像这个事件是真实的发生在玩家自己身上一样；当玩家的体验能够反映游戏角色的体验时，沉浸现象就会出现，这意味着玩家需要听到看到和游戏角色一样的东西，也要想到和感受到和游戏角色一样的东西。如同样害怕、好奇、生气等。可以理解为一种心理镜像。</p>
+</li>
+<li><p>肉眼与耳朵捕获到的战斗信息经过大脑处理后，获得是否命中，什么时间命中，攻击威力多大，受击者做出怎样的受击表现，攻击者如何卸力收招，这5个问题的答案，如果与游戏给予的反馈一致，那就是好的打击感。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/09/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%9D%A1%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="ckpwl2gbv0000f81rbb7a68ub" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag">游戏设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-游戏设计信条（一）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -109,7 +314,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
+        <ol>
 <li><p>向游戏中注入自己人生的观点和看法</p>
 </li>
 <li><p>各行各业都接触一些，不要只局限于游戏动漫</p>
@@ -233,7 +438,7 @@
 </li>
 </ul>
 </li>
-</ul>
+</ol>
 
       
     </div>
@@ -1073,524 +1278,10 @@
 
 
   
-    <article id="post-python与机器学习入门一" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/" class="article-date">
-  <time class="post-time" datetime="2020-01-11T09:35:46.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/">python与机器学习入门一</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="为什么要写本文"><a href="#为什么要写本文" class="headerlink" title="为什么要写本文"></a>为什么要写本文</h1><p>机器学习涉及到很多数学相关基础知识，概率论，高数算法等，而直接去看这些课本或书籍，简直就是晦涩难懂，哪怕是西瓜书这种通俗易懂的书籍，对于数学不好的人来讲也有点像天书。为了让小白可以较轻松的掌握一些机器学习相关知识，还是要从案例出发，通过案例来学习用到的数学知识，熟悉各种算法的原理，顺便将用到的库和框架进行简单介绍，而且可以结合场景解决实际问题，提高初学者幸福感。<br>不过在此还是要列举一些书籍可供参考：</p>
-<ul>
-<li>概率论和高数，直接大学课本就好</li>
-<li>《机器学习》：俗称西瓜书，学习机器学习的经典书籍</li>
-<li>《Python数据分析与挖掘实战》：从数据挖掘的应用出发，以电力、航空、医疗、互联网、生产制造以及公共服务等行业真实案例为主线，深入浅出介绍Python数据挖掘建模过程，实践性极强。 </li>
-<li>《TensorFlow技术解析与实战》：包揽TensorFlow1.1的新特性 人脸识别 语音识别 图像和语音相结合等热点一应俱全</li>
-</ul>
-<h1 id="机器学习是什么"><a href="#机器学习是什么" class="headerlink" title="机器学习是什么"></a>机器学习是什么</h1><blockquote>
-<p>机器学习是人工智能的一个分支。机器学习算法是一类从<strong>数据</strong>中自动分析获得<strong>规律</strong>，并利用规律对未知数据进行<strong>预测</strong>的算法。专门研究计算机怎样模拟或实现人类的学习行为，以获取新的知识或技能，重新组织已有的知识结构使之不断改善自身的性能。 它是人工智能的核心，是使计算机具有智能的根本途径，其应用遍及人工智能的各个领域，它主要使用归纳、综合而不是演绎。因为学习算法中涉及了大量的统计学理论，机器学习与推断统计学联系尤为密切，也被称为统计学习理论。</p>
-</blockquote>
-<p>机器学习应用在哪些方面？</p>
-<blockquote>
-<p>维基百科：机器学习已广泛应用于数据挖掘、计算机视觉、自然语言处理、生物特征识别、搜索引擎、医学诊断、检测信用卡欺诈、证券市场分析、DNA序列测序、语音和手写识别、战略游戏和机器人等领域。<br>新闻等应用上的推荐类功能,人脸识别相关功能：直播时的美颜、加装饰等等；<br>这里有一个集合，最具价值的50个机器学习应用[2017年]：<a href="https://bigquant.com/community/t/topic/6909" target="_blank" rel="noopener">https://bigquant.com/community/t/topic/6909</a></p>
-</blockquote>
-<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>python深度学习中，读取数据一般是通过pandas读取文件，之所以不读取数据库，是因为数据库读取速度会成为性能瓶颈。</p>
-<p>可用数据集：</p>
-<ul>
-<li>Kaggle：1、大数据竞赛平台，真实数据，数据量巨大</li>
-<li>UCI：1，覆盖科学、生活、经济等领域</li>
-<li>scikit-learn：数据量小，方便学习</li>
-</ul>
-<p>常用数据集结构：特征值+目标值<br>注：有些数据可以没有目标值<br>数据中对于特征的处理：</p>
-<ul>
-<li>pandas：一个数据读取非常方便以及基本的处理格式的工具</li>
-<li>对于<strong>特征的处理</strong>提供了强大的接口</li>
-</ul>
-<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>什么是特征工程（目的）</p>
-<blockquote>
-<p>一句话：特征工程是将<strong>原始数据转换为更好的代表预测模型的潜在问题的特征</strong>的过程，从而提高了对未知数据的预测准确性。<br> “数据决定了机器学习的上限，而算法只是尽可能逼近这个上限”，这里的数据指的就是经过特征工程得到的数据。特征工程指的是把原始数据转变为模型的训练数据的过程，它的目的就是获取更好的训练数据特征，使得机器学习模型逼近这个上限。特征工程能使得模型的性能得到提升，有时甚至在简单的模型上也能取得不错的效果。特征工程在机器学习中占有非常重要的作用，一般认为括特征构建、特征提取、特征选择三个部分。特征构建比较麻烦，需要一定的经验。 特征提取与特征选择都是为了从原始特征中找出最有效的特征。它们之间的区别是特征提取强调通过特征转换的方式得到一组具有明显物理或统计意义的特征；而特征选择是从特征集合中挑选一组具有明显物理或统计意义的特征子集。两者都能帮助减少特征的维度、数据冗余，特征提取有时能发现更有意义的特征属性，特征选择的过程经常能表示出每个特征的重要性对于模型构建的重要性。<br>特征工程的目的是筛选出更好的特征，获取更好的训练数据.</p>
-</blockquote>
-<p>特征工程流程：</p>
-<ul>
-<li><ol>
-<li>数据采集 / 清洗 / 采样<ul>
-<li>1.1:数据采集：数据采集前需要明确采集哪些数据，一般的思路为：哪些数据对最后的结果预测有帮助？数据我们能够采集到吗？线上实时计算的时候获取是否快捷？ </li>
-<li>1.2:数据清洗： 数据清洗也是很重要的一步，机器学习算法大多数时候就是一个加工机器，至于最后的产品如何，取决于原材料的好坏。数据清洗就是要去除脏数据，比如某些商品的刷单数据。 </li>
-<li>1.3:数据采样：采集、清洗过数据以后，正负样本是不均衡的，要进行数据采样。采样的方法有随机采样和分层抽样。但是随机采样会有隐患，因为可能某次随机采样得到的数据很不均匀，更多的是根据特征采用分层抽样。　　</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>2.特征处理<ul>
-<li>2.1:数值型<ul>
-<li>幅度调整/归一化：python中会有一些函数比如preprocessing.MinMaxScaler()将幅度调整到 [0,1] 区间。</li>
-<li>统计值：包括max, min, mean, std等。python中用pandas库序列化数据后，可以得到数据的统计值。 </li>
-</ul>
-</li>
-<li>2.2:类别型,类别型一般是文本信息，比如颜色是红色、黄色还是蓝色，我们存储数据的时候就需要先处理数据<ul>
-<li>one-hot编码，编码后得到哑变量。统计这个特征上有多少类，就设置几维的向量，pd.get_dummies()可以进行one-hot编码。</li>
-<li>Hash编码成词向量</li>
-<li>Histogram映射：把每一列的特征拿出来，根据target内容做统计，把target中的每个内容对应的百分比填到对应的向量的位置。优点是把两个特征联系起来。 </li>
-</ul>
-</li>
-<li>2.3:时间型<ul>
-<li>连续值</li>
-<li>离散值</li>
-</ul>
-</li>
-<li>2.4:文本型<ul>
-<li>词袋：文本数据预处理后，去掉停用词，剩下的词组成的list，在词库中的映射稀疏向量。Python中用CountVectorizer处理词袋． </li>
-<li>把词袋中的词扩充到n-gram：n-gram代表n个词的组合。</li>
-</ul>
-</li>
-<li>2.5:统计型<ul>
-<li>加减平均,商品价格高于平均价格多少，用户在某个品类下消费超过平均用户多少，用户连续登录天数超过平均多少…</li>
-<li>分位线,商品属于售出商品价格的多少分位线处</li>
-<li>次序型</li>
-<li>比例类</li>
-</ul>
-</li>
-<li>2.6:组合特征<ul>
-<li>拼接型</li>
-<li>模型特征组合</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>3.特征选择:特征选择，就是从多个特征中，挑选出一些对结果预测最有用的特征。特征选择和降维有什么区别呢？前者只踢掉原本特征里和结果预测关系不大的， 后者做特征的计算组合构成新特征。<br>  3.1:过滤型,评估单个特征和结果值之间的相关程度， 排序留下Top相关的特征部分。<br>  3.2:包裹型,把特征选择看做一个特征子集搜索问题， 筛选各种特征子集， 用模型评估效果。 典型算法：“递归特征删除算法”。<br>  3.3:嵌入型,根据模型来分析特征的重要性，最常见的方式为用正则化方式来做特征选择。</li>
-</ul>
-<h3 id="scikit-learn工具"><a href="#scikit-learn工具" class="headerlink" title="scikit-learn工具"></a>scikit-learn工具</h3><ul>
-<li>Python语言的机器学习工具基于Numpy和Scipy</li>
-<li>提供了大量用于数据挖掘和分析的工具，包括数据预处理、交叉验证、算法与可视化算法等一系列接口。</li>
-<li>文档完善，容易上手</li>
-</ul>
-<h3 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a>特征抽取</h3><p>API：sklearn.feature_extraction</p>
-<p>字典特征数据抽取：把字典中一些<strong>类别</strong>数据，转换为特征值，如One-hot编码形势。</p>
-<ul>
-<li>DictVectorizer</li>
-</ul>
-<p>文本特征抽取：对文本数据进行特征值化<br>文本抽取默认不会对中文进行分词，而是按照空格逗号等进行分。所以在fit_transform之前要进行分词。</p>
-<ul>
-<li>CountVectorizer:简单的频率统计</li>
-<li>TfidfVectorizer：tf-idf算法<ul>
-<li>在将文本分词并向量化后，我们可以得到词汇表中每个词在各个文本中形成的词向量，但是这时候的词向量里，有一些类似”to”,”my”,”is”的词，出现的频率可能会高于文章的中心词汇，如果我们的向量化特征仅仅用词频表示就无法反应这一点。因此我们需要进一步的预处理来反应文本的这个特征，而这个预处理就是TF-IDF。</li>
-<li>TF-IDF是Term Frequency -  Inverse Document Frequency的缩写，即“词频-逆文本频率”。它由两部分组成，TF和IDF。<ul>
-<li>TF也就是词频，我们做的向量化也就是做了文本中各个词的出现频率统计。<blockquote>
-<p>词频（TF） = 某个词在文章中的出现次数<br>词频（TF） = 某个词在文章中的出现次数 / 文章总词数。这里是因为文章有长短之分，为了便于不同文章的比较,做”词频”标准化.</p>
-</blockquote>
-</li>
-<li>IDF，即“逆文本频率”，IDF反应了一个词在所有文本中出现的频率，如果一个词在很多的文本中出现，那么它的IDF值应该低，比如上文中的“to”。而反过来如果一个词在比较少的文本中出现，那么它的IDF值应该高。比如一些专业的名词<blockquote>
-<p>逆文档频率（IDF） = log（语料库的文档总数/包含该词的文档总数+1）</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>TF-IDF = 词频（TF) * 逆文档频率（IDF）,TF-IDF与一个词在文档中的出现次数成正比，与该词在整个语言中的出现次数成反比。</li>
-</ul>
-</li>
-</ul>
-<p>特征抽取简单demo及API如下：</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_extraction import DictVectorizer</span><br><span class="line">from sklearn.feature_extraction.text import CountVectorizer</span><br><span class="line"></span><br><span class="line">def dictvec():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    字典数据抽取</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    # 实例化</span><br><span class="line">    dict &#x3D; DictVectorizer(sparse&#x3D;False)  # sparse指定fit_transform的结果是否转换为sparse矩阵,False的话则不是sparse矩阵而是数组形势</span><br><span class="line">    # 调用fit_transform</span><br><span class="line">    data &#x3D; dict.fit_transform(</span><br><span class="line">        [&#123;&#39;city&#39;: &#39;北京&#39;, &#39;temperature&#39;: 100&#125;, &#123;&#39;city&#39;: &#39;上海&#39;, &#39;temperature&#39;: 60&#125;, &#123;&#39;city&#39;: &#39;深圳&#39;, &#39;temperature&#39;: 30&#125;])     #参数是列表</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    sparse &#x3D; False情况下,这也叫 One-hot编码：</span><br><span class="line">    [[  0.   1.   0. 100.]</span><br><span class="line">    [  1.   0.   0.  60.]</span><br><span class="line">    [  0.   0.   1.  30.]]</span><br><span class="line">    sparse默认为true情况下：</span><br><span class="line">    (0, 1)	1.0</span><br><span class="line">    (0, 3)	100.0</span><br><span class="line">    (1, 0)	1.0</span><br><span class="line">    (1, 3)	60.0</span><br><span class="line">    (2, 2)	1.0</span><br><span class="line">    (2, 3)	30.0</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    print(dict.get_feature_names())  # 返回类别名称，如这里：[&#39;city&#x3D;上海&#39;,&#39;city&#x3D;北京&#39;,&#39;city&#x3D;深圳&#39;,&#39;temperature&#39;]</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def countvec():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    对文本进行特征值化</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    cv &#x3D; CountVectorizer()  #这里没有sparse参数，后续如果要转换为数组，则要用fit_transform产生的sparse矩阵调用toarray()函数</span><br><span class="line">    data &#x3D; cv.fit_transform([&quot;To the world \\u9752\\u9752 may be just one person&quot;,&quot; To me \\u9752\\u9752 may be the world&quot;])     # 参数是列表</span><br><span class="line"></span><br><span class="line">    print(cv.get_feature_names())</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    统计所有词，单个的英文字母不会统计，比如‘i’，结果为：</span><br><span class="line">    [&#39;be&#39;, &#39;just&#39;, &#39;may&#39;, &#39;me&#39;, &#39;one&#39;, &#39;person&#39;, &#39;the&#39;, &#39;to&#39;, &#39;u9752&#39;, &#39;world&#39;]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    print(data.toarray())</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    对应词出现次数</span><br><span class="line">    [[1 1 1 0 1 1 1 1 2 1]</span><br><span class="line">    [1 0 1 1 0 0 1 1 2 1]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    # dictvec()</span><br><span class="line">    countvec()</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="特征预处理"><a href="#特征预处理" class="headerlink" title="特征预处理"></a>特征预处理</h3><p>通过特定的统计方法讲数据转换为算法要求的数据。</p>
-<blockquote>
-<p>sklearn.preprocessing</p>
-</blockquote>
-<ul>
-<li>归一化，防止某个数据对结果影响太大 sklearn.preprocessing.MinMaxScaler<ul>
-<li>通过将原始数据进行变换，把原始数据映射到[0,1]之间</li>
-<li>原理：作用于每一列，max为一列的最大值，min为一列的最小值<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E5%BD%92%E4%B8%80%E5%8C%96%E5%85%AC%E5%BC%8F.jpg" class="" title="sklearn归一化公式"> </li>
-<li>缺点：异常点对此影响较大，这种情况下要使用标准化来解决</li>
-</ul>
-</li>
-<li>标准化，异常值影响较小 sklearn.preprocessing.StandardScaler<ul>
-<li>通过对原始数据进行变换，把数据变换到<strong>均值为0，标准差为1</strong>的范围内</li>
-<li>在已有样本足够多的情况下比较稳定，适合现代嘈杂的大数据场景</li>
-<li>原理：<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/sklearn%E6%A0%87%E5%87%86%E5%8C%96%E5%85%AC%E5%BC%8F.jpg" class="" title="sklearn标准化公式"></li>
-</ul>
-</li>
-</ul>
-<p>归一化与标准化示例如下：</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import MinMaxScaler,StandardScaler</span><br><span class="line"></span><br><span class="line">def mm():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    归一化处理</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    mm &#x3D; MinMaxScaler(feature_range&#x3D;(0,1))  #参数可以指定归一化后的范围，默认为[0,1]</span><br><span class="line">    data &#x3D; mm.fit_transform([[10,2,5,40],[20,4,5,8],[30,6,5,5]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    归一化是按照列来归一的</span><br><span class="line">    [[0.         0.         0.         1.        ]</span><br><span class="line">    [0.5        0.5        0.         0.08571429]</span><br><span class="line">    [1.         1.         0.         0.        ]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def stand():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    标准化缩放</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    std &#x3D; StandardScaler()</span><br><span class="line">    data &#x3D; std.fit_transform([[1,-1,3],[2,4,2],[4,6,-1]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    转换后的值，每一列均值为0，标准差为1</span><br><span class="line">    [[-1.06904497 -1.35873244  0.98058068]</span><br><span class="line">    [-0.26726124  0.33968311  0.39223227]</span><br><span class="line">    [ 1.33630621  1.01904933 -1.37281295]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    #mm()</span><br><span class="line">    stand()</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据降维"><a href="#数据降维" class="headerlink" title="数据降维"></a>数据降维</h3><h4 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h4><p>特征选择原因：如果训练数据包含许多<strong>冗余</strong>或<strong>无关</strong>特征，因而移除这些特征并不会导致丢失信息</p>
-<ul>
-<li>数据冗余：部分特征相关度高，容易消耗计算机性能</li>
-<li>缩短训练时间</li>
-<li>改善通用性、降低过拟合</li>
-</ul>
-<p>特征选择是什么？</p>
-<blockquote>
-<p>特征选择就是单纯的从提取到的所有特征中选择部分特征作为训练集特征，特征在选择前和选择后可以改变值、也可以不改变值，但是选择后的特征维数肯定比选择前小，因为只是选择了其中一部分特征。</p>
-</blockquote>
-<p>主要方法：</p>
-<ul>
-<li>Filter(过滤式):<ul>
-<li>VarianceThreshold(方差过滤):由于方差为0的时候，一列的数据是一样的，所以是对结果没用的数据，由此推论，当方差小于某个值的时候，这个特征是不具有参考性的，可以剔除。<ul>
-<li>sklearn.feature_selection.VarianceThreshold</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Embedded(嵌入式):正则化、决策树</li>
-<li>Wrapper(包裹式) </li>
-<li>神经网络</li>
-</ul>
-<h4 id="主成分分析（PCA，principal-Component-Analysis）"><a href="#主成分分析（PCA，principal-Component-Analysis）" class="headerlink" title="主成分分析（PCA，principal Component Analysis）"></a>主成分分析（PCA，principal Component Analysis）</h4><p>背景：</p>
-<blockquote>
-<p>在许多领域的研究与应用中，通常需要对含有多个变量的数据进行观测，收集大量数据后进行分析寻找规律。多变量大数据集无疑会为研究和应用提供丰富的信息，但是也在一定程度上增加了数据采集的工作量。更重要的是在很多情形下，许多变量之间可能存在相关性，从而增加了问题分析的复杂性。如果分别对每个指标进行分析，分析往往是孤立的，不能完全利用数据中的信息，因此盲目减少特征会损失很多有用的信息，从而产生错误的结论。因此需要找到一种合理的方法，在减少需要分析的特征同时，尽量减少信息的损失，以达到对所收集数据进行全面分析的目的。由于各变量之间存在一定的相关关系，因此可以考虑将关系紧密的变量变成尽可能少的新变量，使这些新变量是两两不相关的，那么就可以用较少的综合指标分别代表存在于各个变量中的各类信息。主成分分析与因子分析就属于这类降维算法。<br>说白了就是特征太多情况下，如果很多特征之间是有联系的，这时直接通过特征选择等方式来剔除掉某些特征，会导致失去一些有用信息。所以需要一种方法，在减少特征数量的同时，尽可能少的减少信息的损失。</p>
-</blockquote>
-<p>PCA是什么？</p>
-<blockquote>
-<p>是一种使用最广泛的数据压缩算法。在PCA中，数据从原来的坐标系转换到新的坐标系，由数据本身决定。转换坐标系时，以方差最大的方向作为坐标轴方向，因为数据的最大方差给出了数据的最重要的信息。第一个新坐标轴选择的是原始数据中方差最大的方法，第二个新坐标轴选择的是与第一个新坐标轴正交且方差次大的方向。重复该过程，重复次数为原始数据的特征维数。<br>通过这种方式获得的新的坐标系，我们发现，大部分方差都包含在前面几个坐标轴中，后面的坐标轴所含的方差几乎为0,于是，我们可以忽略余下的坐标轴，只保留前面的方差较大的坐标轴。事实上，这样也就相当于只保留包含绝大部分方差的维度特征，而忽略包含方差几乎为0的特征维度，也就实现了对数据特征的降维处理。<br>PCA里，特征数量会减少，但数据也会改变。一般特征数量达到上百才会用</p>
-</blockquote>
-<p>作用：</p>
-<blockquote>
-<p>可以削减回归分析或者聚类分析中特征的数量</p>
-</blockquote>
-<p>原理：<br>一张结果图：</p>
-<img src="/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/%E9%99%8D%E7%BB%B4%E6%8A%95%E5%BD%B1.jpg" class="" title="降维投影">
-<blockquote>
-<p>详细过程参考这里的‘3.5PCA算法两种实现方法’：<a href="https://blog.csdn.net/program_developer/article/details/80632779" target="_blank" rel="noopener">https://blog.csdn.net/program_developer/article/details/80632779</a></p>
-</blockquote>
-<p>数据降维的两个方法demo：</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_selection import VarianceThreshold</span><br><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">def var():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    特征选择-删除低方差的特征</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    var &#x3D; VarianceThreshold(threshold&#x3D;0.0)  # threshold指定方差阈值</span><br><span class="line">    data &#x3D; var.fit_transform([[0,2,0,3],[0,1,4,3],[0,1,1,3]])  #数据的第一列和最后一列方差为0</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    过滤掉了第一列和最后一列</span><br><span class="line">    [[2 0]</span><br><span class="line">    [1 4]</span><br><span class="line">    [1 1]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">def pca():</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    主成分分析进行特征降维</span><br><span class="line">    :return: None</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    pca &#x3D; PCA(n_components&#x3D;0.9)   # n_components可以选择保留的数据信息比例，一般为90%~95%</span><br><span class="line">    data &#x3D; pca.fit_transform([[2,4,6,8],[5,4,8,6],[1,5,6,3]])</span><br><span class="line">    print(data)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    [[-1.32007718  2.16837282]</span><br><span class="line">    [-1.95237119 -1.90596201]</span><br><span class="line">    [ 3.27244837 -0.26241081]]</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    pca()</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><blockquote>
-<p>算法是核心，数据和计算是基础。</p>
-</blockquote>
-<p>机器学习算法判别依据：数据类型</p>
-<ul>
-<li>离散型数据：由记录不同类别个体的数目所得到的数据，又称计数数据，所有这些数据全部都是整数，而且不能再细分，也不能进一步提高他们的精确度。<strong>区间内不可分</strong></li>
-<li>连续型数据：变量可以在某个范围内取任一数，即变量的取值可以是连续的，如长度、时间、质量等，这类数值通常含有小数部分。<strong>区间内可分</strong></li>
-</ul>
-<p>机器学习算法分类：</p>
-<ul>
-<li>监督学习（预测）：有<strong>特征值和目标值</strong>，有标准答案<ul>
-<li>分类：对应数据类型为<strong>离散型</strong><ul>
-<li>k-近邻算法</li>
-<li>贝叶斯分类</li>
-<li>决策树与随机森林</li>
-<li>逻辑回归</li>
-<li>神经网络</li>
-</ul>
-</li>
-<li>回归：对应数据类型为<strong>连续型</strong><ul>
-<li>线性回归</li>
-<li>岭回归</li>
-</ul>
-</li>
-<li>标注<ul>
-<li>隐马尔科夫模型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>无监督学习：<strong>只有特征值</strong><ul>
-<li>聚类<ul>
-<li>k-means</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="机器学习开发流程"><a href="#机器学习开发流程" class="headerlink" title="机器学习开发流程"></a>机器学习开发流程</h3><ul>
-<li>获取数据<blockquote>
-<p>包括获取原始数据以及从原始数据中经过特征工程从原始数据中提取训练、测试数据</p>
-</blockquote>
-</li>
-<li>特征工程<blockquote>
-<p>包括从原始数据中特征构建、特征提取、特征选择。特征工程做的好能发挥原始数据的最大效力，往往能够使得算法的效果和性能得到显著的提升，有时能使简单的模型的效果比复杂的模型效果好。数据挖掘的大部分时间就花在特征工程上面，是机器学习非常基础而又必备的步骤。数据预处理、数据清洗、筛选显著特征、摒弃非显著特征等等都非常重要。</p>
-</blockquote>
-</li>
-<li>训练模型、诊断、调优<blockquote>
-<p>诊断中至关重要的是判断过拟合、欠拟合，常见的方法是绘制学习曲线，交叉验证。通过增加训练的数据量、降低模型复杂度来降低过拟合的风险，提高特征的数量和质量、增加模型复杂来防止欠拟合。诊断后的模型需要进行进一步调优，调优后的新模型需要重新诊断</p>
-</blockquote>
-</li>
-<li>模型验证、误差分析<blockquote>
-<p>主要是分析出误差来源与数据、特征、算法。</p>
-</blockquote>
-</li>
-<li>模型融合<blockquote>
-<p>提升算法的准确度主要方法是模型的前端（特征工程、清洗、预处理、采样）和后端的模型融合</p>
-</blockquote>
-</li>
-<li>上线运行<blockquote>
-<p>通过提供API等形式来上线</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="sklearn数据集"><a href="#sklearn数据集" class="headerlink" title="sklearn数据集"></a>sklearn数据集</h1><h4 id="1-数据集划分"><a href="#1-数据集划分" class="headerlink" title="1.数据集划分"></a>1.数据集划分</h4><p>机器学习一般的数据集会划分为两个部分：</p>
-<ul>
-<li>训练数据：用户训练、构建模型</li>
-<li>测试数据：在模型检验时使用，用于评估模型是否有效</li>
-</ul>
-<h4 id="2-sklearn数据集API介绍"><a href="#2-sklearn数据集API介绍" class="headerlink" title="2.sklearn数据集API介绍"></a>2.sklearn数据集API介绍</h4><ul>
-<li>sklearn.model_selection.train_test_split</li>
-<li>sklearn.datasets<ul>
-<li>datasets.load_*();    获取小规模数据集，数据包含在datasets里</li>
-<li>datasets.fetch_*(data_home=None);  获取大规模数据集，需要从网络上下载，第一个参数是data_home表示数据集下载的目录，默认 ‘~/scikit_learn_data/‘</li>
-</ul>
-<ul>
-<li>load*和fetch*返回的数据类型都是datasets.base.Bunch(<strong>字典格式</strong>)<ul>
-<li>data:特征数据数组，是[n_samples * m_features]的二维<strong>numpy.ndarry数组</strong></li>
-<li>target:标签数组，是n_samples的<strong>一维numpy.ndarray数组</strong></li>
-<li>DESCR:数据描述</li>
-<li>feature_names:特征名，<strong>新闻数据、手写数字、回归数据集没有</strong></li>
-<li>target_names:标签名</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-sklearn分类数据集，对应分类算法"><a href="#3-sklearn分类数据集，对应分类算法" class="headerlink" title="3.sklearn分类数据集，对应分类算法"></a>3.sklearn分类数据集，对应分类算法</h4><blockquote>
-<p>此处以内置数据集 load_iris和20newsgroups 为例</p>
-</blockquote>
-<p>1.load_iris()获取内置普通分类用的数据集<br>2.获取用于分类测试的大数据集，sklearn.datasets.fetch_20newgroups(),数据集收集了大约20,000左右的新闻组文档，均匀分为20个不同主题的新闻组集合。</p>
-<blockquote>
-<p>datasets.clear</p>
-</blockquote>
-<p>数据集进行分割：<br>sklearn.model_selection.train_test_split(<em>arrays,*</em>options)</p>
-<ul>
-<li>x:数据集的特征值</li>
-<li>y:数据集的标签值</li>
-<li>test_size:测试集大小，一般为float</li>
-<li>random_state:随机数种子</li>
-<li>return:训练集特征值，测试集特征值，训练标签，测试标签</li>
-</ul>
-<p>下面为两个数据集的获取代码，目前仅为数据采集，至于特征提取、模型训练等后续再写</p>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from sklearn.datasets import load_iris, fetch_20newsgroups</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">内置的数据集，加载并返回鸢尾花数据集</span><br><span class="line">类别：3</span><br><span class="line">特征：4</span><br><span class="line">样本数量：150</span><br><span class="line">每个类别数量：50</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">li &#x3D; load_iris()</span><br><span class="line"></span><br><span class="line">print(li.data)  # 获取特征数据数组</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">[[5.1 3.5 1.4 0.2]</span><br><span class="line"> [4.9 3.  1.4 0.2]</span><br><span class="line"> [4.7 3.2 1.3 0.2]</span><br><span class="line"> ......</span><br><span class="line"> [5.9 3.  5.1 1.8]]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(li.target)  # 获取目标值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">目标值是离散型，0，1，2</span><br><span class="line">[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line"> 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span><br><span class="line"> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</span><br><span class="line"> 2 2]</span><br><span class="line">.. _iris_dataset:</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">    # print(li.DESCR)     #打印出一些描述信息</span><br><span class="line"></span><br><span class="line">train_feature, test_feature, train_target, test_target &#x3D; train_test_split(li.data, li.target,</span><br><span class="line">                                                                          test_size&#x3D;0.25)  # 参数：特征值，目标值，测试集大小</span><br><span class="line">    # 返回值依次为：训练集的特征值、测试集特征值、训练集目标值、测试集目标值</span><br><span class="line"></span><br><span class="line">print(&quot;训练集特征值和目标值：&quot;, train_feature, train_target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">训练集特征值和目标值： [[6.4 3.2 5.3 2.3]</span><br><span class="line"> [4.6 3.6 1.  0.2]</span><br><span class="line"> [5.5 2.5 4.  1.3]</span><br><span class="line"> ......</span><br><span class="line"> [5.7 2.8 4.1 1.3]</span><br><span class="line"> [5.5 2.4 3.7 1. ]]</span><br><span class="line"> [2 0 1 1 2 2 0 1 1 0 2 2 2 0 1 1 2 2 1 1 1 0 0 2 1 2 1 0 1 1 0 0 1 0 0 0 2</span><br><span class="line"> 2 0 0 1 1 1 1 1 0 1 2 0 0 0 2 1 0 0 1 1 0 1 1 1 0 0 2 0 1 2 2 2 0 2 0 2 2</span><br><span class="line"> 0 1 2 0 1 0 2 2 2 0 2 0 1 0 1 0 1 0 2 1 1 1 0 1 1 1 2 2 2 0 0 2 2 2 0 2 1</span><br><span class="line"> 1]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">print(&quot;测试集特征值和目标值：&quot;, test_feature, test_target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">测试集特征值和目标值： [[6.3 2.9 5.6 1.8]</span><br><span class="line"> [6.3 2.5 4.9 1.5]</span><br><span class="line"> [7.3 2.9 6.3 1.8]</span><br><span class="line"> ......</span><br><span class="line"> [4.4 2.9 1.4 0.2]</span><br><span class="line"> [5.1 3.4 1.5 0.2]]</span><br><span class="line"> [2 1 2 2 2 1 2 0 2 2 2 0 0 2 0 0 1 1 1 1 2 2 0 2 2 1 1 2 2 0 0 1 1 0 0 2 0 0]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">也是一个内置的数据集，不过是是大数据集，会从网络下载</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">news &#x3D; fetch_20newsgroups(data_home&#x3D;r&quot;G:\pyMechineLearn&quot;, subset&#x3D;&#39;all&#39;)</span><br><span class="line">print(news.data)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">貌似是一个list类型，每一个元素是str类型，也就是一篇文章。</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(news.target)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">不同的数对应不同的文章类型</span><br><span class="line">[10  3 17 ...  3  1  7]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-sklearn回归数据集，对应回归算法"><a href="#4-sklearn回归数据集，对应回归算法" class="headerlink" title="4.sklearn回归数据集，对应回归算法"></a>4.sklearn回归数据集，对应回归算法</h4><blockquote>
-<p>此处以内置数据集 波士顿房价数据集为例<br>sklearn.datasets.load_boston()</p>
-</blockquote>
-<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from sklearn.datasets import load_boston</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">波士顿房价数据</span><br><span class="line">目标类别：5-50</span><br><span class="line">特征：13</span><br><span class="line">样本数量：506</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line">lb &#x3D; load_boston()</span><br><span class="line"></span><br><span class="line">print(lb.data)  #获取特征值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">特征值就是收集的属性，房子的一些大小等信息</span><br><span class="line">[[6.3200e-03 1.8000e+01 2.3100e+00 ... 1.5300e+01 3.9690e+02 4.9800e+00]</span><br><span class="line"> [2.7310e-02 0.0000e+00 7.0700e+00 ... 1.7800e+01 3.9690e+02 9.1400e+00]</span><br><span class="line"> [2.7290e-02 0.0000e+00 7.0700e+00 ... 1.7800e+01 3.9283e+02 4.0300e+00]</span><br><span class="line"> ...</span><br><span class="line"> [6.0760e-02 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9690e+02 5.6400e+00]</span><br><span class="line"> [1.0959e-01 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9345e+02 6.4800e+00]</span><br><span class="line"> [4.7410e-02 0.0000e+00 1.1930e+01 ... 2.1000e+01 3.9690e+02 7.8800e+00]]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(lb.target)    #获取目标值</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">[24.  21.6 34.7 33.4 36.2 28.7 22.9 27.1 16.5 18.9 15.  18.9 21.7 20.4</span><br><span class="line"> 18.2 19.9 23.1 17.5 20.2 18.2 13.6 19.6 15.2 14.5 15.6 13.9 16.6 14.8</span><br><span class="line">.......</span><br><span class="line">  8.1 13.6 20.1 21.8 24.5 23.1 19.7 18.3 21.2 17.5 16.8 22.4 20.6 23.9</span><br><span class="line"> 22.  11.9]</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">print(lb.DESCR) #描述信息</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">\*\*Data Set Characteristics:\*\* </span><br><span class="line">:Number of Instances: 506</span><br><span class="line">:Attribute Information (in order):</span><br><span class="line">        - CRIM     per capita crime rate by town</span><br><span class="line">        - ZN       proportion of residential land zoned for lots over 25,000 sq.ft.</span><br><span class="line">        - INDUS    proportion of non-retail business acres per town</span><br><span class="line">        .........</span><br><span class="line">        - MEDV     Median value of owner-occupied homes in $1000&#39;s</span><br><span class="line">&#39;&#39;&#39;</span><br></pre></td></tr></table></figure>
-
-<h1 id="转换器（Transformer）与估计器（estimator）"><a href="#转换器（Transformer）与估计器（estimator）" class="headerlink" title="转换器（Transformer）与估计器（estimator）"></a>转换器（Transformer）与估计器（estimator）</h1><p>特征工程中，实例化出来的可调用fit_transform API的对象（如 DictVectorizer等）就是一个Transformer</p>
-<ul>
-<li>fit_transform():输入数据直接转换</li>
-<li>fit()+transform():fit是单纯的输入数据，然后进行一些预先处理，如计算平均值，方差等。transform是进行数据的转换</li>
-</ul>
-<p>在sklearn中，估计器（estimator）是一个重要的角色，是一类实现了算法的API，这玩意不是知道接口是啥就可以，而是传入的算法参数- -。。</p>
-<ul>
-<li>用于分类的估计器：<ul>
-<li>sklearn.neighbors k-近邻算法</li>
-<li>sklearn.naive_bayes 贝叶斯</li>
-<li>sklearn.linear_model.logisticRegression 逻辑回归</li>
-<li>sklearn.tree 决策树与随机森林</li>
-</ul>
-</li>
-<li>用于分类的估计器：<ul>
-<li>sklearn.linear_model.linearRegression 线性回归</li>
-<li>sklearn.linear_model.Ridge 岭回归</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/11/python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%80/" data-id="ckccph4ii0008y81r1wo55rfu" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" rel="tag">特征工程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-python数据分析基础" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="post-time" datetime="2020-01-11T09:25:24.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br/>
-    <span class="post-day">11</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/">python数据分析基础</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
-  </div>
-
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
-<li>Python VS R 语言(原文：<a href="https://mp.weixin.qq.com/s/CAsVeEJlgru85NUHcUKv6A)：" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/CAsVeEJlgru85NUHcUKv6A)：</a><blockquote>
-<ul>
-<li>什么是R语言？<br>R语言，一种自由软件编程语言与操作环境，主要用于统计分析、绘图、数据挖掘。R基于S语言的一个GNU计划项目，所以也可以当作S语言的一种实现。</li>
-<li>Python与R语言共同特点</li>
-<li>Python和R在数据分析和数据挖掘方面都有比较专业和全面的模块，很多常用的功能，比如矩阵运算、向量运算等都有比较高级的用法</li>
-<li>Python和R两门语言有多平台适应性，linux、window都可以使用，并且代码可移植性强</li>
-<li>Python和R比较贴近MATLAB以及minitab等常用的数学工具</li>
-<li>Python与R语言区别</li>
-<li>数据结构方面，由于是从科学计算的角度出发，R中的数据结构非常的简单，主要包括向量(一维)、多维数组(二维时为矩阵)、列表(非结构化数据)、数据框(结构化数据)。而 Python 则包含更丰富的数据结构来实现数据更精准的访问和内存控制，多维数组(可读写、有序)、元组(只读、有序)、集合(唯一、无序)、字典(Key-Value)等等。</li>
-<li>Python与R相比速度要快。Python可以直接处理上G的数据;R不行，R分析数据时需要先通过数据库把大数据转化为小数据(通过groupby)才能交给R做分析，因此R不可能直接分析行为详单，只能分析统计结果。</li>
-<li>Python是一套比较平衡的语言，各方面都可以，无论是对其他语言的调用，和数据源的连接、读取，对系统的操作，还是正则表达和文字处理，Python都有着明显优势。 而R是在统计方面比较突出。</li>
-<li>总结<br>总的来说，Python 的 pandas 借鉴了R的dataframes，R 中的 rvest 则参考了 Python的BeautifulSoup，两种语言在一定程度上存在互补性，通常，我们认为 Python 比 R 在计算机编程、网络爬虫上更有优势，而 R 在统计分析上是一种更高效的独立数据分析工具。所以说，同时学会Python和R这两把刷子才是数据科学的王道。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p>python其实是可以直接<strong>调用R语言的函数</strong>的，只需要安装rpy2模块即可。</p>
-<h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><p>提到数据分析，就不得不考虑到数据分析后的展示，Matplotlib是一个Python 2D绘图库，它可以在各种平台上以各种硬拷贝格式和交互式环境生成出具有出版品质的图形。<br>至于matplotlib的安装，可以通过 Anaconda来安装，相关操作不多赘述。</p>
-<h4 id="折线图示例"><a href="#折线图示例" class="headerlink" title="折线图示例"></a>折线图示例</h4><img src="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/%E6%8A%98%E7%BA%BF%E5%9B%BE.jpg" class="" title="折线图">
-<p>相关api在代码中都有注释<br>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="comment"># 折线图</span></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注：matplotlib默认时不支持中文的，可通过rc修改</span></span><br><span class="line">font = &#123;<span class="string">'family'</span>: <span class="string">'SimHei'</span>,</span><br><span class="line">        <span class="string">'weight'</span>: <span class="string">'bold'</span>,</span><br><span class="line">        <span class="string">'size'</span>: <span class="string">'16'</span>&#125;</span><br><span class="line">matplotlib.rc(<span class="string">'font'</span>, **font)</span><br><span class="line"></span><br><span class="line">x = range(<span class="number">2</span>, <span class="number">26</span>, <span class="number">2</span>)</span><br><span class="line">y = [<span class="number">15</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">3</span>, <span class="number">20</span>, <span class="number">22</span>, <span class="number">14.5</span>, <span class="number">6.3</span>, <span class="number">21.2</span>, <span class="number">10</span>]</span><br><span class="line"><span class="comment"># 要在一个图形上绘制多个曲线，可直接设置另一个列表然后通过plot来绘制</span></span><br><span class="line">another_y = [<span class="number">10</span>, <span class="number">10</span>, <span class="number">22</span>, <span class="number">15</span>, <span class="number">13</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">20</span>, <span class="number">21.2</span>, <span class="number">20</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图片大小</span></span><br><span class="line"><span class="comment"># plt.figure(figsize=(20, 8), dpi=80)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图，label为折线名字，需要在后面添加legend方法才能显示在图形上，还可设置线条颜色和style等</span></span><br><span class="line">plt.plot(x, y, label=<span class="string">"第一条"</span>)</span><br><span class="line"><span class="comment"># 绘制另一条曲线</span></span><br><span class="line">plt.plot(x, another_y, label=<span class="string">"第二条"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制x轴的刻度,根据列表参数的值展示刻度</span></span><br><span class="line"><span class="comment"># plt.xticks(x)</span></span><br><span class="line"><span class="comment"># plt.xticks(range(2,25))</span></span><br><span class="line"><span class="comment"># x轴刻度显示字符串, 需要构造一个和xticks第一个参数一一对应的字符串列表，这也可以解决xy轴刻度对不准问题，自定义在哪里显示刻度和显示什么</span></span><br><span class="line">_xstring_labels = [<span class="string">"string&#123;&#125;"</span>.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">plt.xticks(x, _xstring_labels, rotation=<span class="number">90</span>)  <span class="comment"># rotation可以让x刻度旋转一定角度</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 展示y轴刻度</span></span><br><span class="line">plt.yticks(range(min(y), max(y)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加图形和坐标轴的描述信息</span></span><br><span class="line">plt.xlabel(<span class="string">"x轴信息"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y轴信息"</span>)</span><br><span class="line">plt.title(<span class="string">"图形名字"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制网格,参数alpha可以设置透明度</span></span><br><span class="line">plt.grid()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加图例，loc参数可设置图例位置</span></span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 展示图形</span></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存图形,后缀为svg可以保存为矢量图</span></span><br><span class="line"><span class="comment"># plt.savefig("./testone.png")</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="其他图形示例"><a href="#其他图形示例" class="headerlink" title="其他图形示例"></a>其他图形示例</h4><p>绘制其他图形的api和折线图几乎相同，程序参考上面就可以，下面列举一下api以供参考<br>其中 x,y为x和y轴的列表</p>
-<ul>
-<li>散点图<ul>
-<li>plt.scatter(x,y)</li>
-</ul>
-</li>
-<li>条形图<ul>
-<li>plt.bar(x,y,width=’0.3’) #width为设置线条的粗细</li>
-<li>plt.hbar(x,y,height=’0.3’)   #绘制横向的条形图,height为横向线条的粗细</li>
-<li>通过设置 xticks可以实现数字和字符串的相对应</li>
-</ul>
-</li>
-<li>直方图<ul>
-<li>plt.hist(a,num_bins,normed = True)  #a为数据列表，num_bins为数据分为多少组，normed用来设置是否是频率直方图。<ul>
-<li>组数 = 极差/组距 = (max(a) - min(a))/自己设置的组距，注：最大值-最小值的结果一定要能被组距整除，不然图像会出现偏差</li>
-</ul>
-</li>
-<li>当组距不均匀时，plt.hist(a,[min(a)+i*组距 for i in range(组数)])，也就是可以传入一个列表，长度为组数，值为分组的依据</li>
-<li>小技巧，设置x轴刻度：plt.xticks(range(min(a),man(a)+d,d)) ,因为range是去[),所以最后不加d的话会导致最后一个刻度丢失</li>
-</ul>
-</li>
-<li>more<ul>
-<li>matplotlib官网中有很多例子，网址：<a href="https://matplotlib.org/gallery/index.html" target="_blank" rel="noopener">https://matplotlib.org/gallery/index.html</a> ，需要的时候可根据问题自行查找。</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他的一些绘制工具"><a href="#其他的一些绘制工具" class="headerlink" title="其他的一些绘制工具"></a>其他的一些绘制工具</h2><ul>
-<li>百度的一个前端框架echarts：<a href="https://www.echartsjs.com/index.html" target="_blank" rel="noopener">https://www.echartsjs.com/index.html</a> ，讲道理确实很炫酷。可动态交互</li>
-<li>python的图形库plotly：<a href="https://plot.ly/python/" target="_blank" rel="noopener">https://plot.ly/python/</a> ， 可以在线生成交互式、高质量的图形。可动态交互</li>
-<li>Seaborn，基于matplotlib的Python数据可视化库：<a href="http://seaborn.pydata.org/" target="_blank" rel="noopener">http://seaborn.pydata.org/</a> 。 静态</li>
-</ul>
-<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>什么是Numpy</p>
-<blockquote>
-<p>NumPy系统是Python的一种开源的数值计算扩展，是python科学计算的基础包。这种工具可用来存储和处理大型矩阵，具有快速高效的多维数组对象ndarray，比Python自身的嵌套列表（nested list structure)结构要高效的多。NumPy（Numeric Python）提供了许多高级的数值编程工具，如：矩阵数据类型、矢量处理，以及精密的运算库。专为进行严格的数字处理而产生。可以用来处理线性代数运算、傅里叶变换以及随机数生成等。</p>
-</blockquote>
-<p>下面列出了一些列numpy常用的API可供参考：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding = utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy 创建数组</span></span><br><span class="line">t1 = numpy.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])  <span class="comment"># [1,2,3]</span></span><br><span class="line">t2 = numpy.array(range(<span class="number">1</span>, <span class="number">6</span>))  <span class="comment"># [1,2,3,4,5]</span></span><br><span class="line">t3 = numpy.arange(<span class="number">4</span>, <span class="number">10</span>, <span class="number">2</span>)  <span class="comment"># [4,6,8]</span></span><br><span class="line"></span><br><span class="line">print(t3.dtype)  <span class="comment"># int32 与平台有关，还可能是int64,float32等</span></span><br><span class="line">t4 = numpy.arange(<span class="number">4</span>, <span class="number">10</span>, <span class="number">2</span>, dtype=<span class="string">"int64"</span>)  <span class="comment"># 可以手动指定数值类型</span></span><br><span class="line"><span class="comment"># 调整数据类型</span></span><br><span class="line">t5 = t4.astype(<span class="string">"float32"</span>)</span><br><span class="line">print(t5.dtype)</span><br><span class="line"></span><br><span class="line">t6 = random.random()</span><br><span class="line">t6 = numpy.round(t6, <span class="number">2</span>)  <span class="comment"># round保留两位小数</span></span><br><span class="line">print(t6)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">numpy读取本地CSV文件</span></span><br><span class="line"><span class="string">api：numpy.loadtxt(fname, dtype=, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None, unpack=False, ndmin=0)</span></span><br><span class="line"><span class="string">fname :文件或字符串</span></span><br><span class="line"><span class="string">dtype : 数据类型</span></span><br><span class="line"><span class="string">comments :用于指示注释开头的字符，默认值为 : '#'.</span></span><br><span class="line"><span class="string">delimiter :用于分隔值的字符，缺省值为任何空白字符，如空格 ，制表符  </span></span><br><span class="line"><span class="string">converters : dict字典 ，用来定义将对应的列转换为浮点数的函数。列入：0列是日期字符串："converters=&#123;0:datestr2num&#125;".convertes 同时也能够为丢失的数据设置缺省值："convertes=&#123;3:lambda s:float(s.strip() or 0)&#125;"</span></span><br><span class="line"><span class="string">skiprows:跳过开头的行数</span></span><br><span class="line"><span class="string">usecols : 确定那几列被读取</span></span><br><span class="line"><span class="string">unpack :是否进行转置</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># n1 = numpy.loadtxt("test.csv",delimiter=",",dtype="int") # t1= [ [0行0列 0行1列 0行2列] [1行0列 1行1列 1行2列] [2行0列 2行1列 2行2列] ]</span></span><br><span class="line"></span><br><span class="line">n2 = numpy.array([</span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">    [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">    [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>],</span><br><span class="line">])</span><br><span class="line"><span class="comment"># 索引和切片</span></span><br><span class="line"><span class="comment"># print(n2[行,列]) ‘：’表所有</span></span><br><span class="line"><span class="comment"># 取一行</span></span><br><span class="line">print(n2[<span class="number">1</span>])  <span class="comment"># [5 6 7 8]</span></span><br><span class="line"><span class="comment"># 取连续多行</span></span><br><span class="line">print(n2[<span class="number">1</span>:])  <span class="comment"># [[5 6 7 8] [9 10 11 12]]</span></span><br><span class="line"><span class="comment"># 取不连续多行</span></span><br><span class="line">print(n2[[<span class="number">0</span>, <span class="number">2</span>]])  <span class="comment"># [ [1 2 3 4] [9 10 11 12]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取列</span></span><br><span class="line">print(n2[:, <span class="number">0</span>])  <span class="comment"># [1 5 9]</span></span><br><span class="line"><span class="comment"># 连续多列</span></span><br><span class="line">print(n2[:, <span class="number">2</span>:])  <span class="comment"># [ [3 4] [7 8 ] [11 12]]</span></span><br><span class="line"><span class="comment"># 不连续的列</span></span><br><span class="line">print(n2[:, [<span class="number">0</span>, <span class="number">2</span>]])  <span class="comment"># [ [1 3][5 7][9 11] ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取单行单列和多行多列</span></span><br><span class="line">print(n2[[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">2</span>]])  <span class="comment"># 注意，这里是 [2 7]</span></span><br><span class="line">print(n2[<span class="number">1</span>, <span class="number">2</span>])  <span class="comment"># [7]</span></span><br><span class="line">print(n2[<span class="number">0</span>:<span class="number">2</span>, <span class="number">0</span>:<span class="number">3</span>])  <span class="comment"># [[1 2 3][5 6 7]] ，这里的多行多列，‘:’的区间是[)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据拼接</span></span><br><span class="line">n3 = numpy.array([</span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">    [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">])</span><br><span class="line">n4 = numpy.array([</span><br><span class="line">    [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>],</span><br><span class="line">    [<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]</span><br><span class="line">])</span><br><span class="line"><span class="comment"># 横向和竖向拼接</span></span><br><span class="line">numpy.vstack((n3, n4))  <span class="comment"># [[1 2 3 4] [5 6 7 8] [9 10 11 12] [...]]</span></span><br><span class="line">numpy.hstack((n3, n4))  <span class="comment"># [ [1 2 3 4 9 10 11 12] [5 6 7 8 11 12 13 14]]</span></span><br><span class="line"><span class="comment"># numpy数组可以支持 a b = b a语法来换行或者换列，如</span></span><br><span class="line">n2[[<span class="number">1</span>, <span class="number">2</span>], :] = n2[[<span class="number">2</span>, <span class="number">1</span>], :]  <span class="comment"># 行交换</span></span><br><span class="line">n2[:, [<span class="number">0</span>, <span class="number">1</span>]] = n2[:, [<span class="number">1</span>, <span class="number">0</span>]]  <span class="comment"># 列交换</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><p>为什么需要pandas？</p>
-<blockquote>
-<p>numpy能够帮我们处理数值型数据，但这样还不足以满足需求，有时候还需要处理字符串、时间序列等。不过pandas的数值处理模块也是基于numpy的。</p>
-</blockquote>
-<p>什么是pandas？</p>
-<blockquote>
-<p>pandas 是是python的一个数据分析包、基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。Pandas 纳入了大量库和一些标准的数据模型，提供了高效地操作大型数据集所需的工具。pandas提供了大量能使我们快速便捷地处理数据的函数和方法。对于金融行业的用户，pandas提供了大量适用于金融数据的高性能时间序列功能和工具。</p>
-</blockquote>
-<p>pandas的数据结构：</p>
-<ul>
-<li>Series：带标签(索引)的一维数组，与Numpy中的一维array类似。二者与Python基本的数据结构List也很相近，其区别是：List中的元素可以是不同的数据类型，而Array和Series中则只允许存储相同的数据类型，这样可以更有效的使用内存，提高运算效率。</li>
-<li>Time- Series：以时间为索引的Series。</li>
-<li>DataFrame：二维的表格型数据结构。很多功能与R中的data.frame类似。可以将DataFrame理解为Series的容器。</li>
-<li>Panel ：三维的数组，可以理解为DataFrame的容器。</li>
-</ul>
-<p>pandas的相关用法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding = 'utf-8'</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Series相关</span></span><br><span class="line"></span><br><span class="line">t1 = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">5</span>])</span><br><span class="line">t2 = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], index=list(<span class="string">"abcde"</span>))  <span class="comment"># 此时 1的索引为a,2的索引为b,以此类推</span></span><br><span class="line">print(t2.dtype)  <span class="comment"># int64</span></span><br><span class="line">temp_list = &#123;<span class="string">"name"</span>: <span class="string">"q"</span>, <span class="string">"age"</span>: <span class="number">26</span>, <span class="string">"tel"</span>: <span class="string">"10086"</span>&#125;</span><br><span class="line">t3 = pd.Series(temp_list)  <span class="comment"># 此时索引为字典的键，值为字典对应键的值</span></span><br><span class="line"><span class="comment"># tip:对一个series重新指定索引后，如果能够对应上，就取其值，如果不能，则为Nan</span></span><br><span class="line">print(t3.dtype)  <span class="comment"># object</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Series的切片和索引</span></span><br><span class="line">print(t3[:<span class="number">2</span>])  <span class="comment"># 取前3行</span></span><br><span class="line">print(t3[[<span class="string">"name"</span>, <span class="string">"age"</span>]])  <span class="comment"># 取name和age</span></span><br><span class="line">print(t1[t1 &gt; <span class="number">2</span>])  <span class="comment"># 取值大于2的</span></span><br><span class="line">print(t3.index)  <span class="comment"># 获取索引列表，类型为Index，可以使用list(t3.index) 强制转换为列表</span></span><br><span class="line">print(t3.values)  <span class="comment"># 获取值的列表,类型为numpy.ndarry，其实就是一个数组</span></span><br><span class="line"><span class="comment"># tips：ndarry中很多方法在pandas中都可以用。但pandas中的where是不同的,可以用来查找符合条件的数值，而不符合的显示为指定的值，不指定则为Nan</span></span><br><span class="line">print(<span class="string">'*'</span> * <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># DataFrame相关</span></span><br><span class="line"></span><br><span class="line">p1 = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">print(p1)</span><br><span class="line"><span class="comment"># 带索引的创建,指定行索引和列索引</span></span><br><span class="line">p2 = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>), index=list(<span class="string">"abc"</span>), columns=list(<span class="string">"WXYZ"</span>))</span><br><span class="line">print(p2)</span><br><span class="line"><span class="comment"># 传入字典创建,键为列名,每一行为具体的值，值可以对应一个列表，列表内有多少数据就有多少行。也可以传入一个内容是字典的列表，有几个字典就有几行。没有的数据为NaN</span></span><br><span class="line">d1 = &#123;<span class="string">"name"</span>: [<span class="string">"q1"</span>, <span class="string">"q2"</span>], <span class="string">"age"</span>: [<span class="number">25</span>, <span class="number">26</span>], <span class="string">"tel"</span>: [<span class="number">10086</span>, <span class="number">10010</span>]&#125;</span><br><span class="line">p3 = pd.DataFrame(d1)</span><br><span class="line">print(p3)</span><br><span class="line">d2 = [&#123;<span class="string">"name"</span>: <span class="string">"q1"</span>, <span class="string">"age"</span>: <span class="number">25</span>, <span class="string">"tel"</span>: <span class="number">10010</span>&#125;, &#123;<span class="string">"name"</span>: <span class="string">"q2"</span>, <span class="string">"tel"</span>: <span class="number">10000</span>&#125;, &#123;<span class="string">"name"</span>: <span class="string">"q3"</span>, <span class="string">"age"</span>: <span class="number">22</span>, <span class="string">"tel"</span>: <span class="number">10086</span>&#125;]</span><br><span class="line">p4 = pd.DataFrame(d2)</span><br><span class="line">print(p4)</span><br><span class="line"><span class="comment"># 前几行，tail为尾几行。info可以查看DataFrame的内存情况，多少行多少列占用多少内存等</span></span><br><span class="line">p4.head(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># DataFrame取行取列，方括号内写数组，表示取行，写字符串，表示取列的索引</span></span><br><span class="line">p5 = pd.DataFrame(np.arange(<span class="number">100</span>).reshape(<span class="number">10</span>, <span class="number">10</span>), index=[<span class="string">"r1"</span>, <span class="string">"r2"</span>, <span class="string">"r3"</span>, <span class="string">"r4"</span>, <span class="string">"r5"</span>, <span class="string">"r6"</span>, <span class="string">"r7"</span>, <span class="string">"r8"</span>, <span class="string">"r9"</span>, <span class="string">"r10"</span>],</span><br><span class="line">                  columns=[<span class="string">"c1"</span>, <span class="string">"c2"</span>, <span class="string">"c3"</span>, <span class="string">"c4"</span>, <span class="string">"c5"</span>, <span class="string">"c6"</span>, <span class="string">"c7"</span>, <span class="string">"c8"</span>, <span class="string">"c9"</span>, <span class="string">"c10"</span>])</span><br><span class="line"><span class="comment"># 取前5行</span></span><br><span class="line">print(p5[:<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 取固定列</span></span><br><span class="line">print(p5[<span class="string">"c2"</span>])</span><br><span class="line"><span class="comment"># 通过pandas优化过的选择方式：</span></span><br><span class="line"><span class="comment"># loc通过标签索引行数据，loc中冒号两边的数据取的方式是闭合区间[]，而不是[)</span></span><br><span class="line"><span class="comment"># iloc通过位置获取行数据</span></span><br><span class="line">print(p5.loc[<span class="string">"r4"</span>, <span class="string">"c5"</span>])  <span class="comment"># 取r4行r5列</span></span><br><span class="line">print(p5.loc[<span class="string">"r4"</span>])  <span class="comment"># 取r4行</span></span><br><span class="line">print(p5.loc[[<span class="string">"r1"</span>, <span class="string">"r3"</span>]])  <span class="comment"># 取多行多列语法 如r1行和r3行</span></span><br><span class="line">print(p5.iloc[:, <span class="number">2</span>])  <span class="comment"># 取第2列,索引从0开始</span></span><br><span class="line">print(p5.iloc[<span class="number">5</span>:, <span class="number">3</span>:])  <span class="comment">#取第6行以后和第3列以后的数据</span></span><br><span class="line">print(p5[p5[<span class="string">"c7"</span>]&gt;<span class="number">70</span>])  <span class="comment">#取c7列大于70的所有行</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#缺失数据NaN的处理</span></span><br><span class="line">p6 = pd.DataFrame(np.array([<span class="number">0</span>,<span class="number">1</span>,np.NaN,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,np.NaN,<span class="number">10</span>,<span class="number">11</span>]).reshape(<span class="number">3</span>, <span class="number">4</span>), index=list(<span class="string">"abc"</span>), columns=list(<span class="string">"WXYZ"</span>))</span><br><span class="line">print(p6)</span><br><span class="line">print(pd.notnull(p6))   <span class="comment">#p6中，不为NaN的值显示为true，为NaN的值显示为false</span></span><br><span class="line">print(p6[pd.notnull(p6[<span class="string">"X"</span>])])  <span class="comment">#选取p6的X列中的值不为NaN的所有行</span></span><br><span class="line">print(p6.dropna(axis=<span class="number">0</span>,how=<span class="string">"any"</span>))    <span class="comment">#删除DataFrame中值为NaN的axis，axis=0为行，1为列。how的值为“any”表示这个轴只要有NaN就删，值为“all”表示所有值都为NaN才删</span></span><br><span class="line"><span class="comment">#填充NaN为指定数据</span></span><br><span class="line">print(p6.fillna(<span class="number">0</span>))     <span class="comment"># 将NaN填充为0</span></span><br><span class="line"><span class="comment"># 不过为了数据完整性，一般不会填充为0或者随便填一个数值，而是会填充为均值,Pandas计算均值的时候不会算上NaN值</span></span><br><span class="line">print(p6.mean())    <span class="comment">#此时mean算的均值是每一列的均值</span></span><br><span class="line">print(p6.fillna(p6.mean()))</span><br><span class="line">print(p6[<span class="string">"X"</span>].fillna(p6[<span class="string">"X"</span>].mean()))   <span class="comment">#只填充某一列的NaN值，如果要改变原数据,可以前面添加 p6["X"] =</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pandas读取外部数据</span></span><br><span class="line"><span class="comment"># csv文件</span></span><br><span class="line"><span class="comment"># result = pd.read_csv("./test.csv")</span></span><br><span class="line"><span class="comment"># 读取sql，传入sql语句和connection</span></span><br><span class="line"><span class="comment"># pd.read_sql(sql_sentence,connection)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="写到这里"><a href="#写到这里" class="headerlink" title="写到这里"></a>写到这里</h1><p>先上一张python数据分析的知识框架</p>
-<img src="/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6.jpg" class="" title="数据库结果">
-<p>其中有一些还没有写到，也不打算继续挖坑了，暂且记录在下面：</p>
-<ul>
-<li>Scipy<ul>
-<li>Scipy是一组专门解决科学计算中各种标准问题域的包的集合。</li>
-</ul>
-</li>
-<li>statsmodels<ul>
-<li><a href="https://github.com/statsmodels/statsmodels" target="_blank" rel="noopener">https://github.com/statsmodels/statsmodels</a></li>
-</ul>
-</li>
-<li>scikit-learn<ul>
-<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">http://scikit-learn.org/stable/</a></li>
-</ul>
-</li>
-</ul>
-<p>这段时间大概了解了一下python数据分析的知识框架，写的不是很详细，这里有一篇更详细的文章写得不错先mark一下：<a href="https://www.cnblogs.com/nxld/p/6058998.html" target="_blank" rel="noopener">https://www.cnblogs.com/nxld/p/6058998.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/11/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/" data-id="ckccph4iq000oy81rdm260l29" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">next &amp;raquo;</a>
   </nav>
 </section>
         
@@ -1631,9 +1322,9 @@
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
       <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
 
 
@@ -1665,7 +1356,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2019 - 2020 pokemonlei<br>
+      &copy;2020 - 2021 pokemonlei<br>
       由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
       主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
       

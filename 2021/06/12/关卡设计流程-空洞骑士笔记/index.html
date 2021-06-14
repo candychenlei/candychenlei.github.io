@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关卡设计流程-空洞骑士笔记 | Pokemonlei的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用你目前所拥有的常识来理解问题，如果你目前的常识不支持你理解，则说明你缺少一个前置知识    文章参考视频：B站《空洞骑士》的关卡设计 1.任务设计流程  什么是任务？一件事，包含了几个要素：玩家要做什么事情、是谁让玩家去做这件事情、做完之后有什么奖励。   什么是任务流程？多个任务由于前因后果连在一起的时候，就产生了任务流程这个概念。大多数情况下，单个任务不能将一整个事件完成，所以任务流程就显">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关卡设计流程-空洞骑士笔记">
+<meta property="og:url" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Pokemonlei的博客">
+<meta property="og:description" content="用你目前所拥有的常识来理解问题，如果你目前的常识不支持你理解，则说明你缺少一个前置知识    文章参考视频：B站《空洞骑士》的关卡设计 1.任务设计流程  什么是任务？一件事，包含了几个要素：玩家要做什么事情、是谁让玩家去做这件事情、做完之后有什么奖励。   什么是任务流程？多个任务由于前因后果连在一起的时候，就产生了任务流程这个概念。大多数情况下，单个任务不能将一整个事件完成，所以任务流程就显">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E7%9A%84%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%97%A0%E9%92%A5%E5%8C%99.png">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%9C%89%E9%92%A5%E5%8C%99.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B%E6%9E%84%E5%9B%BE%E6%80%9D%E8%B7%AF.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E6%9E%84%E5%9B%BE%E6%A0%87%E8%AE%B0.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%92%A5%E5%8C%992%E6%98%AF%E9%92%A5%E5%8C%993%E7%9A%84%E5%89%8D%E7%BD%AE.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%A8%A1%E5%9D%97%E5%8C%96.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E5%9C%B0%E5%9B%BE%E5%85%A8%E8%B2%8C.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%8B%BC%E6%8E%A5.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%9A%84%E5%8D%95%E5%90%91%E9%98%80%E9%97%A8.jpg">
+<meta property="article:published_time" content="2021-06-12T13:54:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T13:54:00.000Z">
+<meta property="article:author" content="pokemonlei">
+<meta property="article:tag" content="游戏设计">
+<meta property="article:tag" content="关卡设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E7%9A%84%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Pokemonlei的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-关卡设计流程-空洞骑士笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="post-time" datetime="2021-06-12T13:54:00.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关卡设计流程-空洞骑士笔记
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>用你目前所拥有的常识来理解问题，如果你目前的常识不支持你理解，则说明你缺少一个前置知识</p>
+</blockquote>
+<p>  文章参考视频：<a href="https://www.bilibili.com/video/BV11J411Q7Zp/?spm_id_from=333.788.videocard.0" title="[external] [title]" target="">B站《空洞骑士》的关卡设计</a></p>
+<h1 id="1-任务设计流程"><a href="#1-任务设计流程" class="headerlink" title="1.任务设计流程"></a>1.任务设计流程</h1><p>  什么是任务？一件事，包含了几个要素：玩家要做什么事情、是谁让玩家去做这件事情、做完之后有什么奖励。</p>
+<p>  什么是任务流程？多个任务由于前因后果连在一起的时候，就产生了任务流程这个概念。大多数情况下，单个任务不能将一整个事件完成，所以任务流程就显得很关键。任务流程应该组合一个又一个小型的任务来诱导玩家去完成一个事件。如果上来我们就把所有内容都塞到一个任务中，那么他看起来就像是一个攻略，先去干嘛再去干嘛然后干嘛，显得很没意思。</p>
+<p>  什么是事件？事件就是一个完整的有前因后果的剧情内容，通常来说，完成了一个事件就等于完成了一个任务流程，游戏就是由大大小小的事件构成的，有的事件和主线相关很重要，有的则是用于丰富游戏剧情的辅助支线。事件和任务流程的关系？任务流程是组织玩家以一个角色的身份如何参与到这个事件的记事本。通常来说，事件就是一个单纯的故事或者剧情，然而任务流程却可以千变万化。如有一个简单的事件：某村子居民由于某些原因需要n个药草，这就是一个事件，那接下来就是为其设计任务流程，可以让玩家去某地采集，也可以让玩家去购买或直接给金币等等，任务流程会慢慢揭示讲述这个事件的进度，却不一定和事件本身有联系。</p>
+<p>  <strong>如果我们将事件看作是一个剧本，那么任务流程就是这个剧本当中，玩家的戏份</strong></p>
+<h2 id="1-1-任务流程的结构图"><a href="#1-1-任务流程的结构图" class="headerlink" title="1.1 任务流程的结构图"></a>1.1 任务流程的结构图</h2><p>  以《空洞骑士》来看，最初在遗忘十字路口击败第一个boss的过程：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E7%9A%84%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3.jpg" class="" title="遗忘的十字路口"><br>  如果我们不击败Boss1，会发现哪里都去不了，右边的水晶峡谷需要荒芜俯冲才能去，左侧的翠绿之径需要击败第一个Boss，拿到第一个远程技能才能打败看守翠绿之径的第二个Boss。所以如果玩家不去打第一个Boss，那么探索路径差不多是这样的：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2.jpg" class="" title="十字路口第一次探索"><br>  所以看起来遗忘十字路通向很多地方，但是最初的时候它却是锁死的。我们用方块表示锁，用菱形表示该锁的钥匙。所以假设没有第一个Boss，那么游戏的设计就是这样的，根本没有通关的方法。<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%97%A0%E9%92%A5%E5%8C%99.png" class="" title="有锁无钥匙"><br>  只要打败第一个Boss，就可以获得打败Boss2的方法，相当于拿到了前往翠绿之径的钥匙。此时设计图变为：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E6%9C%89%E9%94%81%E6%9C%89%E9%92%A5%E5%8C%99.jpg" class="" title="有锁有钥匙"></p>
+<p>  从遗忘十字路前往翠绿之径需要钥匙1，于是遗忘十字路中必须给出获取钥匙1的方法，无论要求是什么，可能是击败一个Boss，也有可能是别的什么。在开头的视频中，提到了这种构图的思路：<br>   <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B%E6%9E%84%E5%9B%BE%E6%80%9D%E8%B7%AF.jpg" class="" title="空洞骑士任务流程构图思路"><br>  看第一条从上往下的线，Start是开始游戏，那么要到达End，需要同时通过锁A和B，再看第二条线，要拿到钥匙B，则先要通过另外一个锁A，最后第三条线，我们可以在某处找到钥匙A，这样我们可以回到第二条线解开锁A拿到钥匙B，最后同时拿着钥匙A和B去通关。视频中用这种构图来描绘了空洞骑士的任务流程。当然，我们会实现规定一些标记，在空洞骑士中主要是三类，Boss战，钥匙，锁：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E6%9E%84%E5%9B%BE%E6%A0%87%E8%AE%B0.jpg" class="" title="空洞骑士构图标记"><br>  那空洞骑士整体的通关流程大概是如下图：<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E4%BB%BB%E5%8A%A1%E6%B5%81%E7%A8%8B.jpg" class="" title="空洞骑士任务流程"><br>  按照上面的解释，这个图就很容易看懂了，可以注意下有时候锁可以不是硬锁，如当拥有了钥匙2之后，我们可以返回遗忘十字路来解开锁来到真菌之地，但是也可以不拿钥匙2直接通过翠绿之径前往，如果通过翠绿之径前往，但是钥匙2的作用不仅仅是为了让你来到真菌之地，它还是获取钥匙3的前置条件。<br>  <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%92%A5%E5%8C%992%E6%98%AF%E9%92%A5%E5%8C%993%E7%9A%84%E5%89%8D%E7%BD%AE.jpg" class="" title="钥匙2是钥匙3的前置"></p>
+<h2 id="1-2-任务流程的引导性"><a href="#1-2-任务流程的引导性" class="headerlink" title="1.2 任务流程的引导性"></a>1.2 任务流程的引导性</h2><p>  如果玩家按照错误的流程进行游戏，那可能产生意想不到的bug，如做完第二个任务才去做第一个任务，也会让主线故事的叙事变的错乱崩溃，玩家还有可能无所适从不知道下一步要去哪里。此类游戏以及RPG游戏一般都会以各种npc对话、任务、剧情等方式引导玩家下一步要去哪里做什么，并通过硬性阻挡保证玩家按照正确的流程进入设计好的区域和剧情。此类很常见不赘述，后续有时间可以写一下“塞尔达传说”中大世界的引导性方案</p>
+<h1 id="2-地图设计"><a href="#2-地图设计" class="headerlink" title="2.地图设计"></a>2.地图设计</h1><ul>
+<li><p>绘制简单的草图可以让我们开始进入到制作游戏关卡的状态。在这个阶段，一切都是可以被修改的。草图涵盖的东西可以是关卡，可以是界面UI，也可以是很多其他的东西，它们的作用除了帮助我们自己分析和打磨原型，更主要的作用是用于记录日志和向其他人说清楚策划想法。</p>
+</li>
+<li><p>要明确差不多要做一个多大的地图，具体有哪些主要的元素构成。然后再将其分割成单独的区域，有了区域之后我们再将整个区域给分为一批关卡设计的组合。从蔚蓝开发者的演讲当中，我们可以看到这个模块化的思想，从Game到Area，再从Area到Levels。每个关卡都在讲述一个非常简单的故事。</p>
+<img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%A8%A1%E5%9D%97%E5%8C%96.jpg" class="" title="空洞骑士任务流程"></li>
+<li><p>要善于借鉴，且应当善于分析别的作品当中的地图设计的优点，尝试将这种优秀的设计融入到自己的地图设计中。</p>
+</li>
+<li><p>最好可以明确地图的需求或预期体验，围绕地图是为了满足什么或想要达到什么样的预期体验而设计，会事半功倍。</p>
+<h2 id="2-1-引导性在地图设计和任务流程中的体现"><a href="#2-1-引导性在地图设计和任务流程中的体现" class="headerlink" title="2.1 引导性在地图设计和任务流程中的体现"></a>2.1 引导性在地图设计和任务流程中的体现</h2><p> 游戏中，引导性这个概念可以融入不同的元素中。</p>
+</li>
+<li><p>常见的RPG类游戏是融入到任务中，会有npc告诉我们要去哪里做什么事情，这类游戏地图在局部做稍微的改动不会有太大影响，如换个boss位置和城镇区域替换。</p>
+</li>
+<li><p>而空洞骑士这种则是融入到了地图中，他们将所有能够对玩家产生引导性的元素都集中到了地图中，这就要求地图的设计精益求精一环扣一环。</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E5%9C%B0%E5%9B%BE%E5%85%A8%E8%B2%8C.jpg" class="" title="空洞骑士地图全貌">
+<p> 如果我们有一个任务体系来引导玩家前进。在地图设计上就可以稍微松散一点。不需要什么精巧的设计，也不用像空洞骑士一样像齿轮一样组合在一起。如果没有，我们则需要更加细致的去应对地图的设计。但是相对的，在任务的设计上就要更加细致。也就是无论如何，我们的任务流程设计必须是有的。</p>
+<h2 id="2-2-地图设计的层次重点：以蔚蓝和空洞骑士为例"><a href="#2-2-地图设计的层次重点：以蔚蓝和空洞骑士为例" class="headerlink" title="2.2 地图设计的层次重点：以蔚蓝和空洞骑士为例"></a>2.2 地图设计的层次重点：以蔚蓝和空洞骑士为例</h2><p> 同样都是对地图设计比较细致，那么蔚蓝和空洞骑士的区别又在哪呢？我们发现蔚蓝的开发者几乎在每一块落脚处的设计都精益求精，而空洞骑士似乎没有如此严苛。在蔚蓝的开发者的GDC访谈中，提到的关于Game，Area，以及Level的三个等级。蔚蓝的开发者则倾向于把重点放在Level上，而空洞骑士的开发者则倾向于把重点放在Area上。这就是两者在地图设计上的核心区别。简单分析下原因：</p>
+<p> 首先蔚蓝是一个平台跳跃游戏，玩家的核心体验是流畅的操作感和精准的控制感。这种线性的设计需求让蔚蓝的开发者把所有的重心都放在了单个的小型的关卡的设计上。在绝大部分的蔚蓝的小型关卡中，玩家的核心目标想方设法的从A点移动到B点。在主线中（即玩家不以收集草莓为目标），玩家几乎不怎么会遇到岔路口，即使遇到，这些岔路也不会将玩家带离太远的距离。<br> 在GDC的采访视频中可以看到，蔚蓝的开发者会先将一个个小型的关卡设计完毕。之后通过一个编辑器将它们组合在一起。但是我想空洞骑士的开发者则会相反，比起单个的小型关卡是如何呈现的，他们首先应该确定的是区域之间的联系。将区域划分好之后开始逐步的设计小型的关卡。</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E8%94%9A%E8%93%9D%E5%85%B3%E5%8D%A1%E6%8B%BC%E6%8E%A5.jpg" class="" title="蔚蓝关卡拼接">
+<p> 蔚蓝中的游戏体验是线性的，虽然空洞骑士也在营造一种玩家是在探索线性关卡的假象，但是事实上玩家可以随心所欲的探索，只是关卡的设计的精巧让玩家感觉自己似乎是按照一个既定的路线在探索。但很多时候可能都是误打误撞正好打了一个可以打的Boss，拿到了对应的道具而已。这种设计正是开发者所期待的，他们希望玩家感受到的就是自己在探索一个开放的世界。<br> 总的来说：在模块化的过程中，必然会开始设计大地图，区域，以及区域中的小关卡设计。认识到这个概念，可以结合具体的案例来探讨一下应该把重心放在什么位置。</p>
+<h2 id="2-2-单向阀门"><a href="#2-2-单向阀门" class="headerlink" title="2.2 单向阀门"></a>2.2 单向阀门</h2><p> 所谓单向阀门，就是只能从一侧打开的门，但是打开后就是个双向通道。这个概念在游戏中的应用场景很多<br> 依然以空洞骑士中的遗忘十字路口击败第一个Boss的地图探索过程举例：</p>
+ <img src="/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/%E9%81%97%E5%BF%98%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%E7%9A%84%E5%8D%95%E5%90%91%E9%98%80%E9%97%A8.jpg" class="" title="遗忘十字路口的单向阀门">
+<p> 当玩家从达特茅斯下来之后，如果直接去打第一个Boss，必然会绕一个大的圈子。这种设计不是巧合而是有意为之。假设这个单向阀门是封死的，尝试再去游玩一下，会发现，打败了第一个Boss之后，如果想回到达特茅斯，还是要按照原路返回，绕一个大圈子。但是反过来，如果没有这个单向阀门，几乎不需要任何的探索，玩家似乎就可以直接触摸到Boss。有了这个单向阀门，玩家需要通过一个既定的路线的冒险，探索，才能接触到Boss，而不是在家门口就遇见Boss，这样开发者在有限的地图当中，构建了一个路线较长的探索，但是玩家探索结束之后，又不用再原路返回，只要打开了这个单向阀门，以后就可以自由往返了，削弱了重复探索的疲劳感。</p>
+<p> 当然游戏中的单向阀门不一定是这么具象的表现，比如勇者斗恶龙里的传送技能，只能传送到去过的镇子，说白了，这样的一个传送装置，当游戏一开始的时候，是哪里也去不了的。也就是去到第二个镇子的时候，玩家还是需要一步步走过去，之后就可以通过传送装置来传送。之后在两个城镇之间往返就不再需要徒步旅行了。这样的设计使得玩家不用再反复的去探索已经走过的地方（这样既花时间，也没有什么意义）。还有各种传送站点等等。</p>
+<p> 我们前面提到过一个概念就是往返，如果一个游戏需要在两个点之间往返，就需要设计这样的地图，那么怎样在往返的时候消除重复探索的疲劳感呢？上面的设计可以总结为以下三种：</p>
+</li>
+<li><p>空洞骑士风格，终点即起点（但必须在终点处改变地图，此处的改变地图具体指打开那个单向阀门）</p>
+</li>
+<li><p>勇者斗恶龙风格，终点提供了可以传送回起点的装置，之后就可以来回传了</p>
+</li>
+<li><p>给定一条更简单的从终点返回起点的路线（当然这条路线必须有效的防止玩家把这条路线也当成从起点到终点的路线）</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/06/12/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B-%E7%A9%BA%E6%B4%9E%E9%AA%91%E5%A3%AB%E7%AC%94%E8%AE%B0/" data-id="ckpwl2gc50003f81r628q7379" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/" rel="tag">关卡设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag">游戏设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/09/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%9D%A1%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">游戏设计信条（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Pokemonlei的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://user.qzone.qq.com/1176014533/infocenter" target="_blank" title="QQZone">
+          QQZone
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2020 - 2021 pokemonlei<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">占位1</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">占位2</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
