@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>地平线零之曙光工具链 | Pokemonlei的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="笔记，原视频：https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;KRJkBxKv1VM  本文只是将零散记录在onenote上的东西进行一个整合，将自己感兴趣的内容以更规整的形式记录下来，如需更详细的了解，自行参考原视频 1. 目标零之曙光是沿用并修改了Decima引擎，以下面几个出发点为目标进行重构工具链与工作流程  代码层面目标： 创建一个方便构建工具的框架 沿用强大的Deci">
+<meta property="og:type" content="article">
+<meta property="og:title" content="地平线零之曙光工具链">
+<meta property="og:url" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/index.html">
+<meta property="og:site_name" content="Pokemonlei的博客">
+<meta property="og:description" content="笔记，原视频：https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;KRJkBxKv1VM  本文只是将零散记录在onenote上的东西进行一个整合，将自己感兴趣的内容以更规整的形式记录下来，如需更详细的了解，自行参考原视频 1. 目标零之曙光是沿用并修改了Decima引擎，以下面几个出发点为目标进行重构工具链与工作流程  代码层面目标： 创建一个方便构建工具的框架 沿用强大的Deci">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%B7%A5%E5%85%B7%E7%9B%AE%E6%A0%871.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%B7%A5%E5%85%B7%E7%9B%AE%E6%A0%872.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E9%9F%B3%E9%A2%91%E8%93%9D%E5%9B%BE1.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A81.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A82.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A83.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A84.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A85.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A86.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E7%83%AD%E5%8A%A0%E8%BD%BD.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%AF%B9%E8%AF%9D%E7%BC%96%E8%BE%91%E5%99%A81.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%AF%B9%E8%AF%9D%E7%BC%96%E8%BE%91%E5%99%A82.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA1.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA2.png">
+<meta property="og:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA3.png">
+<meta property="article:published_time" content="2021-08-29T12:54:44.000Z">
+<meta property="article:modified_time" content="2021-08-29T12:54:44.000Z">
+<meta property="article:author" content="pokemonlei">
+<meta property="article:tag" content="游戏设计">
+<meta property="article:tag" content="工具设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%B7%A5%E5%85%B7%E7%9B%AE%E6%A0%871.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Pokemonlei的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/plugin/bganimation/bg.css">
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-地平线零之曙光工具链" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/" class="article-date">
+  <time class="post-time" datetime="2021-08-29T12:54:44.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">29</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      地平线零之曙光工具链
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>笔记，原视频：<a href="https://www.youtube.com/watch?v=KRJkBxKv1VM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KRJkBxKv1VM</a></p>
+</blockquote>
+<p>本文只是将零散记录在onenote上的东西进行一个整合，将自己感兴趣的内容以更规整的形式记录下来，如需更详细的了解，自行参考原视频</p>
+<h1 id="1-目标"><a href="#1-目标" class="headerlink" title="1. 目标"></a>1. 目标</h1><p>零之曙光是沿用并修改了Decima引擎，以下面几个出发点为目标进行重构工具链与工作流程</p>
+<ul>
+<li>代码层面目标：<ul>
+<li>创建一个方便构建工具的框架</li>
+<li>沿用强大的Decima引擎库</li>
+<li>让策划的工具更易使用</li>
+</ul>
+</li>
+<li>编辑器层面目标：<ul>
+<li>能够适配内容创作者工具需求</li>
+<li>添加编辑器上下文概念</li>
+<li>可重用的组件</li>
+<li>所有操作都位于一个编辑器中，提供集成的游戏开发环境</li>
+</ul>
+</li>
+</ul>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%B7%A5%E5%85%B7%E7%9B%AE%E6%A0%871.png" class="" title="工具目标1">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%B7%A5%E5%85%B7%E7%9B%AE%E6%A0%872.jpg" class="" title="工具目标2">
+
+<h1 id="2-蓝图节点编辑器"><a href="#2-蓝图节点编辑器" class="headerlink" title="2. 蓝图节点编辑器"></a>2. 蓝图节点编辑器</h1><p>老生常谈的东西了，跟UE相比也没啥太大变化。<br>由于他们做音频的模块相对独立且对工作流有很明确的需求，所以以音频为入口进行工具改版，音频用蓝图来连逻辑大概这样</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E9%9F%B3%E9%A2%91%E8%93%9D%E5%9B%BE1.png" class="" title="音频蓝图1">
+
+<h1 id="3-游戏关卡编辑器"><a href="#3-游戏关卡编辑器" class="headerlink" title="3. 游戏关卡编辑器"></a>3. 游戏关卡编辑器</h1><p>起因是他们之前一直用maya进行关卡编辑，但maya并不适合有大量任务系统和需要大量放置游戏GameObj的游戏，以能让设计师直接在引擎中方便修改关卡和放置物体为起点进行了设计</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A81.png" class="" title="关卡编辑器1">
+
+<p>这里有一个抉择，是只将游戏中的某些子系统集成到编辑器中or全部集成，最终选择了全部集成(有一说一，这需要考虑吗，直接全部集成然后根据需求制作简单的测试关卡不就可以？)</p>
+<ul>
+<li>只集成关注的子系统，虽然可以让整个编辑器简洁可控，且运行快速，但代码复杂，且关卡编辑器里显示的跟游戏实际运行的东西不一样</li>
+<li>全部游戏内容都加到显示窗口里，会增加运行时开销，有一些系统如天气，在制作时并不需要整合全部的其他系统<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A82.png" class="" title="关卡编辑器2">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A83.png" class="" title="关卡编辑器3">
+
+</li>
+</ul>
+<p>他们的场景编辑器成品如下图：</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A84.png" class="" title="关卡编辑器4">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A85.png" class="" title="关卡编辑器5">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%85%B3%E5%8D%A1%E7%BC%96%E8%BE%91%E5%99%A86.png" class="" title="关卡编辑器6">
+<ul>
+<li><p>原视频里有简单的操作视频，用画刷等工具修改地形，添加野怪、障碍物</p>
+</li>
+<li><p>最终效果，可以直接跑游戏，结束运行时编辑窗口会直接在结束运行的位置，然后直接修改场景，如刷地形，添加野怪和石头等，然后继续运行又会接着当前视口开始运行。其实就是一直以主角位置来定位</p>
+</li>
+<li><p>由于游戏中有个仇恨链接机制，被一个机器人发现后同一片的其余机器人也会共享信息，做法是先创建一个父节点(我们称之为遭遇战节点，其下的机器人为同一组）然后在父节点下创建敌人，此时敌人就会共享父节点的数据</p>
+</li>
+<li><p>资源重用，石头、敌人等资源都是可以直接拖进去就生效的</p>
+<h1 id="4-热加载、撤销"><a href="#4-热加载、撤销" class="headerlink" title="4. 热加载、撤销"></a>4. 热加载、撤销</h1><p>为了让策划和美术们在修改了资源后不需要重新启动游戏，他们整了一套热加载系统：</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E7%83%AD%E5%8A%A0%E8%BD%BD.png" class="" title="热加载"></li>
+<li><p>流程：编辑器内修改内容-&gt;分析修改的内容（相关引用）-&gt;打包成patch文件-&gt;运行中的游戏暂停-&gt;加载进新的patch文件-&gt;继续运行游戏</p>
+</li>
+</ul>
+<p>为了支持工具的撤销操作，做了个很巧妙的设计，<strong>对于工具所做的修改，并不是工具直接修改游戏，而是发送要修改什么的消息给游戏编辑器(引擎)，编辑器进行最终修改，这样工具里所有的修改操作都是以一条条消息记录下来的，很容易支持撤销</strong>。没错，类似帧同步那个概念</p>
+<h1 id="5-交互式对话编辑器"><a href="#5-交互式对话编辑器" class="headerlink" title="5. 交互式对话编辑器"></a>5. 交互式对话编辑器</h1><p>这里介绍的并没有那么详细，只说他们的系统受到CD Project RED和BioWare的启发。可以参考巫师3的对话系统：Behind the Scenes of Cinematic Dialogues in ‘The Witcher 3: Wild Hunt’：<a href="https://www.gdcvault.com/play/1023285/" target="_blank" rel="noopener">https://www.gdcvault.com/play/1023285/</a> ，去视频里看了一下确实讲的挺详细，这个后面单独启一个文章写</p>
+<p>由于地平线的交互式对话是全新的，不依赖于任何其他系统，所以可以从头构建一个新的编辑器上下文来满足使用工具的团队，文案、任务、过场</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%AF%B9%E8%AF%9D%E7%BC%96%E8%BE%91%E5%99%A81.png" class="" title="对话编辑器1">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%AF%B9%E8%AF%9D%E7%BC%96%E8%BE%91%E5%99%A82.png" class="" title="对话编辑器2">
+<ul>
+<li>原视频里演示了一小段对话内容，是完全自动生成的对话视频，这个自动生成对话的系统除了音频(配音)之外，镜头剪辑，动画，手势等都是基于设定好的规则生成的，而且也可以自动生成机器人语音、口型和面部动画等等。这意味着设计师只需要输入对话内容就可以直接看到对话效果。</li>
+</ul>
+<h1 id="6-世界地图overview"><a href="#6-世界地图overview" class="headerlink" title="6. 世界地图overview"></a>6. 世界地图overview</h1><p>由于这种大地图开放游戏很难有个overview系统能够看出所有事情发生的时间地点等信息，所以他们研究了游戏数据的二维地图展示：</p>
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA1.png" class="" title="地图显示1">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA2.png" class="" title="地图显示2">
+<img src="/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/%E5%9C%B0%E5%9B%BE%E6%98%BE%E7%A4%BA3.png" class="" title="地图显示3">
+
+<ul>
+<li>这个系统可以显示任何他们想要知道的信息，如任务区域、可能遇到的敌人、性能监控等等</li>
+<li><strong>这里这个JIRA如果是我知道的那个管理项目缺陷、需求、各种事物的JIRA工具(类似腾讯的tapd)，那JIRA Bugs是指测试提的bug单，那这里能显示出JIRA里提的bug在游戏地图中的具体位置，那也太牛了。</strong></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/08/29/%E5%9C%B0%E5%B9%B3%E7%BA%BF%E9%9B%B6%E4%B9%8B%E6%9B%99%E5%85%89%E5%B7%A5%E5%85%B7%E9%93%BE/" data-id="cksxauwqd0001i41r8yipgig2" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E8%AE%BE%E8%AE%A1/" rel="tag">工具设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" rel="tag">游戏设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/31/%E5%85%AB%E8%A7%92%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">八角行为分析法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Pokemonlei的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">pokemonlei</h2>
+    <h3 class="description">陈磊的博客 | pokemonlei</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>7</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://user.qzone.qq.com/1176014533/infocenter" target="_blank" title="QQZone">
+          QQZone
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2020 - 2021 pokemonlei<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana" target="_blank" rel="noopener">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+
+  
+<script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+  
+<link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+
+  
+<script src="/plugin/galmenu/GalMenu.js"></script>
+
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">占位1</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">占位2</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

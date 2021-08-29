@@ -45,9 +45,9 @@
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
       <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -72,6 +72,263 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-爬虫基础" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="post-time" datetime="2020-01-10T15:05:33.000Z" itemprop="datePublished">
+    <span class="post-month">1月</span><br/>
+    <span class="post-day">10</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">爬虫基础</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前面http和https的介绍，可直接跳过看下面的案例</p>
+</blockquote>
+<h2 id="HTTP与HTTPS"><a href="#HTTP与HTTPS" class="headerlink" title="HTTP与HTTPS"></a>HTTP与HTTPS</h2><p>为什么要先简要复习一下http和https？因为要发送请求，模拟浏览器，获取和浏览器一模一样的响应。</p>
+<pre><code>HTTP：超文本传输协议，默认端口：80，是一种建立在TCP上的无状态连接，说白了就是个协议，规定了一些列的规则，整个基本的工作流程是客户端发送一个HTTP请求，说明客户端想要访问的资源和</code></pre><p>请求的动作，服务端收到请求之后，服务端开始处理请求，并根据请求做出相应的动作访问服务器资源,最后通过发送HTTP响应把结果返回给客户端。</p>
+<pre><code>HTTPS：即HTTP+SSL（安全套接字层），默认端口号：443，即在HTTP上多了个安全套接字层SSL，SSL是一个提供数据安全和完整性的协议，负责网络连接的加密。    </code></pre><blockquote>
+<p>   题外话：HTTPS通信中的几个概念：加密分为对称和非对称<br>   对称加密：信息的加密和解密都是通过同一个密钥进行的，实际通信中，一个服务器可以同时对应好几个客户端，也就是A客户端获得的加解密算法同样可以加解密B客户端<br>的消息，这跟没加密一样，为了防止这种情况，就只能不同的客户端使用不同密钥，这样的话密钥将会有很多，并且在通信刚开始，服务器和A客户端就要协商好用什么密钥，而这个协商过程是不能加密<br>的，不然A客户端就读不懂服务器消息了，因此还是存在风险。</p>
+<p>   非对称加密：应用最广的加密机制“非对称加密”，特点是私钥加密后的密文，只要是公钥，都可以解密，但是反过来公钥加密后的密文，只有私钥可以解密。私钥只有一个<br>人有，而公钥可以发给所有的人。所以公钥不需要加密，而私钥只存在于服务器。这样只需要一套公钥和私钥就可以了。那么现在的问题是，如何让客户端安全的获取公钥？如果服务器直接明文发送给客户<br>端，那么可能发生被劫持的情况，例如客户端A和服务器S通信，S给A的公钥被B劫持后修改了，那么之后A将会用假的公钥进行加密，将消息发给服务器时B继续劫持，查看内容或者修改之后用真公钥加密然<br>后发给服务器，这就是中间人攻击。这时候风险依然存在，而为了解决这个问题，采用了一种SSL 证书（需要购买）和CA机构的方法，涉及防伪和证书链的概念，大概流程是：<br>   在客户端第一次请求服务器时，服务器发送回一个SSL证书给客户端，SSL 证书中包含的具体内容有<strong>证书的颁发机构的证书</strong>、有效期、<strong>公钥</strong>、证书持有者、<strong>签名</strong>。防伪的步骤：浏览器<br>拿到这个证书后读取证书中的证书所有者、有效期等信息进行一一校验，开始查找操作系统中已内置的受信任的证书发布机构CA，与服务器发来的证书中的颁发者CA比对，用于校验证书是否为合法机构颁<br>发，如果没找到，则报错，如果找到了，浏览器会从操作系统中取出颁发者CA的公钥，然后对服务器发来的证书里面的<strong>签名</strong>进行解密，如果能够解密则一定是证书颁发机构颁发的证书如果解密后信息<br>与Server信息一致则确实是颁发给该Server的，综上校验通过，这就是防伪的流程，而证书链的作用可以保证正在通信的Server确实是证书颁发机构指定的Server，流程是：通过和Server证书验证同<br>的过程通过内嵌在浏览器或者JDK中的根证书验证下中级证书的合法性就好了。因为根证书是内嵌的具有绝对的合法性，如果根证书信任该中级机构，则该中级证书颁发的证书也是可信的这就是证书链了。<br>这样通过第三方的校验保证了身份的合法，解决了公钥获取的安全性。什么你问我怎么申请CA证书？国内的阿里云和腾讯云上找去</p>
+</blockquote>
+<h2 id="举个栗子：爬取某贴吧前1000页内容"><a href="#举个栗子：爬取某贴吧前1000页内容" class="headerlink" title="举个栗子：爬取某贴吧前1000页内容"></a>举个栗子：爬取某贴吧前1000页内容</h2><p>先来一个简单的例子熟悉一下api和爬虫基本流程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TiebaSpider</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, tieba_name)</span>:</span></span><br><span class="line">        self.tieba_name = tieba_name</span><br><span class="line">        self.url_temp = <span class="string">"https://tieba.baidu.com/f?kw="</span> + tieba_name + <span class="string">"&amp;ie=utf-8&amp;pn=&#123;&#125;"</span></span><br><span class="line">        self.headers=&#123;<span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36"</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url_list</span><span class="params">(self)</span>:</span>  <span class="comment">#构造url列表</span></span><br><span class="line">        <span class="comment"># url_list = []</span></span><br><span class="line">        <span class="comment"># for i in range(1000):</span></span><br><span class="line">        <span class="comment">#     url_list.append(self.url_temp.format(i*50))</span></span><br><span class="line">        <span class="comment"># return url_list</span></span><br><span class="line">        <span class="keyword">return</span> [self.url_temp.format(i*<span class="number">50</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_url</span><span class="params">(self, url)</span>:</span>  <span class="comment">#发送请求获取相应</span></span><br><span class="line">        print(url)</span><br><span class="line">        response = requests.get(url, headers=self.headers)</span><br><span class="line">        <span class="keyword">return</span> response.content.decode()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_html</span><span class="params">(self, html_str, page_num)</span>:</span></span><br><span class="line">        file_path = <span class="string">"&#123;&#125;第&#123;&#125;页.html"</span>.format(self.tieba_name, page_num)</span><br><span class="line">        <span class="keyword">with</span> open(file_path, <span class="string">"w"</span>,encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(html_str)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 构造url列表</span></span><br><span class="line">        url_list = self.get_url_list()</span><br><span class="line">        <span class="comment"># 遍历，发送请求，获取响应</span></span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> url_list:</span><br><span class="line">            html_str = self.parse_url(url)</span><br><span class="line">            page_num = url_list.index(url)+<span class="number">1</span></span><br><span class="line">            self.save_html(html_str, page_num)</span><br><span class="line">        <span class="comment"># 保存</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tieba_spider = TiebaSpider(<span class="string">"李毅"</span>)</span><br><span class="line">    tieba_spider.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里爬取下来的内容是没问题的，但保存下来的html直接打开是有问题的，因为万恶的百度在其中把大量有用内容添加了注释，后续是通过js来去掉注释的。这里暂时不处理，只展示基本api的使用。</p>
+<h4 id="发送POST请求"><a href="#发送POST请求" class="headerlink" title="发送POST请求"></a>发送POST请求</h4><p>什么时候需要发送post请求？</p>
+<ul>
+<li>登录注册等有敏感信息的时候，POST比GET更安全</li>
+<li>需要传输大文本的时候（POST请求对数据长度没有要求）<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D; requests.post(&quot;&quot;,data&#x3D;data,headers&#x3D;headers)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h4><p>为什么爬虫需要代理？</p>
+<ul>
+<li>让服务器以为不是同一个客户端在不断请求</li>
+<li>防止我们真实地址倍泄露，防止被追究</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D; requests.get(&quot;url&quot;,proxies&#x3D;proxies)</span><br></pre></td></tr></table></figure>
+<p>proxies是一个字典，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proxies=&#123;</span><br><span class="line">    <span class="string">"http"</span>:<span class="string">"http://xx.xx.xx.xx:xxx"</span>,</span><br><span class="line">    <span class="string">"https"</span>:<span class="string">"https://xx.xx.xx.xx:xxxx"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="request模拟登陆"><a href="#request模拟登陆" class="headerlink" title="request模拟登陆"></a>request模拟登陆</h4><p>cookie和session区别：</p>
+<ul>
+<li>cookie数据存放在客户的浏览器上，session数据存放在服务器上</li>
+<li>cookie不安全，别人可以分析存放在本地的cookie并进行cookie欺骗</li>
+<li>session会在一定时间内保存在服务器上，当访问增多，会比较占用服务器性能</li>
+<li>单个cookie保存的数据不能超过4k，很多浏览器会限制一个站点最多保存20个cookie</li>
+</ul>
+<p>1）request提供了一个session类，来实现客户端和服务器的会话保持,先实例化一个session，用session发送post请求登陆网站，把cookie保存在session中，再使用session请求登陆之后才能访问的网站，session能够自动的携带登陆成功时保存在其中的cookie。<br>使用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session = requests.session()</span><br><span class="line">response = session.get(url,headers)</span><br></pre></td></tr></table></figure>
+
+<p>2）如果请求页面时不发送post请求的情况下，可以在headers中添加cookie键值对，要注意cookie的有效时间</p>
+<p>3）也可以把cookie作为request的参数。此时cookie参数时一个字典。</p>
+<h4 id="request小技巧"><a href="#request小技巧" class="headerlink" title="request小技巧"></a>request小技巧</h4><ul>
+<li>request.utils.dict_from_cookiejar(response.cookies)  把cookie转换为字典，request.utils.cookiejar_from_dict ,将字典转化为cookie</li>
+<li>request.utils.unquote(“编码后的url”)  将url地址解码，反之quote为编码</li>
+<li>忽视证书错误   request.get(“url”,verify=false)</li>
+<li>设置超时    request.get(“url”,timeout)</li>
+<li>刷新网页 使用第三方模块retrying，还可以定义最大重新请求次数</li>
+</ul>
+<h2 id="爬虫的基本套路"><a href="#爬虫的基本套路" class="headerlink" title="爬虫的基本套路"></a>爬虫的基本套路</h2><ul>
+<li><p>准备url</p>
+<ul>
+<li>准备start_url<ul>
+<li>url地址规律不明显，总数不确定的情况下</li>
+<li>通过代码提取下一页的url地址<ul>
+<li>当下一页的地址在网页的响应中时，可以通过xpath</li>
+<li>通过其他方式寻找url地址，比如通过js生成，这种情况下部分参数是在当前响应中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>准备url_list<ul>
+<li>页码总数明显的时候</li>
+<li>url地址规律很明显</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>发送请求，获取响应</p>
+<ul>
+<li>添加随机的User-Agent，防反爬虫</li>
+<li>添加随机的代理ip，防反爬虫</li>
+<li>在对方判断出是爬虫之后，应该添加更多的header字段，包括cookies</li>
+<li>cookie可以用session来解决</li>
+<li>如果不登录的话<ul>
+<li>准备能成功请求对方网站的cookie，即接收对方网站设置在response的cookie</li>
+<li>下次请求的时候，使用之前的列表中的cookie来请求</li>
+</ul>
+</li>
+<li>如果登录的话<ul>
+<li>准备多个账号</li>
+<li>获取多个账号cookie</li>
+<li>之后随机选择cookie来请求登录之后才能访问的网站</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提取数据</p>
+<ul>
+<li>确定数据位置，确定数据是否在当前的url地址响应中<ul>
+<li>如果在当前url地址响应中<ul>
+<li>提取的是列表页的数据<ul>
+<li>直接请求列表页的url地址，不需要进入详情页</li>
+</ul>
+</li>
+<li>提取的是详情页的数据<ul>
+<li>1.确定详情页url地址</li>
+<li>2.发送请求</li>
+<li>3.提取数据</li>
+<li>4.返回</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果不在当前url响应中<ul>
+<li>在其他响应中，寻找数据位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据的提取<ul>
+<li>xpath，从html中提取整块的数据，先分组，然后针对每一组进行提取</li>
+<li>json</li>
+<li>re，提取html中的json字符串或者某些容易用正则区分出的属性等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>保存数据</p>
+</li>
+</ul>
+<h2 id="一个小案例，爬去豆瓣上最近热播的英美剧，国产剧，动漫以及综艺的节目名称和评分"><a href="#一个小案例，爬去豆瓣上最近热播的英美剧，国产剧，动漫以及综艺的节目名称和评分" class="headerlink" title="一个小案例，爬去豆瓣上最近热播的英美剧，国产剧，动漫以及综艺的节目名称和评分"></a>一个小案例，爬去豆瓣上最近热播的英美剧，国产剧，动漫以及综艺的节目名称和评分</h2><p>网页截图以及爬去后的效果图如下：</p>
+<img src="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/python_spider_01.jpg" class="" title="网页截图">
+<img src="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/python_spider_02.jpg" class="" title="爬取后文档截图">
+
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoubanSpider</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"</span>,</span><br><span class="line">            <span class="string">"Referer"</span>: <span class="string">"https://m.douban.com/tv/american"</span>&#125;</span><br><span class="line">        self.url_temp_list = [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"url_temp"</span>: <span class="string">"https://m.douban.com/rexxar/api/v2/subject_collection/tv_american/items?start&#123;&#125;&amp;count=18&amp;loc_id=108288"</span>,</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"英美剧"</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"url_temp"</span>: <span class="string">"https://m.douban.com/rexxar/api/v2/subject_collection/tv_domestic/items?start&#123;&#125;&amp;count=18&amp;loc_id=108288"</span>,</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"国产剧"</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"url_temp"</span>: <span class="string">"https://m.douban.com/rexxar/api/v2/subject_collection/tv_animation/items?start&#123;&#125;&amp;count=18&amp;loc_id=108288"</span>,</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"动漫"</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"url_temp"</span>: <span class="string">"https://m.douban.com/rexxar/api/v2/subject_collection/tv_variety_show/items?start&#123;&#125;&amp;count=18&amp;loc_id=108288"</span>,</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"综艺"</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">        self.curIndex=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_url</span><span class="params">(self, url)</span>:</span></span><br><span class="line">        print(url)</span><br><span class="line">        response = requests.get(url, headers=self.headers)</span><br><span class="line">        <span class="keyword">return</span> response.content.decode()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_content_list</span><span class="params">(self, json_str)</span>:</span></span><br><span class="line">        dict_ret = json.loads(json_str)</span><br><span class="line">        content_list = dict_ret[<span class="string">"subject_collection_items"</span>]</span><br><span class="line">        total = dict_ret[<span class="string">"total"</span>]</span><br><span class="line">        <span class="keyword">return</span> content_list, total</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_content_list</span><span class="params">(self, content_list)</span>:</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">"douban.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            <span class="keyword">for</span> content <span class="keyword">in</span> content_list:</span><br><span class="line">                <span class="comment">#f.write(json.dumps(content, ensure_ascii=False))</span></span><br><span class="line">                f.write(self.curIndex.__str__()+<span class="string">" :"</span> + content[<span class="string">"title"</span>]+<span class="string">" 评分："</span>+content[<span class="string">"rating"</span>][<span class="string">"value"</span>].__str__())</span><br><span class="line">                f.write(<span class="string">"\n"</span>)</span><br><span class="line">                self.curIndex += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span>  <span class="comment"># 主逻辑</span></span><br><span class="line">        <span class="keyword">for</span> url_temp <span class="keyword">in</span> self.url_temp_list:</span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">"douban.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(url_temp[<span class="string">"type"</span>] + <span class="string">":================================================================"</span>)  <span class="comment"># 分割线，方便数据查看</span></span><br><span class="line">                f.write(<span class="string">"\n"</span>)</span><br><span class="line">            self.curIndex = <span class="number">1</span></span><br><span class="line">            num = <span class="number">0</span></span><br><span class="line">            total = <span class="number">1</span>  <span class="comment"># 假设刚开始的条件成立</span></span><br><span class="line">            <span class="keyword">while</span> num &lt; total + <span class="number">18</span>:</span><br><span class="line">                <span class="comment"># 1.构造一个start_rul</span></span><br><span class="line">                url = url_temp[<span class="string">"url_temp"</span>].format(num)</span><br><span class="line">                <span class="comment"># 2.发送请求，获取响应</span></span><br><span class="line">                json_str = self.parse_url(url)</span><br><span class="line">                <span class="comment"># 3.提取数据，保存</span></span><br><span class="line">                content_list, total = self.get_content_list(json_str)</span><br><span class="line">                self.save_content_list(content_list)</span><br><span class="line">                <span class="comment"># if len(content_list &lt; 18):</span></span><br><span class="line">                <span class="comment">#    break</span></span><br><span class="line">                <span class="comment"># 4，构造下一页的url地址，进入2，3循环</span></span><br><span class="line">                num += <span class="number">18</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    douban = DoubanSpider()</span><br><span class="line">    douban.run()</span><br><span class="line">    print(<span class="string">"complete"</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>2019-02-25 更新</p>
+</blockquote>
+<h2 id="通用案例之糗事百科段子"><a href="#通用案例之糗事百科段子" class="headerlink" title="通用案例之糗事百科段子"></a>通用案例之糗事百科段子</h2><p>作为一名段子手- -不应该只会刷段子，还要学会爬取。。<br>其中用到了 lxml模块和xpath相关内容，爬取到的信息不止有文字内容，还有图片以及作者名字和性别，但此处只在txt文档里放了段子内容。<br>效果图如下：</p>
+<img src="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/qiubai_01.jpg" class="" title="网页截图">
+<img src="/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/qiubai_02.jpg" class="" title="爬取后文档截图">
+
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuibaiSpdier</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url_temp = <span class="string">"https://www.qiushibaike.com/hot/page/&#123;&#125;/"</span></span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36"</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url_list</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> [self.url_temp.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">14</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_url</span><span class="params">(self, url)</span>:</span></span><br><span class="line">        response = requests.get(url, headers=self.headers)</span><br><span class="line">        <span class="keyword">return</span> response.content.decode()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_content_list</span><span class="params">(self, html_str)</span>:</span></span><br><span class="line">        html_elements = html.etree.HTML(html_str)</span><br><span class="line">        div_list = html_elements.xpath(<span class="string">"//div[@id='content-left']/div"</span>)</span><br><span class="line">        content_list = []</span><br><span class="line">        <span class="keyword">for</span> div <span class="keyword">in</span> div_list:</span><br><span class="line">            item = &#123;&#125;</span><br><span class="line">            item[<span class="string">"content"</span>] = div.xpath(<span class="string">".//div[@class='content']/span/text()"</span>)</span><br><span class="line">            item[<span class="string">"author_gender"</span>] = div.xpath(<span class="string">".//div[contains(@class,'articleGender')]/@class"</span>)</span><br><span class="line">            item[<span class="string">"author_gender"</span>] = item[<span class="string">"author_gender"</span>][<span class="number">0</span>].split(<span class="string">" "</span>)[<span class="number">-1</span>].replace(<span class="string">"Icon"</span>, <span class="string">""</span>) <span class="keyword">if</span> len(</span><br><span class="line">                item[<span class="string">"author_gender"</span>]) &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">            item[<span class="string">"content_img"</span>] = div.xpath(<span class="string">".//div[@class='thumb']/a/img/@src"</span>)</span><br><span class="line">            item[<span class="string">"content_img"</span>] = <span class="string">"https:"</span> + item[<span class="string">"content_img"</span>][<span class="number">0</span>] <span class="keyword">if</span> len(item[<span class="string">"content_img"</span>]) &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">            item[<span class="string">"author_img"</span>] = div.xpath(<span class="string">".//div[@class='author clearfix']//img/@src"</span>)</span><br><span class="line">            item[<span class="string">"author_img"</span>] = <span class="string">"https:"</span> + item[<span class="string">"author_img"</span>][<span class="number">0</span>] <span class="keyword">if</span> len(item[<span class="string">"author_img"</span>]) &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">            item[<span class="string">"stats_vote"</span>] = div.xpath(<span class="string">".//span[@class='stats-vote']/i/text()"</span>)</span><br><span class="line">            item[<span class="string">"stats_vote"</span>] = item[<span class="string">"stats_vote"</span>][<span class="number">0</span>] <span class="keyword">if</span> len(item[<span class="string">"stats_vote"</span>]) &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">            content_list.append(item)</span><br><span class="line">        <span class="keyword">return</span> content_list</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_content_list</span><span class="params">(self, content_list)</span>:</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">"qiubai.txt"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            <span class="keyword">for</span> content <span class="keyword">in</span> content_list:</span><br><span class="line">                <span class="comment"># f.write(json.dumps(content, ensure_ascii=False))</span></span><br><span class="line">                f.write(<span class="string">"\n"</span>.join(content[<span class="string">"content"</span>]) + <span class="string">"点赞数："</span> + content[<span class="string">"stats_vote"</span>])</span><br><span class="line">                f.write(<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span>  <span class="comment"># 实现主要逻辑</span></span><br><span class="line">        <span class="comment"># 1.构造url_list</span></span><br><span class="line">        url_list = self.get_url_list()</span><br><span class="line">        <span class="comment"># 2.遍历list，发送请求获取相应</span></span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> url_list:</span><br><span class="line">            html_str = self.parse_url(url)</span><br><span class="line">            <span class="comment"># 3.提取数据</span></span><br><span class="line">            content_list = self.get_content_list(html_str)</span><br><span class="line">            <span class="comment"># 4.保存数据</span></span><br><span class="line">            self.save_content_list(content_list)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    qiubai = QuibaiSpdier()</span><br><span class="line">    qiubai.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/10/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" data-id="ckccph4in000iy81r3hg65tk0" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-python闭包" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/10/python%E9%97%AD%E5%8C%85/" class="article-date">
+  <time class="post-time" datetime="2020-01-10T14:02:32.000Z" itemprop="datePublished">
+    <span class="post-month">1月</span><br/>
+    <span class="post-day">10</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/10/python%E9%97%AD%E5%8C%85/">python闭包</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实闭包是一个很简单的概念，不只是在python中有，所有把函数做为一等公民的语言均有闭包的概念。不过像Java这样以class为一等公民的语言中也可以使用闭包，只是它得用类或接口来实现。</p>
+<p>虽然概念简单，但用处强大，然而这个概念却经常忘记，本着好记性不如烂笔头的想法，在这里大体概括一下闭包的基本概念，加强记忆。</p>
+<h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>维基上的解释是：在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。所以，有另一种说法认为闭包是由函数和与其相关的引用环境组合而成的实体。闭包在运行时可以有多个实例，不同的引用环境和相同的函数组合可以产生不同的实例。</p>
+<p>简而言之：就是函数里嵌套一个内部函数，内部函数用到了外边函数中的变量，此时内部函数和用到的外部变量组成了一块空间，这块整体空间就叫闭包。而由于在python中，函数是第一类对象可以当作返回值返回，所以这个闭包也可以当作变量传递</p>
+<p>上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(myname)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_func</span><span class="params">(hername)</span>:</span></span><br><span class="line">        print(myname, <span class="string">' and '</span>, hername)</span><br><span class="line">    <span class="keyword">return</span> inner_func</span><br><span class="line"></span><br><span class="line">withwho = func(<span class="string">'pokemonlei'</span>)</span><br><span class="line">withwho(<span class="string">'qq'</span>)  <span class="comment"># &gt;&gt;&gt; pokemonlei and qq</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包有什么用？"><a href="#闭包有什么用？" class="headerlink" title="闭包有什么用？"></a>闭包有什么用？</h2><ul>
+<li>返回一个函数然后延迟执行</li>
+<li>封装一个私有变量</li>
+<li>用来实现python的装饰器等</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/10/python%E9%97%AD%E5%8C%85/" data-id="ckccph4im000gy81r6q7ue7yq" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-Scaleform中的IME适配win10" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -243,9 +500,9 @@
     <h2 class="author">pokemonlei</h2>
     <h3 class="description">陈磊的博客 | pokemonlei</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>14</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
       <a href="/categories"><div><strong>7</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
 
 
